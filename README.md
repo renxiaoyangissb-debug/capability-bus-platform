@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**FORMAL DEVELOPMENT AUTHORIZED — CORE T1 AUTHORIZED**
+**FORMAL DEVELOPMENT AUTHORIZED — CORE T1 IN PROGRESS**
 
-The user approved the architecture, accepted T0, confirmed source reuse/modification/distribution authority, and delegated in-scope workflow authorization to Platform. See [the delegated-authority policy](docs/governance/platform-delegated-authority.md), [the initial T0 authorization](docs/governance/t0-preparation-authorization.md), [the accepted T0 human review report](docs/reviews/human-checkpoints/T0-source-reuse-audit-human-review.md), and [the T1 source-rights confirmation](docs/reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md). Platform advances routine work automatically and stops only at recorded mandatory human checkpoints. Core T1 is authorized; UI stays in U0 until human acceptance of F1.
+The user approved the architecture, accepted T0, confirmed source reuse/modification/distribution authority, and delegated in-scope workflow authorization to Platform. See [the delegated-authority policy](docs/governance/platform-delegated-authority.md), [the initial T0 authorization](docs/governance/t0-preparation-authorization.md), [the accepted T0 human review report](docs/reviews/human-checkpoints/T0-source-reuse-audit-human-review.md), and [the T1 source-rights confirmation](docs/reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md). Platform advances routine work automatically and stops only at recorded mandatory human checkpoints. Core T1 is in progress in the authorized Core conversation; UI stays in U0 until human acceptance of F1.
 
 ## Required reading
 
