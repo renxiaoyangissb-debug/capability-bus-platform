@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: waiting_for_human_review
+status: waiting_for_t1_authorization
 formal_development_authorized: false
 preparation_authorized: true
 approval:
@@ -25,7 +25,7 @@ repositories:
     role: core-authority
     start_gate: human-approval
     verified_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
-    phase_status: T0_evidence_verified_waiting_for_human_review
+    phase_status: T0_accepted
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
@@ -38,8 +38,11 @@ gates:
   - id: HUMAN-REVIEW
     status: preparation_approved_T0_only
   - id: T0-REVIEW
-    status: evidence_verified_waiting_for_human_review
+    status: accepted
     evidence: docs/reviews/core-t0-human-review.md
+    reviewed_platform_commit: 68f9704bec3b957306258c6f18b091972b7c76f7
+    accepted_core_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
+    human_response: "符合通过"
   - id: F1-CONTRACT-FREEZE
     status: not_started
   - id: F2-CORE-ALPHA-API-FREEZE

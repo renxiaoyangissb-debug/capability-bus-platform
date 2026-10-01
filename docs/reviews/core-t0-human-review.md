@@ -1,8 +1,12 @@
 # Core T0 人工复核报告
 
-状态：`waiting_for_human_review`
+状态：`T0_accepted`；整体状态：`waiting_for_t1_authorization`
 
-核验日期：2026-10-01（Asia/Shanghai）。本报告核验用户对 Platform `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` 批准的 T0 准备范围。T0 审计交付与技术证据核验已完成，人工接受尚未发生；T1/T2、F1/F2 接受和 UI 业务实现均未授权。
+核验日期：2026-10-01（Asia/Shanghai）。本报告核验用户对 Platform `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` 批准的 T0 准备范围。T0 审计交付、技术证据核验和人工接受已完成；T1/T2、F1/F2 接受和 UI 业务实现均未授权。
+
+## 人工接受记录
+
+用户在本报告以 Platform 提交 `68f9704bec3b957306258c6f18b091972b7c76f7` 发布后回复：“符合通过”。按当前对话上下文登记为 T0 复核通过，接受的 Core 交付为 `aa6269842fa034c8849c579b0262dff4db7ee8cc`。该回复接受审计结论，不自动授权下一阶段，也不提供缺失的来源所有权或复用/分发许可依据。
 
 ## 已核验的提交与状态
 
@@ -46,15 +50,15 @@ feedparser：6.0.12
 
 这些测试验证来源旧产品行为。其中 40 项属于 RSS/Hermes/SiYuan 适配器测试，不能作为新 Core 契约、隔离、身份或安全能力已经实现的证明。没有创建 Core 运行时代码、T1 原样抽取基线或 T2 功能。
 
-## 待人工复核的风险与决定
+## 审核结果与后续待决定项
 
-- [ ] 接受固定来源提交与排除未提交改动的取证边界。
+- [x] 接受固定来源提交与排除未提交改动的取证边界。
 - [ ] 确认来源代码的所有权及后续复用/分发许可依据。来源 HEAD 无仓库级 LICENSE/NOTICE，审计记录将此列为后续抽取前待解决事项；本报告不推定具体许可。
-- [ ] 接受 ADR-0001 的复用归属分类：Core 保留控制平面、调用与审计元数据；持久 Task/Event、checkpoint、lease、retry、dead-letter 等按 Core 权威设计归属受闸门约束的系统插件。
-- [ ] 接受安全适配要求：移除硬编码授权清单外放行与不受信插件同进程装载，补齐持久身份/Grant、Provider-neutral 幂等身份和原子调用预留。
-- [ ] 接受证据缺口分类：完整 Envelope Schema、持久注册表、配置版本治理、Runtime Supervisor 和本地控制通道等不能被宣称为已复用完成，需要后续单独授权的新建或适配工作。
+- [x] 接受 ADR-0001 的复用归属分类：Core 保留控制平面、调用与审计元数据；持久 Task/Event、checkpoint、lease、retry、dead-letter 等按 Core 权威设计归属受闸门约束的系统插件。
+- [x] 接受安全适配要求：移除硬编码授权清单外放行与不受信插件同进程装载，补齐持久身份/Grant、Provider-neutral 幂等身份和原子调用预留。
+- [x] 接受证据缺口分类：完整 Envelope Schema、持久注册表、配置版本治理、Runtime Supervisor 和本地控制通道等不能被宣称为已复用完成，需要后续单独授权的新建或适配工作。
 - [ ] 如决定继续，另行明确 T1 范围与退出条件。T0 的技术核验不自动授权 T1/T2，也不构成 F1 接受。
 
 ## 停止状态
 
-`status=waiting_for_human_review`，`formal_development_authorized=false`。准备授权记录继续有效，但已授权 T0 执行已完成并停止。UI 维持 U0；F1/F2 均为 `not_started`。保留全部用户现有修改，等待人工复核决定。
+`status=waiting_for_t1_authorization`，`formal_development_authorized=false`。T0 复核已通过，已授权的 T0 执行已完成并停止。UI 维持 U0；F1/F2 均为 `not_started`。保留全部用户现有修改，等待下一阶段单独授权及复用许可依据确认。

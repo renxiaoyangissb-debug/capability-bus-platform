@@ -40,3 +40,7 @@ No T1 extraction baseline, T2 runtime implementation, F1/F2 acceptance, UI busin
 ## Execution result
 
 T0 was delivered in Core commit `9255224d7038ef569121d0bea3e2e2e1189b841f`, followed by documentation count correction `aa6269842fa034c8849c579b0262dff4db7ee8cc`. The Core conversation is idle and stopped. Platform verified the evidence and returned to `waiting_for_human_review`. See [the T0 human review report](../reviews/core-t0-human-review.md). T1/T2 and UI business implementation remain unauthorized.
+
+## Subsequent human acceptance
+
+After the T0 report was published in Platform commit `68f9704bec3b957306258c6f18b091972b7c76f7`, the user replied verbatim: “符合通过”. This accepts the T0 audit delivery at Core commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. The program is now `waiting_for_t1_authorization`; T0 review is accepted and formal implementation authorization remains false. The reply does not supply source ownership/licensing terms or authorize T1/T2, F1/F2 acceptance, or UI business implementation.
