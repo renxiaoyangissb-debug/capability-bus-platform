@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-30T13:40:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="v2-1-architecture" name="Everything as a Plugin v2.1">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="“一切皆插件” 系统总体架构（v2.1）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1050" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="核心思想：Kernel 只提供机制；用户、Agent、Workflow、外部应用都可以调用插件能力；插件既可提供能力，也可消费其他插件能力。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="40" y="78" width="1500" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="external_zone" value="Human / External 调用层" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 6;strokeWidth=2;strokeColor=#94A3B8;fillColor=#F8FAFC;opacity=75;align=left;verticalAlign=top;spacingTop=12;spacingLeft=12;fontSize=16;fontStyle=1;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="1460" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="human" value="&lt;b&gt;用户 / Human&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 普通用户&lt;br&gt;• 开发者&lt;br&gt;• 系统管理员&lt;br&gt;&lt;br&gt;&lt;b&gt;可直接调用插件能力&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#FACC15;fillColor=#FEFCE8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="175" width="220" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="ui" value="&lt;b&gt;UI / CLI / API&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Web&lt;br&gt;• Desktop&lt;br&gt;• CLI&lt;br&gt;• Natural Language&lt;br&gt;• IDE / Canvas" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#F87171;fillColor=#FEF2F2;" vertex="1" parent="1">
+          <mxGeometry x="320" y="175" width="220" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="external_app" value="&lt;b&gt;外部应用 / Client&lt;/b&gt;&lt;br&gt;&lt;br&gt;• MCP Client&lt;br&gt;• 第三方 App&lt;br&gt;• Automation&lt;br&gt;• Script / Service" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#22D3EE;fillColor=#ECFEFF;" vertex="1" parent="1">
+          <mxGeometry x="570" y="175" width="220" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="direct_call" value="&lt;b&gt;Direct Capability Call&lt;/b&gt;&lt;br&gt;&lt;br&gt;用户或外部系统可直接请求 capability&lt;br&gt;&lt;br&gt;不要求经过 Agent" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#4ADE80;fillColor=#F0FDF4;" vertex="1" parent="1">
+          <mxGeometry x="820" y="175" width="250" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="agent_entry" value="&lt;b&gt;Agent 只是可选调用者&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hermes / Codex / DeepSeek Harness 等&lt;br&gt;&lt;br&gt;可调用插件，也可被用户直接调用" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#A78BFA;fillColor=#F5F3FF;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="175" width="350" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="kernel_zone" value="Minimal Kernel / 最小核心（机制层）" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 6;strokeWidth=2;strokeColor=#94A3B8;fillColor=#F8FAFC;opacity=75;align=left;verticalAlign=top;spacingTop=12;spacingLeft=12;fontSize=16;fontStyle=1;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="390" width="1460" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="bootstrap" value="&lt;b&gt;Bootstrap&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 启动核心插件&lt;br&gt;• 恢复最小系统状态" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="70" y="445" width="170" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="registry" value="&lt;b&gt;Capability Registry&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 注册能力&lt;br&gt;• 服务发现&lt;br&gt;• provider / consumer 元数据" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="260" y="445" width="200" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="router" value="&lt;b&gt;Capability Router / Broker&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 统一调用入口&lt;br&gt;• Provider 解析&lt;br&gt;• 插件互调&lt;br&gt;• 用户直调" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="480" y="445" width="220" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="&lt;b&gt;Policy Enforcement Point&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 权限检查&lt;br&gt;• 安全策略&lt;br&gt;• 可选 HITL 触发&lt;br&gt;• 可配置 bypass / disable" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="720" y="445" width="220" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="eventbus" value="&lt;b&gt;Event Bus&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 插件事件&lt;br&gt;• 状态广播&lt;br&gt;• 解耦通信" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="960" y="445" width="180" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtime_bridge" value="&lt;b&gt;Runtime Bridge&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Runtime Adapter&lt;br&gt;• 统一执行桥接&lt;br&gt;• 本地 / 远程" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="445" width="180" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="metadata" value="&lt;b&gt;Minimal Metadata / Persistence&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 插件注册表&lt;br&gt;• 启动配置&lt;br&gt;• 恢复元数据&lt;br&gt;&lt;br&gt;&lt;i&gt;不是业务存储&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="445" width="110" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="ecosystem" value="Plugin Ecosystem / 插件生态（所有能力同级）" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 6;strokeWidth=2;strokeColor=#94A3B8;fillColor=#F8FAFC;opacity=75;align=left;verticalAlign=top;spacingTop=12;spacingLeft=12;fontSize=16;fontStyle=1;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="40" y="750" width="1460" height="700" as="geometry"/>
+        </mxCell>
+        <mxCell id="agent_plugins" value="&lt;b&gt;Agent Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Hermes&lt;br&gt;• Codex&lt;br&gt;• DeepSeek Harness&lt;br&gt;• Claude Code&lt;br&gt;• 自建 Agent&lt;br&gt;&lt;br&gt;&lt;b&gt;Provider:&lt;/b&gt; agent.run / agent.plan&lt;br&gt;&lt;b&gt;Consumer:&lt;/b&gt; tools / llm / storage / memory" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#A78BFA;fillColor=#F5F3FF;" vertex="1" parent="1">
+          <mxGeometry x="70" y="810" width="230" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm_plugins" value="&lt;b&gt;LLM Provider Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• DeepSeek&lt;br&gt;• OpenAI&lt;br&gt;• Anthropic&lt;br&gt;• Agnes&lt;br&gt;• Ollama / Local Model&lt;br&gt;&lt;br&gt;&lt;b&gt;Provider:&lt;/b&gt; model.chat / embed / vision" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#4ADE80;fillColor=#F0FDF4;" vertex="1" parent="1">
+          <mxGeometry x="320" y="810" width="230" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="content_store" value="&lt;b&gt;Content Store Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• SiYuan&lt;br&gt;• Filesystem&lt;br&gt;• SQL / NoSQL&lt;br&gt;• Object Storage&lt;br&gt;• 文档 / 图片 / 文件&lt;br&gt;&lt;br&gt;&lt;b&gt;共享系统持久化内容&lt;/b&gt;&lt;br&gt;Human / Agent / Plugin 均可使用" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#22D3EE;fillColor=#ECFEFF;" vertex="1" parent="1">
+          <mxGeometry x="570" y="810" width="260" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="memory_plugins" value="&lt;b&gt;Memory Plugins（可选）&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Long-term Memory&lt;br&gt;• Session Memory&lt;br&gt;• Recall / Remember&lt;br&gt;• Summarize / Consolidate&lt;br&gt;&lt;br&gt;可消费 Content Store / Vector DB 能力&lt;br&gt;&lt;br&gt;&lt;b&gt;不是 Kernel 核心&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#F87171;fillColor=#FEF2F2;" vertex="1" parent="1">
+          <mxGeometry x="850" y="810" width="250" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="workflow_plugins" value="&lt;b&gt;Workflow / Scheduler Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Workflow Engine&lt;br&gt;• DAG&lt;br&gt;• 定时任务&lt;br&gt;• 多步骤编排&lt;br&gt;• Agent 协调&lt;br&gt;&lt;br&gt;&lt;b&gt;复杂任务使用；非所有调用必经&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#FACC15;fillColor=#FEFCE8;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="810" width="250" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool_plugins" value="&lt;b&gt;Tool Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Shell&lt;br&gt;• Git&lt;br&gt;• Files&lt;br&gt;• Browser&lt;br&gt;• API&lt;br&gt;• Dev Tools" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1080" width="210" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_plugins" value="&lt;b&gt;Application Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 项目管理&lt;br&gt;• 文档系统&lt;br&gt;• 邮件 / IM&lt;br&gt;• 日历 / 任务&lt;br&gt;• SaaS" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#FB923C;fillColor=#FFF7ED;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1080" width="210" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy_plugins" value="&lt;b&gt;Policy Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• RBAC&lt;br&gt;• Risk Policy&lt;br&gt;• Allow / Deny Rules&lt;br&gt;• Capability Scope&lt;br&gt;&lt;br&gt;供 Kernel Policy Point 查询" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#94A3B8;fillColor=#F8FAFC;" vertex="1" parent="1">
+          <mxGeometry x="530" y="1080" width="230" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="hitl_plugin" value="&lt;b&gt;HITL Plugin（可选）&lt;/b&gt;&lt;br&gt;&lt;br&gt;• approval.request&lt;br&gt;• approve / reject&lt;br&gt;• 人工确认&lt;br&gt;• 高风险审核&lt;br&gt;&lt;br&gt;&lt;b&gt;可通过配置启用或取消&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#F87171;fillColor=#FEF2F2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1080" width="230" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtime_plugins" value="&lt;b&gt;Runtime Adapter Plugins&lt;/b&gt;&lt;br&gt;&lt;br&gt;• MCP&lt;br&gt;• HTTP&lt;br&gt;• Python&lt;br&gt;• Docker&lt;br&gt;• Desktop Automation&lt;br&gt;• Remote Service" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#94A3B8;fillColor=#F8FAFC;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1080" width="230" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="knowledge_plugins" value="&lt;b&gt;Knowledge / RAG Plugins（可选）&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Search&lt;br&gt;• Index&lt;br&gt;• Embeddings&lt;br&gt;• RAG&lt;br&gt;• 内容清洗 / 处理&lt;br&gt;&lt;br&gt;消费 Content Store / LLM 能力" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#22D3EE;fillColor=#ECFEFF;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1080" width="190" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="principles" value="&lt;b&gt;v2.1 关键原则&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. Kernel 只提供机制，不承载 Agent / LLM / Memory / HITL&lt;br&gt;2. 用户可以直接调用插件能力&lt;br&gt;3. 插件之间通过 Capability Router 互相调用&lt;br&gt;4. 插件既可以是 Provider，也可以是 Consumer&lt;br&gt;5. Agent 只是插件类型之一&lt;br&gt;6. LLM Provider 只是插件能力&lt;br&gt;7. Memory 可选，且与 Content Store 解耦&lt;br&gt;8. HITL 可配置启停&lt;br&gt;9. Workflow / Scheduler 不是中央必经层" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#60A5FA;fillColor=#EFF6FF;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="130" width="430" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="capability_model" value="&lt;b&gt;Capability Model&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Provider&lt;/b&gt;&lt;br&gt;提供 capability，例如：&lt;br&gt;• content.read&lt;br&gt;• model.chat&lt;br&gt;• tool.shell&lt;br&gt;• memory.recall&lt;br&gt;&lt;br&gt;&lt;b&gt;Consumer&lt;/b&gt;&lt;br&gt;调用其他插件能力，例如：&lt;br&gt;Memory Plugin → content.write&lt;br&gt;Agent Plugin → model.chat&lt;br&gt;Workflow → agent.run / tool.shell" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#94A3B8;fillColor=#F8FAFC;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="590" width="430" height="370" as="geometry"/>
+        </mxCell>
+        <mxCell id="direct_vs_workflow" value="&lt;b&gt;调用模式&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;直接调用&lt;/b&gt;&lt;br&gt;User → Kernel Router → Plugin&lt;br&gt;&lt;br&gt;&lt;b&gt;插件互调&lt;/b&gt;&lt;br&gt;Plugin A → Router → Plugin B&lt;br&gt;&lt;br&gt;&lt;b&gt;复杂编排&lt;/b&gt;&lt;br&gt;User → Workflow Plugin → Router → 多个 Plugin&lt;br&gt;&lt;br&gt;&lt;b&gt;AI 路径只是其中一种&lt;/b&gt;&lt;br&gt;User → Agent Plugin → Router → LLM / Tool / Store" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacing=10;fontSize=13;fontColor=#111827;strokeColor=#4ADE80;fillColor=#F0FDF4;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="990" width="430" height="360" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="自然语言 / 操作" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="human" target="ui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="直接请求 capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#16A34A;" edge="1" parent="1" source="ui" target="direct_call">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="API / MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#16A34A;" edge="1" parent="1" source="external_app" target="direct_call">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="invoke(capability)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="direct_call" target="router">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="Agent capability 调用" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="agent_entry" target="router">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="resolve provider" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="router" target="registry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="policy check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="router" target="policy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="allowed request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="policy" target="runtime_bridge">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="events / state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="eventbus" target="router">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="load providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="bootstrap" target="registry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="startup metadata" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;" edge="1" parent="1" source="metadata" target="bootstrap">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="执行适配" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" edge="1" parent="1" source="runtime_bridge" target="runtime_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e20" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="agent_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e21" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="llm_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e22" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e23" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="memory_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e24" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="workflow_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e25" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="tool_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e26" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="app_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e27" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="policy_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e28" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="hitl_plugin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e29" value="capability route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#64748B;dashed=1;dashPattern=8 6;" edge="1" parent="1" source="router" target="knowledge_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e40" value="model.chat / embed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="agent_plugins" target="llm_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e41" value="tool.*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="agent_plugins" target="tool_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e42" value="content.read / write" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="agent_plugins" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e43" value="memory.recall / remember" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="agent_plugins" target="memory_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e44" value="content.read / write" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#DC2626;" edge="1" parent="1" source="memory_plugins" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e45" value="summary / embedding" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#DC2626;" edge="1" parent="1" source="memory_plugins" target="llm_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e46" value="agent.run" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#CA8A04;" edge="1" parent="1" source="workflow_plugins" target="agent_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e47" value="tool.*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#CA8A04;" edge="1" parent="1" source="workflow_plugins" target="tool_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e48" value="app.*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#CA8A04;" edge="1" parent="1" source="workflow_plugins" target="app_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e49" value="read / index" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#0891B2;" edge="1" parent="1" source="knowledge_plugins" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e50" value="embedding / rerank" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#0891B2;" edge="1" parent="1" source="knowledge_plugins" target="llm_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e51" value="policy source" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#475569;" edge="1" parent="1" source="policy_plugins" target="policy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e52" value="仅配置启用时触发" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#DC2626;" edge="1" parent="1" source="policy" target="hitl_plugin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e53" value="直接使用内容库" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#16A34A;" edge="1" parent="1" source="human" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e54" value="直接调用工具" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#16A34A;" edge="1" parent="1" source="human" target="tool_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e55" value="可直接调用 Agent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#16A34A;" edge="1" parent="1" source="human" target="agent_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e56" value="插件互调示例" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#F97316;" edge="1" parent="1" source="app_plugins" target="content_store">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e57" value="插件互调示例" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#2563EB;" edge="1" parent="1" source="tool_plugins" target="app_plugins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
