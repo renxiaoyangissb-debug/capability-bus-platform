@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**CORE T0 REVIEW ACCEPTED — WAITING FOR T1 AUTHORIZATION**
+**PLATFORM WORKFLOW AUTHORITY ACTIVE — WAITING FOR SOURCE-RIGHTS CONFIRMATION**
 
-The user approved the plan and architecture under commit `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` and authorized Core T0 only. See [the scoped approval record](docs/governance/t0-preparation-authorization.md) and [the accepted T0 human review report](docs/reviews/core-t0-human-review.md). The user has accepted T0. T1/T2 and UI business implementation still require separate authorization. UI stays in U0.
+The user approved the architecture and delegated in-scope workflow authorization to Platform. See [the delegated-authority policy](docs/governance/platform-delegated-authority.md), [the initial T0 authorization](docs/governance/t0-preparation-authorization.md), and [the accepted T0 human review report](docs/reviews/human-checkpoints/T0-source-reuse-audit-human-review.md). Platform advances routine work automatically and stops only at recorded mandatory human checkpoints. The active checkpoint is confirmation of source reuse/distribution rights before T1 extraction. UI stays in U0 until human acceptance of F1.
 
 ## Required reading
 
@@ -35,10 +35,12 @@ capability-bus-platform/
 ├── projects.yaml
 └── docs/
     ├── governance/orchestration-protocol.md
+    ├── governance/platform-delegated-authority.md
     ├── architecture/
     │   ├── README.md
     │   ├── everything-as-plugin-v2.1-original-reference.drawio
     │   └── capability-bus-alpha-optimized-topology.drawio
     ├── planning/master-development-plan.md
-    └── reviews/development-readiness-review.md
+    ├── reviews/development-readiness-review.md
+    └── reviews/human-checkpoints/
 ```

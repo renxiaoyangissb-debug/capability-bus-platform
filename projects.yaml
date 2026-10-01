@@ -1,8 +1,10 @@
 schema_version: 1
 program: capability-bus
-status: waiting_for_t1_authorization
+status: waiting_for_human_source_rights_confirmation
 formal_development_authorized: false
 preparation_authorized: true
+workflow_authority_delegated_to_platform: true
+delegated_authority_record: docs/governance/platform-delegated-authority.md
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
@@ -11,6 +13,10 @@ approval:
   t1_t2_authorized: false
   core_task_dispatch_authorized: true
   ui_task_dispatch_authorized: false
+  routine_core_ui_dispatch_authorized: true
+  per_task_human_approval_required: false
+  current_mandatory_human_checkpoint: source_reuse_and_distribution_rights
+  next_auto_phase_after_checkpoint: T1
 
 repositories:
   source:
@@ -36,13 +42,16 @@ repositories:
 
 gates:
   - id: HUMAN-REVIEW
-    status: preparation_approved_T0_only
+    status: delegated_workflow_authority_active
   - id: T0-REVIEW
     status: accepted
-    evidence: docs/reviews/core-t0-human-review.md
+    evidence: docs/reviews/human-checkpoints/T0-source-reuse-audit-human-review.md
     reviewed_platform_commit: 68f9704bec3b957306258c6f18b091972b7c76f7
     accepted_core_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
     human_response: "符合通过"
+  - id: SOURCE-RIGHTS
+    status: waiting_for_human_confirmation
+    blocks: T1-source-code-extraction
   - id: F1-CONTRACT-FREEZE
     status: not_started
   - id: F2-CORE-ALPHA-API-FREEZE
@@ -53,3 +62,6 @@ constraints:
   cross_repository_writes: owner_project_only
   implementation_before_human_approval: false
   ui_business_implementation_before_F1: false
+  mandatory_human_acceptance_at_F1: true
+  mandatory_human_acceptance_at_F2: true
+  mandatory_human_acceptance_before_release_candidate: true

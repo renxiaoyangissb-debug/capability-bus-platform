@@ -12,8 +12,10 @@ These instructions apply to the whole coordination repository.
 
 ## Development gate
 
-- The project is in preparation and human-review state.
-- Do not start formal implementation, create implementation tasks, modify sibling repositories, or declare a milestone active until the user explicitly approves development.
+- The user delegates workflow authorization and cross-project task dispatch to this Platform repository under `docs/governance/platform-delegated-authority.md`.
+- Platform may automatically authorize, create, continue, and verify owning-project work that stays within the approved architecture, current roadmap, active gate, and repository ownership boundary.
+- Do not wait for per-task user approval unless a mandatory human checkpoint or hard stop in the delegated-authority policy applies.
+- Actual implementation changes remain in the owning repository and owning project conversation.
 - Read `docs/planning/master-development-plan.md`, `docs/governance/orchestration-protocol.md`, and `docs/reviews/development-readiness-review.md` before proposing work.
 - Preserve F1 Contract Freeze and F2 Core Alpha API Freeze gates.
 - UI business implementation must not start before F1 evidence is accepted.
@@ -28,7 +30,8 @@ These instructions apply to the whole coordination repository.
 
 - Record cross-project status using verified Git commits and test evidence.
 - Do not treat another conversation's narrative as proof of completion.
-- Sending work to another Codex conversation requires explicit user authorization.
+- Platform's recorded delegated authority is sufficient to create and message Core/UI project conversations within the active roadmap and gate; do not infer authority for unrelated projects or out-of-scope work.
+- Produce human-review reports under `docs/reviews/human-checkpoints/` using the development-progress naming rule defined there.
 - Keep actual code changes in the owning repository.
 
 ## Safety
@@ -36,4 +39,4 @@ These instructions apply to the whole coordination repository.
 - Never commit secrets or credentials.
 - Default to offline-safe operation and least privilege.
 - Preserve user changes in every repository.
-- Stop at architectural conflicts, unverifiable source state, destructive migrations, or missing human approval.
+- Stop at the mandatory human checkpoints and hard stops defined in `docs/governance/platform-delegated-authority.md`.

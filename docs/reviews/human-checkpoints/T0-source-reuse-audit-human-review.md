@@ -1,6 +1,6 @@
 # Core T0 人工复核报告
 
-状态：`T0_accepted`；整体状态：`waiting_for_t1_authorization`
+状态：`T0_accepted`；当前整体状态：`waiting_for_human_source_rights_confirmation`
 
 核验日期：2026-10-01（Asia/Shanghai）。本报告核验用户对 Platform `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` 批准的 T0 准备范围。T0 审计交付、技术证据核验和人工接受已完成；T1/T2、F1/F2 接受和 UI 业务实现均未授权。
 
@@ -24,11 +24,11 @@ Core 对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`，名称“Capability Bus C
 
 以下文件全部属于 Core 最终提交，Core 相对原始基线 `d84c495acbb69f588a5412f618952950fd4e5126` 的变更仅限这五个文件：
 
-- [source-snapshot.md](../../../capability-bus-core/docs/extraction/source-snapshot.md)：来源身份、脏工作区隔离、环境和测试结果。
-- [reuse-matrix.md](../../../capability-bus-core/docs/extraction/reuse-matrix.md)：逐项行为与测试对应、决策、理由和待授权的拟定目标路径。
-- [provenance.md](../../../capability-bus-core/docs/extraction/provenance.md)：36 个来源文件的完整 commit、路径、Git blob 与 SHA-256。
-- [source-head-unittest.txt](../../../capability-bus-core/docs/extraction/evidence/source-head-unittest.txt)：实际离线测试原始输出、命令、时间和退出码。
-- [ADR-0001](../../../capability-bus-core/docs/adr/0001-t0-reuse-boundaries.md)：按 Core 权威设计区分控制平面与持久任务/事件系统插件；仅为 T0 分类，不改变架构或授权实现。
+- [source-snapshot.md](../../../../capability-bus-core/docs/extraction/source-snapshot.md)：来源身份、脏工作区隔离、环境和测试结果。
+- [reuse-matrix.md](../../../../capability-bus-core/docs/extraction/reuse-matrix.md)：逐项行为与测试对应、决策、理由和待授权的拟定目标路径。
+- [provenance.md](../../../../capability-bus-core/docs/extraction/provenance.md)：36 个来源文件的完整 commit、路径、Git blob 与 SHA-256。
+- [source-head-unittest.txt](../../../../capability-bus-core/docs/extraction/evidence/source-head-unittest.txt)：实际离线测试原始输出、命令、时间和退出码。
+- [ADR-0001](../../../../capability-bus-core/docs/adr/0001-t0-reuse-boundaries.md)：按 Core 权威设计区分控制平面与持久任务/事件系统插件；仅为 T0 分类，不改变架构或授权实现。
 
 ## 独立证据核验
 
@@ -61,4 +61,4 @@ feedparser：6.0.12
 
 ## 停止状态
 
-`status=waiting_for_t1_authorization`，`formal_development_authorized=false`。T0 复核已通过，已授权的 T0 执行已完成并停止。UI 维持 U0；F1/F2 均为 `not_started`。保留全部用户现有修改，等待下一阶段单独授权及复用许可依据确认。
+T0 复核已通过。此后用户已将批准路线内的日常工作流授权委托给 Platform；该后续授权不改变本报告的 T0 证据。当前 `status=waiting_for_human_source_rights_confirmation`，`formal_development_authorized=false`。UI 维持 U0；F1/F2 均为 `not_started`。保留全部用户现有修改，等待来源复用/修改/分发权限依据确认；确认后由 Platform 自动调度 T1。

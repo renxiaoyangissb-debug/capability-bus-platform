@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **CORE T0 REVIEW ACCEPTED — WAITING FOR T1 AUTHORIZATION**
+Status: **PLATFORM WORKFLOW AUTHORITY ACTIVE — WAITING FOR SOURCE-RIGHTS CONFIRMATION**
 
 ## Prepared
 
@@ -22,17 +22,19 @@ Status: **CORE T0 REVIEW ACCEPTED — WAITING FOR T1 AUTHORIZATION**
 - [x] Confirm reading the source repository and coordinating Core T0; prior read-only inspection of all three repositories remains in scope.
 - [x] Explicitly authorize creating and dispatching the Core T0 conversation only.
 - [x] Accept the verified Core T0 audit delivery.
-- [ ] Authorize T1/T2 after human review of T0 evidence.
-- [ ] Authorize UI task dispatch; UI business implementation additionally requires F1 acceptance.
+- [x] Delegate routine workflow authorization and Core/UI task dispatch to Platform.
+- [ ] Confirm source ownership and permission to reuse, modify, and distribute committed source code before T1 extraction.
+- [ ] Accept F1 before UI business implementation.
+- [ ] Accept F2 before concentrated alpha.4 integration.
 
 ## Approval record
 
-The user approved preparation against Platform commit `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` on 2026-10-01 (Asia/Shanghai). The complete scoped authorization is recorded in [T0 preparation authorization](../governance/t0-preparation-authorization.md). Formal implementation remains disabled. No broader historical suggested approval text is an authorization.
+The user approved preparation against Platform commit `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` on 2026-10-01 (Asia/Shanghai), accepted T0, and subsequently delegated in-scope workflow authorization to Platform. The active authority is recorded in [Platform delegated authority](../governance/platform-delegated-authority.md). Formal source-code extraction remains disabled until the source-rights checkpoint is resolved.
 
 ## T0 evidence review
 
-Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platform independently verified the commit scope, 36 source blob/SHA-256 rows, actual offline test execution evidence, and preservation of source/UI state. The user then replied “符合通过”, recorded as acceptance of the T0 review published in Platform commit `68f9704bec3b957306258c6f18b091972b7c76f7`. See [the human review report](core-t0-human-review.md) for the evidence and remaining pre-T1 decisions. T0 acceptance does not authorize T1/T2 or establish the missing reuse/distribution permission basis.
+Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platform independently verified the commit scope, 36 source blob/SHA-256 rows, actual offline test execution evidence, and preservation of source/UI state. The user then replied “符合通过”, recorded as acceptance of the T0 review published in Platform commit `68f9704bec3b957306258c6f18b091972b7c76f7`. See [the human review report](human-checkpoints/T0-source-reuse-audit-human-review.md) for the evidence and remaining pre-T1 decision. T0 acceptance and delegated workflow authority do not establish the missing reuse/distribution permission basis.
 
 ## First authorized action
 
-The first authorized T0 action has been completed and accepted. The coordination conversation waits for a separate, explicit T1 scope authorization; it must not start implementation or dispatch a continuation based solely on T0 acceptance.
+The first authorized T0 action has been completed and accepted. After the source-rights checkpoint is resolved, Platform may authorize and dispatch T1 automatically under the approved reuse matrix. No separate per-task authorization is needed unless another mandatory checkpoint applies.
