@@ -77,4 +77,4 @@ Reports are append-only evidence records after acceptance. Later corrections mus
 
 ## Current checkpoint
 
-T0 is accepted. The owner confirmed authority to reuse, modify, and distribute the committed source at `personal-ai-control-plane@7f82511837adf06eef87dd9059b57d59bcaeadd6`; the evidence is recorded in [the T1 source-rights human review](../reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md). Platform may dispatch and supervise T1 automatically. The next mandatory human checkpoint is F1 unless an earlier hard stop is encountered.
+T0 is accepted and the source-rights checkpoint is resolved. Platform independently verified Core T1 at `cf7e87d814ad97d15b100c42c53a606b273b8fd5`; the evidence is recorded in [the T1 Core extraction review](../reviews/human-checkpoints/T1-core-extraction-human-review.md). T2 is authorized for automatic dispatch and supervision. The next mandatory human checkpoint is F1 unless an earlier hard stop is encountered.

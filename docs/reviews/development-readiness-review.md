@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **FORMAL DEVELOPMENT AUTHORIZED — CORE T1 AUTHORIZED**
+Status: **FORMAL DEVELOPMENT AUTHORIZED — CORE T1 VERIFIED, T2 AUTHORIZED**
 
 ## Prepared
 
@@ -37,4 +37,4 @@ Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platf
 
 ## Current authorized action
 
-The first authorized T0 action has been completed and accepted. The source-rights checkpoint is resolved, so Platform may dispatch and supervise Core T1 automatically under the approved reuse matrix. The selected execution profile is GPT-5.6 Sol with high reasoning. No separate per-task authorization is needed unless another mandatory checkpoint applies. UI remains in U0 and the next planned mandatory human acceptance is F1.
+The first authorized T0 action has been completed and accepted, the source-rights checkpoint is resolved, and Platform independently verified Core T1 at `cf7e87d814ad97d15b100c42c53a606b273b8fd5`. See [the T1 Core extraction review](human-checkpoints/T1-core-extraction-human-review.md). Platform may dispatch and supervise T2 automatically using GPT-5.6 Sol with high reasoning. No separate per-task authorization is needed unless another mandatory checkpoint applies. UI remains in U0 and the next planned mandatory human acceptance is F1.

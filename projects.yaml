@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t1_in_progress
+status: core_t1_verified_t2_authorized
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -8,17 +8,17 @@ delegated_authority_record: docs/governance/platform-delegated-authority.md
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
-  authorized_core_phase: T1
+  authorized_core_phase: T2
   core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
-  t1_t2_authorized: false
+  t1_t2_authorized: true
   t1_authorized: true
-  t2_authorized: false
+  t2_authorized: true
   core_task_dispatch_authorized: true
   ui_task_dispatch_authorized: false
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: T1
+  next_auto_phase: T2
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: high
 
@@ -34,8 +34,8 @@ repositories:
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-core
     role: core-authority
     start_gate: source-rights-accepted
-    verified_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
-    phase_status: T1_in_progress
+    verified_commit: cf7e87d814ad97d15b100c42c53a606b273b8fd5
+    phase_status: T1_verified_T2_authorized
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
@@ -58,6 +58,11 @@ gates:
     evidence: docs/reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md
     accepted_source_commit: 7f82511837adf06eef87dd9059b57d59bcaeadd6
     human_response: "确认"
+  - id: T1-EXTRACTION
+    status: verified_by_platform
+    evidence: docs/reviews/human-checkpoints/T1-core-extraction-human-review.md
+    exact_extraction_commit: 675667a
+    accepted_core_commit: cf7e87d814ad97d15b100c42c53a606b273b8fd5
   - id: F1-CONTRACT-FREEZE
     status: not_started
   - id: F2-CORE-ALPHA-API-FREEZE
