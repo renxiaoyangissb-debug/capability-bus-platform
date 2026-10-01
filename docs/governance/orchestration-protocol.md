@@ -26,7 +26,7 @@ Coordinate Core and Official UI without merging their ownership domains or creat
 
 ### Delegated development authority
 
-The user has approved the architecture and delegated in-scope workflow authorization to Platform. Platform can authorize routine T1–T5 work and project-conversation dispatch after prerequisite evidence is verified. The current source ownership/licensing question is a mandatory human checkpoint before any source-code extraction.
+The user has approved the architecture and delegated in-scope workflow authorization to Platform. Platform can authorize routine T1–T5 work and project-conversation dispatch after prerequisite evidence is verified. The source ownership/reuse/distribution checkpoint was accepted before T1 extraction. The next planned mandatory human acceptance is F1.
 
 ### F1 Contract Freeze
 

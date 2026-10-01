@@ -1,22 +1,26 @@
 schema_version: 1
 program: capability-bus
-status: waiting_for_human_source_rights_confirmation
-formal_development_authorized: false
+status: core_t1_authorized
+formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
 delegated_authority_record: docs/governance/platform-delegated-authority.md
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
-  authorized_core_phase: T0
+  authorized_core_phase: T1
   core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   t1_t2_authorized: false
+  t1_authorized: true
+  t2_authorized: false
   core_task_dispatch_authorized: true
   ui_task_dispatch_authorized: false
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: source_reuse_and_distribution_rights
-  next_auto_phase_after_checkpoint: T1
+  current_mandatory_human_checkpoint: none
+  next_auto_phase: T1
+  core_execution_model: gpt-5.6-sol
+  core_execution_reasoning_effort: high
 
 repositories:
   source:
@@ -29,9 +33,9 @@ repositories:
     name: capability-bus-core
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-core
     role: core-authority
-    start_gate: human-approval
+    start_gate: source-rights-accepted
     verified_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
-    phase_status: T0_accepted
+    phase_status: T1_authorized
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
@@ -50,8 +54,10 @@ gates:
     accepted_core_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
     human_response: "符合通过"
   - id: SOURCE-RIGHTS
-    status: waiting_for_human_confirmation
-    blocks: T1-source-code-extraction
+    status: accepted
+    evidence: docs/reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md
+    accepted_source_commit: 7f82511837adf06eef87dd9059b57d59bcaeadd6
+    human_response: "确认"
   - id: F1-CONTRACT-FREEZE
     status: not_started
   - id: F2-CORE-ALPHA-API-FREEZE

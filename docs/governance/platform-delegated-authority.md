@@ -77,4 +77,4 @@ Reports are append-only evidence records after acceptance. Later corrections mus
 
 ## Current checkpoint
 
-T0 is accepted. Before T1 copies source code, the owner must confirm ownership or permission to reuse, modify, and distribute the committed source at `personal-ai-control-plane@7f82511837adf06eef87dd9059b57d59bcaeadd6`. Once confirmed and recorded, Platform may dispatch and supervise T1 automatically.
+T0 is accepted. The owner confirmed authority to reuse, modify, and distribute the committed source at `personal-ai-control-plane@7f82511837adf06eef87dd9059b57d59bcaeadd6`; the evidence is recorded in [the T1 source-rights human review](../reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md). Platform may dispatch and supervise T1 automatically. The next mandatory human checkpoint is F1 unless an earlier hard stop is encountered.
