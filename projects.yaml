@@ -2,26 +2,44 @@ schema_version: 1
 program: capability-bus
 status: waiting_for_human_review
 formal_development_authorized: false
+preparation_authorized: true
+approval:
+  baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
+  record: docs/governance/t0-preparation-authorization.md
+  authorized_core_phase: T0
+  core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
+  t1_t2_authorized: false
+  core_task_dispatch_authorized: true
+  ui_task_dispatch_authorized: false
 
 repositories:
   source:
     name: personal-ai-control-plane
     path: /Users/butterburger/Documents/WorkPlace/Codes/personal-ai-control-plane
     role: extraction-source
+    verified_commit: 7f82511837adf06eef87dd9059b57d59bcaeadd6
+    worktree: dirty_preserved_excluded_from_source
   core:
     name: capability-bus-core
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-core
     role: core-authority
     start_gate: human-approval
+    verified_commit: aa6269842fa034c8849c579b0262dff4db7ee8cc
+    phase_status: T0_evidence_verified_waiting_for_human_review
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-contract-freeze
+    verified_commit: 7365453781aecdf7909d8d46282c0d09e8050c3a
+    phase_status: U0_design_only
 
 gates:
   - id: HUMAN-REVIEW
-    status: pending
+    status: preparation_approved_T0_only
+  - id: T0-REVIEW
+    status: evidence_verified_waiting_for_human_review
+    evidence: docs/reviews/core-t0-human-review.md
   - id: F1-CONTRACT-FREEZE
     status: not_started
   - id: F2-CORE-ALPHA-API-FREEZE

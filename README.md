@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**PREPARED — WAITING FOR HUMAN REVIEW**
+**CORE T0 AUDIT COMPLETE — WAITING FOR HUMAN REVIEW**
 
-Formal development is not authorized from this repository until the user explicitly approves it after reviewing the readiness checklist.
+The user approved the plan and architecture under commit `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` and authorized Core T0 only. See [the scoped approval record](docs/governance/t0-preparation-authorization.md) and [the verified T0 human review report](docs/reviews/core-t0-human-review.md). T0 has stopped for human review; T1/T2 and UI business implementation remain unauthorized. UI stays in U0.
 
 ## Required reading
 

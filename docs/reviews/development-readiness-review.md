@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **WAITING FOR HUMAN REVIEW**
+Status: **CORE T0 AUDIT COMPLETE — WAITING FOR HUMAN REVIEW**
 
 ## Prepared
 
@@ -16,22 +16,21 @@ Status: **WAITING FOR HUMAN REVIEW**
 
 ## Human decisions required before formal development
 
-- [ ] Approve the master development plan without architectural changes.
-- [ ] Approve starting Core T0 source snapshot and reuse audit.
-- [ ] Confirm UI remains in U0 preparation until F1.
-- [ ] Confirm the coordination conversation may inspect all three repositories.
-- [ ] Explicitly authorize sending scoped tasks to the Core and UI conversations when gates permit.
+- [x] Approve the master development plan without architectural changes.
+- [x] Approve starting Core T0 source snapshot and reuse audit.
+- [x] Confirm UI remains in U0 preparation until F1.
+- [x] Confirm reading the source repository and coordinating Core T0; prior read-only inspection of all three repositories remains in scope.
+- [x] Explicitly authorize creating and dispatching the Core T0 conversation only.
+- [ ] Authorize T1/T2 after human review of T0 evidence.
+- [ ] Authorize UI task dispatch; UI business implementation additionally requires F1 acceptance.
 
 ## Approval record
 
-Formal development remains disabled until the user records an explicit approval in the coordination conversation. The approval should identify the plan version or current Git commit.
+The user approved preparation against Platform commit `ddcfa0974637bbdd9a91d93b87f0a7f983eda8af` on 2026-10-01 (Asia/Shanghai). The complete scoped authorization is recorded in [T0 preparation authorization](../governance/t0-preparation-authorization.md). Formal implementation remains disabled. No broader historical suggested approval text is an authorization.
 
-Suggested approval text:
+## T0 evidence review
 
-```text
-APPROVE CAPABILITY BUS ALPHA DEVELOPMENT UNDER THE MASTER DEVELOPMENT PLAN.
-Authorize Core T0/T1/T2 through F1. Keep UI in U0 until F1 is accepted. Cross-project task dispatch still requires gate verification.
-```
+Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platform independently verified the commit scope, 36 source blob/SHA-256 rows, actual offline test execution evidence, and preservation of source/UI state. See [the human review report](core-t0-human-review.md) for the evidence and pending decisions. Technical evidence verification does not constitute human T0 acceptance or T1 authorization.
 
 ## First authorized action
 
