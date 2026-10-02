@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: resumed_parallel_work_in_progress
+status: all_lanes_stopped_new_conversation_dispatch_pending
 
 active_work:
-  id: CORE-T3-UI-U1-PARALLEL
-  phase: T3_and_U1
-  summary: Takeover-era changes are excluded; the original interrupted Core T3 and UI U1 worktrees are active again in their owning conversations.
+  id: NEW-CONVERSATION-HANDOFF
+  phase: stop_then_redispatch
+  summary: Old Platform/Core/UI conversations are stopping; preserved repository state will be handed to three new conversations.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,8 +14,8 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Both original conversations re-verified their restored worktrees; Core reported six resident fault tests passing and UI reported contracts, typecheck, and 15 tests passing with a new dependency lock.
-  next_action: Await owning-repository commits; then independently verify Core runtime/system-plugin evidence and UI offline build/package evidence before advancing either lane.
+  last_completed_action: Old Core and UI conversations confirmed stop; UI is clean at verified U1 commit and Core dirty T3 state is preserved without a new commit.
+  next_action: Commit this stop checkpoint, create dormant new Core/UI conversations, register their ids, then create a new Platform conversation to activate and supervise them.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
@@ -26,7 +26,7 @@ verified_state:
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
     expected_worktree: original_interrupted_T3_changes_11_modified_plus_control_py
-    phase: T3_in_progress
+    phase: T3_stopped_dirty_preserved
     thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
     observed_uncommitted_paths:
       - setup.cfg
@@ -42,12 +42,10 @@ verified_state:
       - src/capability_bus_sdk/contracts.py
       - tests/test_router.py
   official_ui:
-    expected_head: 7365453781aecdf7909d8d46282c0d09e8050c3a
-    expected_worktree: original_interrupted_U1_untracked_skeleton
-    phase: U1_in_progress
+    expected_head: 562828ebb7a760066844c172c23b3b2200abae5a
+    expected_worktree: clean
+    phase: U1_verified_old_conversation_stopped
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
-    observed_new_untracked_path: package-lock.json
-    observed_package_lock_sha256: 3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
     expected_worktree: preexisting_14_status_entries_preserved
@@ -60,21 +58,23 @@ latest_verified_evidence:
   exact_source_hashes: 18_of_18_matched
   f1_report: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
   f1_human_response: "接受 F1"
+  ui_u1_commit: 562828ebb7a760066844c172c23b3b2200abae5a
+  ui_u1_offline_dependencies: 19_installed
+  ui_u1_package_lock_sha256: 3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89
+  ui_u1_contracts: 27_identical_to_core_f1_plus_6_reference_identities
+  ui_u1_tests: 15_of_15_passed
+  ui_u1_plugin_package: 30_of_30_files_verified
+  ui_u1_manifest: accepted_by_core_f1_validator
 
-reported_post_resume_evidence_not_yet_platform_verified:
+reported_core_evidence_not_yet_platform_verified:
   core_resident_fault_tests: 6_passed
-  core_remaining_surfaces:
-    - local_daemon_boundary
-    - independent_durable_task_event_plugin
-  ui_contract_check: passed
-  ui_typecheck: passed
-  ui_tests: 15_passed
-  ui_build: in_progress_with_offline_css_native_dependency_constraint
+  core_additional_report: 85_passed_2_socket_tests_skipped_and_2_daemon_tests_passed_outside_sandbox
+  core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
   uncommitted_platform_changes: none_expected_after_acceptance_commit
-  uncommitted_core_changes: original_T3_worktree_exactly_matches_571f340_tree_content
-  uncommitted_ui_changes: original_U1_worktree_exactly_matches_6f87e5e_tree_content
+  uncommitted_core_changes: 13_tracked_modified_and_6_untracked_groups_preserved_after_stop
+  uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 handoff_rules:

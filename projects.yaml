@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t3_ui_u1_resumed_in_progress
+status: all_lanes_stopped_new_conversation_dispatch_pending
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -20,7 +20,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: verify_core_T3_and_ui_U1
+  next_auto_phase: create_new_platform_core_ui_conversations
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: high
 
@@ -37,14 +37,14 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    phase_status: T3_in_progress
+    phase_status: T3_stopped_dirty_preserved
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-accepted
-    verified_commit: 7365453781aecdf7909d8d46282c0d09e8050c3a
-    phase_status: U1_in_progress
+    verified_commit: 562828ebb7a760066844c172c23b3b2200abae5a
+    phase_status: U1_verified_U2_stopped_pending_new_conversation
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
 gates:

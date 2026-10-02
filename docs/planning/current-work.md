@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `79df57b`（恢复点；接管期提交已移出当前分支） | 提交后干净 | T3/U1 已恢复派发 |
-| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 11 个已跟踪修改 + `control.py`；逐文件匹配原 T3 中断快照 | T3 执行中 |
-| Official UI | `7365453781aecdf7909d8d46282c0d09e8050c3a` | 原 U1 骨架为未跟踪内容；逐文件匹配原 U1 中断快照 | U1 执行中 |
+| Platform | 本次停止交接提交 | 提交后应干净 | 旧对话停止；新 Platform/Core/UI 对话待创建 |
+| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 13 个已跟踪修改 + 6 组未跟踪内容，全部原样保留 | 旧 T3 对话已停止 |
+| Official UI | `562828ebb7a760066844c172c23b3b2200abae5a` | 已独立核验干净 | 旧 UI 对话已停止；U1 已验证 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 原有 14 项未提交状态保留 | 只读固定来源 |
 
 Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Official UI U1 对话：`01a0fa86-b191-70a2-80af-3853312f2286`。两个执行对话均使用 GPT-5.6 Sol / high。其他对话的文字结论不是完成证据，必须以实际提交和测试复核。
@@ -25,12 +25,14 @@ Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Official UI U1 对�
 
 | 工作项 | 状态 | 执行者 | 入口/证据 |
 |---|---|---|---|
-| `CORE-T3` | `in_progress` | Core 对话 `01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e` | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
-| `UI-U1` | `in_progress` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
+| `CORE-T3` | `stopped_dirty_preserved` | 旧 Core 对话 `01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e` | 新 Core 对话待创建 |
+| `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
+| `UI-U2` | `stopped_dispatch_pending` | 新 UI 对话待创建 | U1 Platform 独立验证 |
+| `PLATFORM-HANDOFF` | `dispatch_pending` | 新 Platform 对话待创建 | 本停止交接提交 |
 
-用户已回复 `接受 F1`。一次外部接管发生后，用户要求抛开接管者的修改并按原规划继续。Platform 已核验并提交恢复点 `79df57b`，随后重新派发原 Core/UI 对话；两条线必须先自行复核工作树，再按原 T3/U1 范围继续。
+用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
 
-恢复后首个执行线报告：Core 的 6 项常驻运行故障测试通过，正在覆盖本地 daemon 和独立持久任务/事件插件；UI 的契约、类型和 15 项测试通过，已生成 `package-lock.json`，正在解决严格离线构建的 CSS 原生依赖限制。以上尚未形成所属仓库提交，因此只作为在途状态，不是 Platform 验收证据。
+恢复后首个执行线报告：Core 的 6 项常驻运行故障测试通过，正在覆盖本地 daemon 和独立持久任务/事件插件。UI U1 已提交并由 Platform 在全新临时副本中独立验证：离线重建 19 个依赖、锁文件 SHA-256 `3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89`、27 个 F1 契约逐字节一致、15/15 测试、Vite 构建、19 个许可证声明和 30/30 插件包文件完整性均通过；Core F1 Manifest 校验器接受 `ui.official.web`。U2 已满足自动授权条件。
 
 ## 已完成且已核验
 
@@ -49,9 +51,9 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 
 | ID | 所属项目 | 状态 | 工作范围 | 退出门槛 |
 |---|---|---|---|---|
-| `CORE-T3` | capability-bus-core | `in_progress` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
-| `UI-U1` | capability-bus-official-ui | `in_progress` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 插件壳与契约测试通过 |
-| `UI-U2` | capability-bus-official-ui | `blocked_by_UI-U1` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收与无私有状态访问证明 |
+| `CORE-T3` | capability-bus-core | `stopped_dirty_preserved` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
+| `UI-U1` | capability-bus-official-ui | `verified` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 已通过，提交 `562828e` |
+| `UI-U2` | capability-bus-official-ui | `stopped_dispatch_pending` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收与无私有状态访问证明 |
 | `CORE-T4` | capability-bus-core | `blocked_by_CORE-T3` | alpha.3 身份、安全、配置、SecretRef、兼容、替换与回滚 | 完整初版 Core 与安全测试通过 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_UI-U2_and_Core_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `blocked_by_CORE-T4_and_UI-U3` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 人工接受 F2 |
