@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: all_lanes_stopped_new_conversation_dispatch_pending
+status: new_core_ui_standby_new_platform_conversation_pending
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -11,7 +11,8 @@ approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
   authorized_core_phase: T3
-  core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
+  core_thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  previous_core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   t1_t2_authorized: true
   t1_authorized: true
   t2_authorized: true
@@ -37,15 +38,17 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    phase_status: T3_stopped_dirty_preserved
+    phase_status: T3_new_conversation_standby
+    thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-accepted
     verified_commit: 562828ebb7a760066844c172c23b3b2200abae5a
-    phase_status: U1_verified_U2_stopped_pending_new_conversation
-    thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
+    phase_status: U1_verified_U2_new_conversation_standby
+    thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+    previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
 gates:
   - id: HUMAN-REVIEW

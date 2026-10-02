@@ -14,20 +14,20 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | 本次停止交接提交 | 提交后应干净 | 旧对话停止；新 Platform/Core/UI 对话待创建 |
-| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 13 个已跟踪修改 + 6 组未跟踪内容，全部原样保留 | 旧 T3 对话已停止 |
-| Official UI | `562828ebb7a760066844c172c23b3b2200abae5a` | 已独立核验干净 | 旧 UI 对话已停止；U1 已验证 |
+| Platform | `a6ef9e4` 停止交接点；本次登记提交 | 提交后应干净 | 新 Platform 对话待创建 |
+| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 13 个已跟踪修改 + 6 组未跟踪内容，全部原样保留 | 新 T3 对话已待命 |
+| Official UI | `562828ebb7a760066844c172c23b3b2200abae5a` | 已独立核验干净 | 新 U2 对话已待命；U1 已验证 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 原有 14 项未提交状态保留 | 只读固定来源 |
 
-Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Official UI U1 对话：`01a0fa86-b191-70a2-80af-3853312f2286`。两个执行对话均使用 GPT-5.6 Sol / high。其他对话的文字结论不是完成证据，必须以实际提交和测试复核。
+新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者均使用 GPT-5.6 Sol / high，已完成只读状态核验并保持待命，只有新 Platform 对话可以激活。旧对话仅保留审计记录。
 
 ## 当前可执行事项
 
 | 工作项 | 状态 | 执行者 | 入口/证据 |
 |---|---|---|---|
-| `CORE-T3` | `stopped_dirty_preserved` | 旧 Core 对话 `01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e` | 新 Core 对话待创建 |
+| `CORE-T3` | `new_conversation_standby` | 新 Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 新 Platform 激活消息 |
 | `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
-| `UI-U2` | `stopped_dispatch_pending` | 新 UI 对话待创建 | U1 Platform 独立验证 |
+| `UI-U2` | `new_conversation_standby` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 新 Platform 激活消息 |
 | `PLATFORM-HANDOFF` | `dispatch_pending` | 新 Platform 对话待创建 | 本停止交接提交 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
