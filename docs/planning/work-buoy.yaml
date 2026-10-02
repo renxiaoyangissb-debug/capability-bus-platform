@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t4_activation_ready_ui_u3_contract_blocked
+status: core_t4_active_ui_u3_contract_blocked
 
 active_work:
   id: CORE-T4-ALPHA3
-  phase: pre_dispatch_verified
-  summary: The user requested continued development. Platform reverified clean T3/U2 baselines and will start Core T4 first; UI U3 remains blocked until Core provides Platform-verified public management mutation contracts.
+  phase: dispatched_active
+  summary: Platform dispatched complete Core T4 alpha.3 work to the registered Core conversation. UI U3 remains blocked until Platform independently verifies the resulting public management mutation contracts.
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
@@ -14,19 +14,19 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: User authorized continued development; Platform reverified Core d3556226ec6e8221781e4267ca2aa0b6ca523ebd, UI f17320cf39f18d507a4e40b0f7047b88a14582ae, and Platform 11debaaae89b5057e2e58ed324a121c1b01c2567 are clean.
-  next_action: Activate Core T4 in the registered Core conversation. Independently verify the complete alpha.3 delivery and its machine-readable public management mutation contract baseline before activating UI U3.
+  last_completed_action: Platform committed the pre-dispatch checkpoint at 943b6fcb45465562fd5c45e1e338d33d9b7feb0b, dispatched T4 to Core conversation 01a0fba0-c91d-7981-9633-dbb8bd925df7, and confirmed the turn is active.
+  next_action: Monitor Core T4 and checkpoint material milestones. On completion, independently verify the commit, clean worktree, full alpha.3 tests, packaging, migrations, compatibility, and machine-readable public management mutation contract baseline before activating UI U3.
   stop_condition: Do not let UI invent write APIs; do not enter or claim F2. After T4 and U3 verification, prepare the mandatory F2 human-review report and stop for acceptance.
 
 verified_state:
   platform:
-    expected_head: 11debaaae89b5057e2e58ed324a121c1b01c2567
+    expected_head: 943b6fcb45465562fd5c45e1e338d33d9b7feb0b
     previous_verified_head: 11debaaae89b5057e2e58ed324a121c1b01c2567
-    expected_worktree: clean_after_core_t4_pre_dispatch_checkpoint
+    expected_worktree: post_dispatch_ledger_update_pending_commit
   core:
     expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
     expected_worktree: clean
-    phase: T3_verified_T4_activation_pending
+    phase: T4_active
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
@@ -77,7 +77,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_t4_pre_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: core_t4_post_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
@@ -88,7 +88,7 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:32"
+  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:1"
   ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:69"
 
 handoff_rules:
