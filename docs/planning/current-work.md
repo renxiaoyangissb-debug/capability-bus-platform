@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `a06cf205a65cb5e02727bb2e51902823986344bb` 最终验证里程碑检查点 | 提交前审查更新待提交 | 正在监督 Core 竞态修正与 UI 提交前差异审计 |
+| Platform | `628d191cf4c4a14ba49e446518719eeae15801d3` 提交前审查检查点 | UI 独立复核拒收更新待提交 | Core 继续竞态修正；UI U2 候选因离线依赖非确定性待修正 |
 | Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | T3 工作区持续保留 | 提交前审查发现第二个 serve 可在 socket 所有权确认前恢复 resident 的竞态；正在修正并补重复启动测试 |
-| Official UI | `562828ebb7a760066844c172c23b3b2200abae5a` | U2 工作区持续保留 | 完整离线门禁已报告通过；正在做范围、空白、mutation/private-state 与生成物提交前审计 |
+| Official UI | 候选 `74131c529b4e6e4d0fffa695a65feb8b7208cf9d`；已验证 U1 仍为 `562828ebb7a760066844c172c23b3b2200abae5a` | 候选提交后干净 | 功能门禁通过，但全新副本离线引导会改写锁文件并改变依赖/插件包清单；候选拒收，待原对话修正 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者均使用 GPT-5.6 Sol / high，已完成只读状态核验并保持待命，只有新 Platform 对话可以激活。旧对话仅保留审计记录。
@@ -29,7 +29,7 @@
 |---|---|---|---|
 | `CORE-T3` | `in_progress_resumed` | 新 Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 从保留工作区原地续跑；88 项测试里程碑待最终复核 |
 | `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
-| `UI-U2` | `in_progress_resumed` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 从保留的 fake Core 与 UI model 改动原地续跑 |
+| `UI-U2` | `candidate_rejected_correction_pending` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 候选 `74131c5`；独立离线引导结果受缓存可选包集合影响 |
 | `PLATFORM-HANDOFF` | `verified` | 新 Platform 对话 `01a0fba2-3f09-7763-ada8-6e3e0b6b06d1` | Platform `85461db7b56645a881854c872473d15e99ba7b9e`，工作区核验干净 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
@@ -55,7 +55,7 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 |---|---|---|---|---|
 | `CORE-T3` | capability-bus-core | `in_progress_resumed_preserved_worktree` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
 | `UI-U1` | capability-bus-official-ui | `verified` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 已通过，提交 `562828e` |
-| `UI-U2` | capability-bus-official-ui | `in_progress_resumed_preserved_worktree` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收与无私有状态访问证明 |
+| `UI-U2` | capability-bus-official-ui | `candidate_rejected_reproducibility_correction_pending` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收、无私有状态访问及确定性离线重建证明 |
 | `CORE-T4` | capability-bus-core | `blocked_by_CORE-T3` | alpha.3 身份、安全、配置、SecretRef、兼容、替换与回滚 | 完整初版 Core 与安全测试通过 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_UI-U2_and_Core_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `blocked_by_CORE-T4_and_UI-U3` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 人工接受 F2 |
