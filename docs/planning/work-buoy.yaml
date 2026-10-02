@@ -1,37 +1,37 @@
 schema_version: 1
-updated_at: 2026-10-02
+updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t3_ui_u2_verified_current_scope_complete
+status: core_t4_activation_ready_ui_u3_contract_blocked
 
 active_work:
-  id: CORE-T3-UI-U2-CURRENT-SCOPE
-  phase: verified_complete
-  summary: Platform independently verified Core T3 at d355622 and corrected UI U2 at f17320c; the explicitly dispatched scope is complete and stops before Core T4, UI U3, and F2.
-  owner: capability-bus-platform
+  id: CORE-T4-ALPHA3
+  phase: pre_dispatch_verified
+  summary: The user requested continued development. Platform reverified clean T3/U2 baselines and will start Core T4 first; UI U3 remains blocked until Core provides Platform-verified public management mutation contracts.
+  owner: capability-bus-core
   coordinator: capability-bus-platform
-  implementation_repository: none
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  implementation_repository: capability-bus-core
+  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Independently verified UI f17320cf39f18d507a4e40b0f7047b88a14582ae in a fresh clone: lock SHA c8ef287... remained byte-identical across bootstrap, fixed 20-package offline bootstrap and npm ci succeeded, 22/22 tests and all contract/build/license/boundary/package gates passed, and the owning worktree is clean."
-  next_action: No automatic implementation dispatch under the current explicit scope. On later continuation, first reverify Platform/Core/UI HEAD and worktrees; do not enter F2 integration without the mandatory human checkpoint.
-  stop_condition: Current T3/U2 dispatch is complete; Core T4, UI U3, and F2 remain unstarted.
+  last_completed_action: User authorized continued development; Platform reverified Core d3556226ec6e8221781e4267ca2aa0b6ca523ebd, UI f17320cf39f18d507a4e40b0f7047b88a14582ae, and Platform 11debaaae89b5057e2e58ed324a121c1b01c2567 are clean.
+  next_action: Activate Core T4 in the registered Core conversation. Independently verify the complete alpha.3 delivery and its machine-readable public management mutation contract baseline before activating UI U3.
+  stop_condition: Do not let UI invent write APIs; do not enter or claim F2. After T4 and U3 verification, prepare the mandatory F2 human-review report and stop for acceptance.
 
 verified_state:
   platform:
-    expected_head: 2b256b5a7ee2c2a0da7344d81a88907e4fb470f0
-    previous_verified_head: 2b256b5a7ee2c2a0da7344d81a88907e4fb470f0
-    expected_worktree: clean_after_current_scope_completion_checkpoint
+    expected_head: 11debaaae89b5057e2e58ed324a121c1b01c2567
+    previous_verified_head: 11debaaae89b5057e2e58ed324a121c1b01c2567
+    expected_worktree: clean_after_core_t4_pre_dispatch_checkpoint
   core:
     expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
     expected_worktree: clean
-    phase: T3_verified_T4_not_started
+    phase: T3_verified_T4_activation_pending
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
     expected_worktree: clean
-    phase: U2_verified_U3_not_started
+    phase: U2_verified_U3_blocked_by_core_t4_write_contracts
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -76,10 +76,8 @@ independent_ui_u2_verification:
   source_boundary_checks: 12_passed
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
-  core_new_store_tests: not_yet_in_full_regression
-
 in_flight_state:
-  uncommitted_platform_changes: current_scope_completion_report_to_be_committed
+  uncommitted_platform_changes: core_t4_pre_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
