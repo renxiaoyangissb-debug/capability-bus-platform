@@ -1,38 +1,38 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: new_platform_core_ui_conversations_created
+status: core_t3_ui_u2_activation_ready
 
 active_work:
-  id: NEW-CONVERSATION-HANDOFF
-  phase: stop_then_redispatch
-  summary: Old conversations are stopped; new Core and UI conversations are in read-only standby and a new Platform conversation has been created to take over.
+  id: CORE-T3-UI-U2-ACTIVATION
+  phase: pre_dispatch_verified
+  summary: New Platform independently verified the final handoff and all repository states; registered Core T3 and UI U2 conversations are ready for activation.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
-  thread_id: null
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Created new Platform, Core, and UI conversations; Core/UI independently confirmed their standby repository states.
-  next_action: New Platform conversation 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1 verifies this final handoff commit and activates the registered Core/UI conversations.
+  last_completed_action: Independently verified Platform 85461db7b56645a881854c872473d15e99ba7b9e is clean and contains 7752fc4997e5a78ee24dce4c61d1ce45311799be; reverified Core/UI HEAD and worktrees.
+  next_action: Send scoped activation messages to Core T3 thread 01a0fba0-c91d-7981-9633-dbb8bd925df7 and UI U2 thread 01a0fba0-e14d-7610-ac58-10f172ee78e0, then record both as active.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
-    expected_head: containing_commit
-    previous_verified_head: 53cc0d610040b1141c098653854fbe7b80ac1430
-    expected_worktree: clean
+    expected_head: 85461db7b56645a881854c872473d15e99ba7b9e
+    previous_verified_head: 85461db7b56645a881854c872473d15e99ba7b9e
+    expected_worktree: clean_after_pre_dispatch_checkpoint
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    expected_worktree: original_interrupted_T3_changes_11_modified_plus_control_py
-    phase: T3_new_conversation_standby
+    expected_worktree: 13_tracked_modified_plus_6_untracked_T3_groups_preserved
+    phase: T3_activation_pending
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
     observed_uncommitted_paths:
+      - examples/example-echo/plugin.py
       - setup.cfg
       - src/capability_bus_core/__init__.py
       - src/capability_bus_core/cli.py
-      - src/capability_bus_core/control.py
       - src/capability_bus_core/resources.py
       - src/capability_bus_core/router.py
       - src/capability_bus_core/runtime.py
@@ -41,14 +41,22 @@ verified_state:
       - src/capability_bus_core/supervisor.py
       - src/capability_bus_sdk/contracts.py
       - tests/test_router.py
+      - tests/test_store.py
+    observed_untracked_groups:
+      - src/capability_bus_core/control.py
+      - system_plugins/durable-reliability/
+      - tests/test_alpha2_reliability.py
+      - tests/test_control_daemon.py
+      - tests/test_durable_reliability_plugin.py
+      - tests/test_resources_alpha2.py
   official_ui:
     expected_head: 562828ebb7a760066844c172c23b3b2200abae5a
     expected_worktree: clean
-    phase: U1_verified_U2_new_conversation_standby
+    phase: U1_verified_U2_activation_pending
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
-    expected_worktree: preexisting_14_status_entries_preserved
+    expected_worktree: preexisting_3_tracked_modified_plus_18_untracked_preserved
     usage: read_only_fixed_source
 
 latest_verified_evidence:
@@ -72,7 +80,7 @@ reported_core_evidence_not_yet_platform_verified:
   core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
-  uncommitted_platform_changes: none_expected_after_acceptance_commit
+  uncommitted_platform_changes: pre_dispatch_ledger_update_to_be_committed
   uncommitted_core_changes: 13_tracked_modified_and_6_untracked_groups_preserved_after_stop
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
