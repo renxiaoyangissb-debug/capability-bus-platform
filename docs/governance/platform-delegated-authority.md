@@ -77,4 +77,4 @@ Reports are append-only evidence records after acceptance. Later corrections mus
 
 ## Current checkpoint
 
-T0 and source rights are accepted, T1 is verified, and Platform independently verified the corrected T2/F1 candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. Automatic progression is stopped at the mandatory F1 Contract Freeze checkpoint. The evidence and exact decision requested from the human are recorded in [the F1 human review](../reviews/human-checkpoints/F1-contract-freeze-human-review.md). UI remains in U0; neither Core T3 nor UI U1 may start until F1 is accepted.
+T0 and source rights are accepted, T1/T2 are verified, and the human accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. The evidence and response are recorded in [the F1 human review](../reviews/human-checkpoints/F1-contract-freeze-human-review.md). Platform may dispatch and supervise Core T3 and Official UI U1/U2 within the frozen contract. F2 is the next planned mandatory human checkpoint unless an earlier hard stop applies.

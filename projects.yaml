@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: waiting_for_human_f1_acceptance
+status: f1_accepted_core_t3_ui_u1_authorized
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -10,17 +10,17 @@ work_buoy_record: docs/planning/work-buoy.yaml
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
-  authorized_core_phase: T2
+  authorized_core_phase: T3
   core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   t1_t2_authorized: true
   t1_authorized: true
   t2_authorized: true
   core_task_dispatch_authorized: true
-  ui_task_dispatch_authorized: false
+  ui_task_dispatch_authorized: true
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: F1-CONTRACT-FREEZE
-  next_auto_phase_after_checkpoint: core_T3_and_ui_U1
+  current_mandatory_human_checkpoint: none
+  next_auto_phase: core_T3_and_ui_U1
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: high
 
@@ -37,14 +37,14 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    phase_status: T2_verified_F1_candidate
+    phase_status: T3_authorized
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
-    start_gate: F1-contract-freeze
+    start_gate: F1-accepted
     verified_commit: 7365453781aecdf7909d8d46282c0d09e8050c3a
-    phase_status: U0_design_only
+    phase_status: U1_authorized
 
 gates:
   - id: HUMAN-REVIEW
@@ -70,9 +70,11 @@ gates:
     evidence: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
     verified_core_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
   - id: F1-CONTRACT-FREEZE
-    status: waiting_for_human_acceptance
+    status: accepted
     evidence: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
     candidate_core_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
+    accepted_core_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
+    human_response: "接受 F1"
   - id: F2-CORE-ALPHA-API-FREEZE
     status: not_started
 

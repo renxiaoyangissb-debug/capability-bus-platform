@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **F1 MANDATORY HUMAN CHECKPOINT — WAITING FOR ACCEPTANCE**
+Status: **F1 ACCEPTED — CORE T3 AND UI U1 AUTHORIZED**
 
 ## Prepared
 
@@ -24,7 +24,7 @@ Status: **F1 MANDATORY HUMAN CHECKPOINT — WAITING FOR ACCEPTANCE**
 - [x] Accept the verified Core T0 audit delivery.
 - [x] Delegate routine workflow authorization and Core/UI task dispatch to Platform.
 - [x] Confirm source ownership and permission to reuse, modify, and distribute committed source code before T1 extraction.
-- [ ] Accept F1 before UI business implementation.
+- [x] Accept F1 before UI business implementation.
 - [ ] Accept F2 before concentrated alpha.4 integration.
 
 ## Approval record
@@ -37,4 +37,4 @@ Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platf
 
 ## Current authorized action
 
-T0 and source rights are accepted, and T1 is verified. Platform dispatched, supervised, rejected the first T2 candidate after reproducing a cross-Provider Grant flaw, and independently verified the corrected candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. See [the F1 human review](human-checkpoints/F1-contract-freeze-human-review.md). T2 meets its exit evidence, but Platform cannot accept F1 under delegated authority. Core T3 and UI U1 remain disabled until the human accepts the exact candidate.
+T0 and source rights are accepted, and T1/T2 are verified. Platform dispatched, supervised, rejected the first T2 candidate after reproducing a cross-Provider Grant flaw, and independently verified the corrected candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. The human then replied “接受 F1”, accepting that exact candidate and the decisions recorded in [the F1 human review](human-checkpoints/F1-contract-freeze-human-review.md). Core T3 and Official UI U1 are authorized for automatic dispatch.

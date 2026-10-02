@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**F1 MANDATORY HUMAN CHECKPOINT — WAITING FOR ACCEPTANCE**
+**F1 ACCEPTED — CORE T3 AND UI U1 AUTHORIZED**
 
-The user approved the architecture, accepted T0, confirmed source reuse/modification/distribution authority, and delegated in-scope workflow authorization to Platform. Platform independently verified Core T2 and its corrected F1 candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. See [the F1 human review report](docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md). Automatic progression is stopped at the mandatory F1 checkpoint. UI remains in U0 until the human accepts this exact candidate.
+The user accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. See [the accepted F1 report](docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md). Platform may now dispatch Core T3 and Official UI U1 in parallel under the delegated workflow authority. F2 remains the next planned mandatory human checkpoint.
 
 ## Required reading
 

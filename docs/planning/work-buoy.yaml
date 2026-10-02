@@ -1,40 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: waiting_for_human
+status: dispatch_pending
 
 active_work:
-  id: F1-HUMAN-ACCEPTANCE
-  phase: F1
-  summary: Accept or reject the verified Core contract-freeze candidate.
-  owner: human_project_owner
+  id: POST-F1-DISPATCH
+  phase: T3_and_U1
+  summary: Dispatch Core T3 and Official UI U1 under the accepted F1 baseline.
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
   thread_id: null
-  blocking_reason: mandatory_human_checkpoint
+  blocking_reason: none
 
 resume_point:
-  last_completed_action: Platform independently verified Core T2 and submitted the F1 human-review report.
-  next_action: Record the human F1 decision against the exact candidate commit.
-  exact_human_reply_recommended: "接受 F1"
-  on_accept: Authorize and dispatch CORE-T3 and UI-U1 in their owning project conversations.
-  on_reject: Keep CORE-T3 and UI-U1 blocked and dispatch only the requested F1 correction to Core.
-  stop_condition: Do not start Core T3 or UI implementation before F1 acceptance.
+  last_completed_action: Human accepted Core 78127bb9192aa6ddf8f15b544c553c149415c5a5 as F1.
+  next_action: Dispatch CORE-T3 to the existing Core thread and create/dispatch UI-U1 in the Official UI project.
+  stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
     expected_head: containing_commit
-    previous_verified_head: 91e9783e780be0ad8e5a151ed67872eac4015b8c
+    previous_verified_head: 4f80a82bbfbb5ccc02461763249ab479e10a77e8
     expected_worktree: clean
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
     expected_worktree: clean
-    phase: T2_verified_F1_candidate
+    phase: T3_authorized
     thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   official_ui:
     expected_head: 7365453781aecdf7909d8d46282c0d09e8050c3a
     expected_worktree: clean
-    phase: U0_design_only
+    phase: U1_authorized
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
     expected_worktree: preexisting_14_status_entries_preserved
@@ -46,9 +43,10 @@ latest_verified_evidence:
   core_specialized_tests: 27_of_27_passed
   exact_source_hashes: 18_of_18_matched
   f1_report: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
+  f1_human_response: "接受 F1"
 
 in_flight_state:
-  uncommitted_platform_changes: none_expected_after_buoy_commit
+  uncommitted_platform_changes: none_expected_after_acceptance_commit
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: none

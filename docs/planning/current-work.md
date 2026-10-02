@@ -14,20 +14,21 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | 本台账所在提交；F1 报告基线为 `95f0cccb0eee1450d439109c47f8f4f4fc806012` | 提交后应为干净 | 等待 F1 人工接受 |
-| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 已核验干净 | T2 已验证；F1 候选 |
-| Official UI | `7365453781aecdf7909d8d46282c0d09e8050c3a` | 已核验干净 | U0 设计准备；禁止业务实现 |
+| Platform | 本台账所在提交；前一浮标提交为 `4f80a82bbfbb5ccc02461763249ab479e10a77e8` | 提交后应为干净 | F1 已接受；准备派发 T3/U1 |
+| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 已核验干净 | T3 已授权，待派发 |
+| Official UI | `7365453781aecdf7909d8d46282c0d09e8050c3a` | 已核验干净 | U1 已授权，待派发 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 原有 14 项未提交状态保留 | 只读固定来源 |
 
 Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Core T1/T2 使用 GPT-5.6 Sol / high。其他对话的文字结论不是完成证据，必须以实际提交和测试复核。
 
-## 当前唯一可执行事项
+## 当前可执行事项
 
 | 工作项 | 状态 | 执行者 | 入口/证据 |
 |---|---|---|---|
-| `F1-HUMAN-ACCEPTANCE` | `blocked_on_human` | 项目所有者 | [F1 人工复核报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
+| `CORE-T3` | `dispatch_pending` | Platform → Core 对话 | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
+| `UI-U1` | `dispatch_pending` | Platform → 新建 UI 对话 | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
 
-当前需要人工决定是否接受 Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` 为 F1 基线。建议回复：`接受 F1`。在该回复被记录前，没有可自动派发的实现工作。
+用户已回复 `接受 F1`。Platform 下一步必须分别在 Core 与 Official UI 所属项目对话中派发 T3/U1，并在派发后立即刷新本台账和工作浮标。
 
 ## 已完成且已核验
 
@@ -42,12 +43,12 @@ T2 最终独立复核：源码 71/71、隔离安装 71/71、专项 27/27；18/18
 
 ## F1 接受后的待办队列
 
-下列工作均为 `blocked_by_F1`，目前不得开始。F1 接受后，Platform 可在独立所属项目对话中并行调度 Core 与 UI；每个 Agent 只能写入其所属仓库。
+F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 UI；每个 Agent 只能写入其所属仓库。
 
 | ID | 所属项目 | 状态 | 工作范围 | 退出门槛 |
 |---|---|---|---|---|
-| `CORE-T3` | capability-bus-core | `blocked_by_F1` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
-| `UI-U1` | capability-bus-official-ui | `blocked_by_F1` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 插件壳与契约测试通过 |
+| `CORE-T3` | capability-bus-core | `dispatch_pending` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
+| `UI-U1` | capability-bus-official-ui | `dispatch_pending` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 插件壳与契约测试通过 |
 | `UI-U2` | capability-bus-official-ui | `blocked_by_UI-U1` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收与无私有状态访问证明 |
 | `CORE-T4` | capability-bus-core | `blocked_by_CORE-T3` | alpha.3 身份、安全、配置、SecretRef、兼容、替换与回滚 | 完整初版 Core 与安全测试通过 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_UI-U2_and_Core_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |

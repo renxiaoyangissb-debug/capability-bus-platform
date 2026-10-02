@@ -1,6 +1,6 @@
 # F1 Contract Freeze 人工复核报告
 
-状态：`waiting_for_human_acceptance`
+状态：`accepted`
 
 复核日期：2026-10-02（Asia/Shanghai）
 
@@ -89,3 +89,11 @@ Core 权威候选索引见 [F1-CONTRACT-FREEZE-CANDIDATE.md](../../../../capabil
 ```
 
 建议回复：`接受 F1`。如不接受，请指出需要修改的候选条款；Platform 将保持 Core T3 与 UI U1 停止。
+
+## 人工接受记录
+
+用户于 2026-10-02（Asia/Shanghai）回复：`接受 F1`。
+
+该回复按本报告请求的完整决定登记，接受 Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` 为 F1 Contract Freeze 基线，同时接受 alpha.1 一次调用一进程语义及其非 OS 沙箱限制，并接受当前只读管理 Capability/fake Core 足以启动 UI U1/U2；写入管理契约在后续 Core 阶段完成并于 F2 前冻结。
+
+由此授权 Platform 自动启动和监督 Core T3 与 Official UI U1，并在既定路线和冻结契约内继续推进。此接受不授权破坏 F1 的未版本化变更，不接受 F2，也不接受发布候选。
