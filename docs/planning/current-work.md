@@ -14,8 +14,8 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `943b6fcb45465562fd5c45e1e338d33d9b7feb0b` Core T4 派发前检查点 | 派发后台账更新待提交 | Core T4 已激活；等待实现与独立验证 |
-| Core | `d3556226ec6e8221781e4267ca2aa0b6ca523ebd` | 派发前已核验干净，所属对话正在工作 | T4 / alpha.3 实现中；不得宣称 F2 |
+| Platform | `bbf529ec98683e41a1b5394603d20eac93cf0590` Core T4 规划里程碑 | 额度保护暂停台账待提交 | 已停止新增调度和长轮询；等待用户决定是否恢复 |
+| Core | `d3556226ec6e8221781e4267ca2aa0b6ca523ebd` | `src/capability_bus_core/store.py` 有未提交改动，已发出安全点暂停指令 | T4 / alpha.3 暂停请求处理中；不得宣称 F2 |
 | Official UI | `f17320cf39f18d507a4e40b0f7047b88a14582ae`（U2 `74131c5` + 确定性修正） | 已重新核验干净 | U2 已验证；U3 等待 Core T4 公共管理写契约基线 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
@@ -31,7 +31,7 @@
 | `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
 | `UI-U2` | `verified` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | UI `f17320cf39f18d507a4e40b0f7047b88a14582ae`；Platform 全新副本离线门禁通过 |
 | `PLATFORM-HANDOFF` | `verified` | 新 Platform 对话 `01a0fba2-3f09-7763-ada8-6e3e0b6b06d1` | Platform `85461db7b56645a881854c872473d15e99ba7b9e`，工作区核验干净 |
-| `CORE-T4` | `active` | Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 正在实现完整 alpha.3 与 UI U3 所需通用公共管理写契约；不得进入 F2 |
+| `CORE-T4` | `quota_pause_requested` | Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 已要求在最近安全点停止；当前 `store.py` 有未提交改动，恢复前先核验实际状态 |
 | `UI-U3` | `blocked_by_CORE_T4_contracts` | UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | Core 公共管理写契约经 Platform 独立验证后才可激活 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
@@ -58,7 +58,7 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 | `CORE-T3` | capability-bus-core | `verified` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | 已满足；见 [T3 报告](../reviews/human-checkpoints/T3-core-alpha2-human-review.md) |
 | `UI-U1` | capability-bus-official-ui | `verified` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 已通过，提交 `562828e` |
 | `UI-U2` | capability-bus-official-ui | `verified` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | 已满足；见 [U2 报告](../reviews/human-checkpoints/U2-read-only-console-human-review.md) |
-| `CORE-T4` | capability-bus-core | `active` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 完整初版 Core、安全测试与 UI U3 契约基线通过 |
+| `CORE-T4` | capability-bus-core | `quota_pause_requested` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 用户决定恢复后先核验未提交改动，再继续实现与验证 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_CORE_T4_public_management_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `blocked_by_CORE-T4_and_UI-U3` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 人工接受 F2 |
 | `T5-INTEGRATION` | Core + UI | `blocked_by_F2` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
@@ -66,7 +66,7 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 
 ## 当前协作边界
 
-当前只激活 Core 所属对话执行 `CORE-T4`，写入 `capability-bus-core`。UI 所属对话保持待命；只有 Core T4 的通用公共管理写契约经 Platform 独立验证后，才可激活 `UI-U3`，且 UI 只能依赖该公共契约，不得猜测或建立私有写接口。
+当前因额度消耗已向 Core 所属对话发出安全点暂停指令，不再派发、轮询或启动测试。UI 所属对话继续保持待命；只有用户明确恢复，且 Core T4 的通用公共管理写契约经 Platform 独立验证后，才可激活 `UI-U3`。
 
 Platform Agent 只做调度、核验和状态记录，不写运行时代码。任何 Agent 不得：
 
