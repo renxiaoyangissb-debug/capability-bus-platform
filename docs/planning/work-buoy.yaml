@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: parallel_work_in_progress
+status: resume_pending_after_takeover_discard
 
 active_work:
   id: CORE-T3-UI-U1-PARALLEL
   phase: T3_and_U1
-  summary: Core T3 and Official UI U1 are running in their owning project conversations under the accepted F1 baseline.
+  summary: Takeover-era changes have been excluded; the original interrupted Core T3 and UI U1 worktrees are ready to resume in their owning conversations.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,28 +14,37 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Both lanes verified their exact clean baselines; Core began implementation while UI continued frozen-contract import preparation.
-  next_action: Monitor both conversations; capture the first commit and test milestone from each lane, then independently verify repository evidence.
+  last_completed_action: Verified Platform at pre-takeover 53cc0d6 and verified both owning worktrees match the original interrupted T3/U1 snapshots, excluding later takeover edits.
+  next_action: Resume the original Core and UI project conversations with instructions to re-verify their dirty worktrees, continue only the original plan, and produce clean commits plus test evidence.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
     expected_head: containing_commit
-    previous_verified_head: 4f80a82bbfbb5ccc02461763249ab479e10a77e8
+    previous_verified_head: 53cc0d610040b1141c098653854fbe7b80ac1430
     expected_worktree: clean
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    expected_worktree: in_progress_with_uncommitted_T3_changes
-    phase: T3_in_progress
+    expected_worktree: original_interrupted_T3_changes_11_modified_plus_control_py
+    phase: T3_resume_pending
     thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
     observed_uncommitted_paths:
+      - setup.cfg
+      - src/capability_bus_core/__init__.py
+      - src/capability_bus_core/cli.py
+      - src/capability_bus_core/control.py
       - src/capability_bus_core/resources.py
       - src/capability_bus_core/router.py
+      - src/capability_bus_core/runtime.py
+      - src/capability_bus_core/service.py
       - src/capability_bus_core/store.py
+      - src/capability_bus_core/supervisor.py
+      - src/capability_bus_sdk/contracts.py
+      - tests/test_router.py
   official_ui:
     expected_head: 7365453781aecdf7909d8d46282c0d09e8050c3a
-    expected_worktree: clean
-    phase: U1_in_progress
+    expected_worktree: original_interrupted_U1_untracked_skeleton
+    phase: U1_resume_pending
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -52,9 +61,9 @@ latest_verified_evidence:
 
 in_flight_state:
   uncommitted_platform_changes: none_expected_after_acceptance_commit
-  uncommitted_core_changes: three_observed_T3_paths_owned_by_core_thread
-  uncommitted_ui_changes: none
-  external_side_effects: core_T3_message_sent_and_ui_U1_thread_created
+  uncommitted_core_changes: original_T3_worktree_exactly_matches_571f340_tree_content
+  uncommitted_ui_changes: original_U1_worktree_exactly_matches_6f87e5e_tree_content
+  external_side_effects: takeover_commits_excluded_from_current_branches
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
