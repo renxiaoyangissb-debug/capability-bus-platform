@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t3_verified_ui_u2_correction_active
+status: core_t3_ui_u2_verified_current_scope_complete
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -22,7 +22,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: correct_and_verify_ui_u2
+  next_auto_phase: none_stop_before_t4_u3_f2
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: high
 
@@ -46,8 +46,8 @@ repositories:
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-accepted
-    verified_commit: 562828ebb7a760066844c172c23b3b2200abae5a
-    phase_status: U1_verified_U2_reproducibility_correction_in_progress
+    verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
+    phase_status: U2_verified_U3_not_started
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -84,6 +84,10 @@ gates:
     status: verified_by_platform
     evidence: docs/reviews/human-checkpoints/T3-core-alpha2-human-review.md
     verified_core_commit: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
+  - id: UI-U2-READ-ONLY-CONSOLE
+    status: verified_by_platform
+    evidence: docs/reviews/human-checkpoints/U2-read-only-console-human-review.md
+    verified_ui_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
   - id: F2-CORE-ALPHA-API-FREEZE
     status: not_started
 

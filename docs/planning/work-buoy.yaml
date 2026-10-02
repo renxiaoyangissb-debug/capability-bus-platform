@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: core_t3_verified_ui_u2_correction_active
+status: core_t3_ui_u2_verified_current_scope_complete
 
 active_work:
-  id: CORE-T3-UI-U2-PARALLEL
-  phase: core_t3_verified_ui_u2_correction_active
-  summary: Platform independently verified Core T3 at d355622; UI is actively correcting the rejected U2 candidate's nondeterministic offline dependency selection.
+  id: CORE-T3-UI-U2-CURRENT-SCOPE
+  phase: verified_complete
+  summary: Platform independently verified Core T3 at d355622 and corrected UI U2 at f17320c; the explicitly dispatched scope is complete and stops before Core T4, UI U3, and F2.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,24 +14,24 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: UI adopted the committed lock as the sole dependency-resolution authority, is completing all cross-platform optional nodes, ignores extra cached tarballs, and fails closed when a required current-platform archive is absent; focused regression tests are being added.
-  next_action: Wait for the corrected UI commit, then reverify fresh-clone npm ci lock consistency, bootstrap idempotence under extra-cache and missing-current-platform cases, verify/build/package outputs, scope, and clean worktree.
-  stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
+  last_completed_action: "Independently verified UI f17320cf39f18d507a4e40b0f7047b88a14582ae in a fresh clone: lock SHA c8ef287... remained byte-identical across bootstrap, fixed 20-package offline bootstrap and npm ci succeeded, 22/22 tests and all contract/build/license/boundary/package gates passed, and the owning worktree is clean."
+  next_action: No automatic implementation dispatch under the current explicit scope. On later continuation, first reverify Platform/Core/UI HEAD and worktrees; do not enter F2 integration without the mandatory human checkpoint.
+  stop_condition: Current T3/U2 dispatch is complete; Core T4, UI U3, and F2 remain unstarted.
 
 verified_state:
   platform:
-    expected_head: dd6ad38341b8ae54d4d995a26aaad33b350a52dd
-    previous_verified_head: dd6ad38341b8ae54d4d995a26aaad33b350a52dd
-    expected_worktree: clean_after_core_verification_report_checkpoint
+    expected_head: 2b256b5a7ee2c2a0da7344d81a88907e4fb470f0
+    previous_verified_head: 2b256b5a7ee2c2a0da7344d81a88907e4fb470f0
+    expected_worktree: clean_after_current_scope_completion_checkpoint
   core:
     expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
     expected_worktree: clean
     phase: T3_verified_T4_not_started
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
-    expected_head: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
-    expected_worktree: two_tracked_modified_plus_two_untracked_reproducibility_files
-    phase: U1_verified_U2_reproducibility_correction_in_progress
+    expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
+    expected_worktree: clean
+    phase: U2_verified_U3_not_started
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -62,25 +62,26 @@ latest_verified_evidence:
   core_t3_wheel_boundary: only_core_sdk_distribution_metadata_and_cli_entrypoint
 
 independent_ui_u2_verification:
-  candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
-  candidate_worktree: clean
-  fresh_clone_npm_ci_offline: failed_lock_missing_platform_optional_entries
-  committed_lock_sha256: 3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89
-  regenerated_lock_sha256: efa22f433c1e6ab20fe96bdb7fc17768856521a6539cf89135f1022c9868fe2e
-  regenerated_dependency_count: 20
-  regenerated_verify: 19_of_19_passed_plus_typecheck_build_contract_license_boundary_checks
-  regenerated_plugin_package: 31_of_31_files_verified
-  disposition: rejected_pending_deterministic_offline_bootstrap_correction
+  initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
+  initial_disposition: rejected_for_cache_dependent_optional_selection
+  corrected_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
+  corrected_worktree: clean
+  lock_sha256_before_and_after_bootstrap: c8ef2875aa4c2ae0e7c0a62dd4c9c0081f6527b6ea6194c108f6f5a73bef38e5
+  fresh_clone_bootstrap: 20_locked_packages_succeeded_without_lock_diff
+  fresh_clone_npm_ci_offline: 20_packages_succeeded
+  contracts: 27_identical_plus_6_reference_identities
+  tests: 22_of_22_passed
+  build: 22_modules_passed
+  licenses: 20_packages_verified
+  source_boundary_checks: 12_passed
+  plugin_package: 31_of_31_files_verified
+  disposition: verified_by_platform
   core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
-  uncommitted_platform_changes: ui_reproducibility_correction_milestone_to_be_committed
+  uncommitted_platform_changes: current_scope_completion_report_to_be_committed
   uncommitted_core_changes: none
-  uncommitted_ui_changes:
-    - package-lock.json
-    - scripts/bootstrap-offline-cache.mjs
-    - scripts/offline-lock-plan.mjs
-    - test/offline-bootstrap.test.mjs
+  uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -90,7 +91,7 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:32"
-  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:41"
+  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:69"
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.

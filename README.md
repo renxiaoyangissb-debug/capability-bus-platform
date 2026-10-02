@@ -9,9 +9,11 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**F1 ACCEPTED — CORE T3 AND UI U1 IN PROGRESS**
+**F1 ACCEPTED — CORE T3 AND UI U2 VERIFIED**
 
-The user accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. See [the accepted F1 report](docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md). Platform has dispatched Core T3 and Official UI U1 in parallel under the delegated workflow authority and is tracking their Git and test evidence. F2 remains the next planned mandatory human checkpoint.
+The user accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. Platform independently verified Core T3 at `d3556226ec6e8221781e4267ca2aa0b6ca523ebd` and Official UI U2 at `f17320cf39f18d507a4e40b0f7047b88a14582ae`. The current explicit dispatch stops before Core T4, UI U3, and F2. F2 remains the next mandatory human checkpoint after its prerequisites are completed.
+
+The saved plugin integration guide is [docs/guides/plugin-integration-interface-v0.1.md](docs/guides/plugin-integration-interface-v0.1.md).
 
 ## Required reading
 
@@ -40,6 +42,7 @@ capability-bus-platform/
 └── docs/
     ├── governance/orchestration-protocol.md
     ├── governance/platform-delegated-authority.md
+    ├── guides/plugin-integration-interface-v0.1.md
     ├── architecture/
     │   ├── README.md
     │   ├── everything-as-plugin-v2.1-original-reference.drawio
