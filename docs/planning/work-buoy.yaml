@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: core_t3_active_ui_u2_correction_pending
+status: core_t3_verified_ui_u2_correction_active
 
 active_work:
   id: CORE-T3-UI-U2-PARALLEL
-  phase: ui_u2_candidate_rejected_core_active
-  summary: Core T3 remains active; Platform rejected UI U2 candidate 74131c5 after a fresh offline reconstruction proved dependency and package outputs vary with cached optional tarballs.
+  phase: core_t3_verified_ui_u2_correction_active
+  summary: Platform independently verified Core T3 at d355622; UI is actively correcting the rejected U2 candidate's nondeterministic offline dependency selection.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,47 +14,20 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: In a fresh temporary clone, npm ci --offline failed because the committed lock omitted platform optional entries; documented bootstrap succeeded but changed package-lock SHA-256 from 302048... to efa22f..., dependencies from 19 to 20, and package integrity entries from 30 to 31. Functional verify still passed 19/19.
-  next_action: Request UI correction so platform-matching optional dependency selection fails closed and produces a deterministic lock/inventory/package independent of cache accidents; continue Core race-fix supervision, then reverify both candidates.
+  last_completed_action: Independently verified Core d3556226ec6e8221781e4267ca2aa0b6ca523ebd with clean worktree, unchanged F1 contracts/source baseline, 92/92 source tests, 92/92 isolated-install tests, compile checks, and package-boundary inspection; T4/F2 remain unstarted.
+  next_action: Supervise and independently verify the UI U2 reproducibility correction; do not start Core T4, UI U3, or F2 under the current dispatch scope.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
-    expected_head: 628d191cf4c4a14ba49e446518719eeae15801d3
-    previous_verified_head: 628d191cf4c4a14ba49e446518719eeae15801d3
-    expected_worktree: clean_after_resumed_active_checkpoint
+    expected_head: 53a6470a02db0719de2063e0c1f1c71aa895586d
+    previous_verified_head: 53a6470a02db0719de2063e0c1f1c71aa895586d
+    expected_worktree: clean_after_core_verification_report_checkpoint
   core:
-    expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    expected_worktree: 16_tracked_modified_plus_9_untracked_T3_groups
-    phase: T3_in_progress_resumed
+    expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
+    expected_worktree: clean
+    phase: T3_verified_T4_not_started
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
-    observed_uncommitted_paths:
-      - README.md
-      - docs/extraction/t1-adaptation-report.md
-      - docs/releases/F1-CONTRACT-FREEZE-CANDIDATE.md
-      - examples/example-echo/plugin.py
-      - setup.cfg
-      - src/capability_bus_core/__init__.py
-      - src/capability_bus_core/cli.py
-      - src/capability_bus_core/resources.py
-      - src/capability_bus_core/router.py
-      - src/capability_bus_core/runtime.py
-      - src/capability_bus_core/service.py
-      - src/capability_bus_core/store.py
-      - src/capability_bus_core/supervisor.py
-      - src/capability_bus_sdk/contracts.py
-      - tests/test_router.py
-      - tests/test_store.py
-    observed_untracked_groups:
-      - docs/adr/0002-alpha2-runtime-recovery-boundary.md
-      - docs/security/alpha2-security-boundary.md
-      - docs/testing/t3-verification.md
-      - src/capability_bus_core/control.py
-      - system_plugins/durable-reliability/
-      - tests/test_alpha2_reliability.py
-      - tests/test_control_daemon.py
-      - tests/test_durable_reliability_plugin.py
-      - tests/test_resources_alpha2.py
   official_ui:
     expected_head: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
     expected_worktree: clean
@@ -79,21 +52,14 @@ latest_verified_evidence:
   ui_u1_tests: 15_of_15_passed
   ui_u1_plugin_package: 30_of_30_files_verified
   ui_u1_manifest: accepted_by_core_f1_validator
-
-reported_core_evidence_not_yet_platform_verified:
-  core_resident_fault_tests: 6_passed
-  core_additional_report: 85_passed_2_socket_tests_skipped_and_2_daemon_tests_passed_outside_sandbox
-  current_t3_regression: 88_passed_2_unix_socket_tests_skipped_in_sandbox
-  current_t3_focused_tests: 24_of_24_passed
-  current_t3_source_tree: 92_passed_2_unix_socket_tests_skipped_in_sandbox
-  current_t3_host_socket_tests: 2_of_2_passed
-  ui_u2_typecheck: passed
-  ui_u2_tests: 19_of_19_passed
-  ui_u2_contracts: 27_identical_plus_6_reference_identities
-  ui_u2_build: passed
-  ui_u2_licenses: 19_dependencies_verified
-  ui_u2_source_boundary_checks: 12_passed
-  ui_u2_plugin_package: 30_of_30_files_verified
+  core_t3_commit: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
+  core_t3_source_tests: 92_of_92_passed_without_skips
+  core_t3_isolated_install_tests: 92_of_92_passed_without_skips
+  core_t3_compileall: passed
+  core_t3_f1_contract_diff: zero
+  core_t3_source_baseline_diff: zero
+  core_t3_independent_wheel_sha256: aab80116edbd1be4105bc5de43ac799c4b8764fa6875aae170aa06004fb881a7
+  core_t3_wheel_boundary: only_core_sdk_distribution_metadata_and_cli_entrypoint
 
 independent_ui_u2_verification:
   candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -108,8 +74,8 @@ independent_ui_u2_verification:
   core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
-  uncommitted_platform_changes: ui_u2_candidate_rejection_checkpoint_to_be_committed
-  uncommitted_core_changes: 16_tracked_modified_and_9_untracked_groups
+  uncommitted_platform_changes: core_t3_verification_report_checkpoint_to_be_committed
+  uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
 
@@ -119,7 +85,7 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:28"
+  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:32"
   ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:35"
 
 handoff_rules:
