@@ -14,8 +14,8 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Committed recovery point 79df57b and resumed both original project conversations with GPT-5.6 Sol high under the original T3/U1 scope.
-  next_action: Monitor both conversations; record their first post-resume verification or commit milestone and independently verify repository evidence.
+  last_completed_action: Both original conversations re-verified their restored worktrees; Core reported six resident fault tests passing and UI reported contracts, typecheck, and 15 tests passing with a new dependency lock.
+  next_action: Await owning-repository commits; then independently verify Core runtime/system-plugin evidence and UI offline build/package evidence before advancing either lane.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
@@ -46,6 +46,8 @@ verified_state:
     expected_worktree: original_interrupted_U1_untracked_skeleton
     phase: U1_in_progress
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
+    observed_new_untracked_path: package-lock.json
+    observed_package_lock_sha256: 3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
     expected_worktree: preexisting_14_status_entries_preserved
@@ -58,6 +60,16 @@ latest_verified_evidence:
   exact_source_hashes: 18_of_18_matched
   f1_report: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
   f1_human_response: "接受 F1"
+
+reported_post_resume_evidence_not_yet_platform_verified:
+  core_resident_fault_tests: 6_passed
+  core_remaining_surfaces:
+    - local_daemon_boundary
+    - independent_durable_task_event_plugin
+  ui_contract_check: passed
+  ui_typecheck: passed
+  ui_tests: 15_passed
+  ui_build: in_progress_with_offline_css_native_dependency_constraint
 
 in_flight_state:
   uncommitted_platform_changes: none_expected_after_acceptance_commit
