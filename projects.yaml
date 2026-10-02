@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t2_in_progress
+status: core_t2_correction_in_progress
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -35,7 +35,7 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: cf7e87d814ad97d15b100c42c53a606b273b8fd5
-    phase_status: T2_in_progress
+    phase_status: T2_correction_in_progress
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
