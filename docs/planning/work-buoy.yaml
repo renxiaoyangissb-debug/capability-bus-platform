@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: new_core_ui_standby_new_platform_conversation_pending
+status: new_platform_core_ui_conversations_created
 
 active_work:
   id: NEW-CONVERSATION-HANDOFF
   phase: stop_then_redispatch
-  summary: Old conversations are stopped; new Core and UI conversations are in read-only standby while a new Platform conversation is created.
+  summary: Old conversations are stopped; new Core and UI conversations are in read-only standby and a new Platform conversation has been created to take over.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,8 +14,8 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Created new read-only standby Core and UI conversations and independently confirmed their observed HEAD/worktree states match the stop checkpoint.
-  next_action: Create a new Platform conversation against this registration commit; it must verify the ledger and then explicitly activate the two standby conversations.
+  last_completed_action: Created new Platform, Core, and UI conversations; Core/UI independently confirmed their standby repository states.
+  next_action: New Platform conversation 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1 verifies this final handoff commit and activates the registered Core/UI conversations.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
@@ -76,6 +76,11 @@ in_flight_state:
   uncommitted_core_changes: 13_tracked_modified_and_6_untracked_groups_preserved_after_stop
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
+
+new_conversations:
+  platform: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  core: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.

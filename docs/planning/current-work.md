@@ -14,12 +14,14 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `a6ef9e4` 停止交接点；本次登记提交 | 提交后应干净 | 新 Platform 对话待创建 |
+| Platform | `a6ef9e4` 停止交接点；本次最终交接提交 | 提交后应干净 | 新 Platform 对话已创建，待核验并激活执行线 |
 | Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 13 个已跟踪修改 + 6 组未跟踪内容，全部原样保留 | 新 T3 对话已待命 |
 | Official UI | `562828ebb7a760066844c172c23b3b2200abae5a` | 已独立核验干净 | 新 U2 对话已待命；U1 已验证 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 原有 14 项未提交状态保留 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者均使用 GPT-5.6 Sol / high，已完成只读状态核验并保持待命，只有新 Platform 对话可以激活。旧对话仅保留审计记录。
+
+新 Platform 对话：`01a0fba2-3f09-7763-ada8-6e3e0b6b06d1`，使用 GPT-5.6 Sol / high。它必须读取本最终交接提交并重新核验三仓状态，然后激活上述两条待命执行线。本旧 Platform 对话在交接后停止。
 
 ## 当前可执行事项
 
@@ -28,7 +30,7 @@
 | `CORE-T3` | `new_conversation_standby` | 新 Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 新 Platform 激活消息 |
 | `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
 | `UI-U2` | `new_conversation_standby` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 新 Platform 激活消息 |
-| `PLATFORM-HANDOFF` | `dispatch_pending` | 新 Platform 对话待创建 | 本停止交接提交 |
+| `PLATFORM-HANDOFF` | `created_verification_pending` | 新 Platform 对话 `01a0fba2-3f09-7763-ada8-6e3e0b6b06d1` | 本最终交接提交 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
 
