@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **FORMAL DEVELOPMENT AUTHORIZED — CORE T1 VERIFIED, T2 AUTHORIZED**
+Status: **F1 MANDATORY HUMAN CHECKPOINT — WAITING FOR ACCEPTANCE**
 
 ## Prepared
 
@@ -37,4 +37,4 @@ Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platf
 
 ## Current authorized action
 
-The first authorized T0 action has been completed and accepted, the source-rights checkpoint is resolved, and Platform independently verified Core T1 at `cf7e87d814ad97d15b100c42c53a606b273b8fd5`. See [the T1 Core extraction review](human-checkpoints/T1-core-extraction-human-review.md). Platform may dispatch and supervise T2 automatically using GPT-5.6 Sol with high reasoning. No separate per-task authorization is needed unless another mandatory checkpoint applies. UI remains in U0 and the next planned mandatory human acceptance is F1.
+T0 and source rights are accepted, and T1 is verified. Platform dispatched, supervised, rejected the first T2 candidate after reproducing a cross-Provider Grant flaw, and independently verified the corrected candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. See [the F1 human review](human-checkpoints/F1-contract-freeze-human-review.md). T2 meets its exit evidence, but Platform cannot accept F1 under delegated authority. Core T3 and UI U1 remain disabled until the human accepts the exact candidate.

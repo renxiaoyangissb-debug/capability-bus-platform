@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**FORMAL DEVELOPMENT AUTHORIZED — CORE T2 CORRECTION IN PROGRESS**
+**F1 MANDATORY HUMAN CHECKPOINT — WAITING FOR ACCEPTANCE**
 
-The user approved the architecture, accepted T0, confirmed source reuse/modification/distribution authority, and delegated in-scope workflow authorization to Platform. See [the delegated-authority policy](docs/governance/platform-delegated-authority.md), [the accepted T0 review](docs/reviews/human-checkpoints/T0-source-reuse-audit-human-review.md), [the T1 source-rights confirmation](docs/reviews/human-checkpoints/T1-source-rights-confirmation-human-review.md), and [the verified T1 report](docs/reviews/human-checkpoints/T1-core-extraction-human-review.md). Platform advances routine work automatically and stops only at recorded mandatory human checkpoints. Core T1 is verified; T2 is undergoing an evidence-driven correction after Platform review. UI stays in U0 until human acceptance of F1.
+The user approved the architecture, accepted T0, confirmed source reuse/modification/distribution authority, and delegated in-scope workflow authorization to Platform. Platform independently verified Core T2 and its corrected F1 candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. See [the F1 human review report](docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md). Automatic progression is stopped at the mandatory F1 checkpoint. UI remains in U0 until the human accepts this exact candidate.
 
 ## Required reading
 

@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t2_correction_in_progress
+status: waiting_for_human_f1_acceptance
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -17,8 +17,8 @@ approval:
   ui_task_dispatch_authorized: false
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: none
-  next_auto_phase: T2
+  current_mandatory_human_checkpoint: F1-CONTRACT-FREEZE
+  next_auto_phase_after_checkpoint: core_T3_and_ui_U1
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: high
 
@@ -34,8 +34,8 @@ repositories:
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-core
     role: core-authority
     start_gate: source-rights-accepted
-    verified_commit: cf7e87d814ad97d15b100c42c53a606b273b8fd5
-    phase_status: T2_correction_in_progress
+    verified_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
+    phase_status: T2_verified_F1_candidate
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
@@ -63,8 +63,14 @@ gates:
     evidence: docs/reviews/human-checkpoints/T1-core-extraction-human-review.md
     exact_extraction_commit: 675667a
     accepted_core_commit: cf7e87d814ad97d15b100c42c53a606b273b8fd5
+  - id: T2-ALPHA1
+    status: verified_by_platform
+    evidence: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
+    verified_core_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
   - id: F1-CONTRACT-FREEZE
-    status: not_started
+    status: waiting_for_human_acceptance
+    evidence: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
+    candidate_core_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
   - id: F2-CORE-ALPHA-API-FREEZE
     status: not_started
 
