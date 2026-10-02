@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t3_ui_u1_resume_pending_after_takeover_discard
+status: core_t3_ui_u1_resumed_in_progress
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -37,14 +37,14 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    phase_status: T3_resume_pending
+    phase_status: T3_in_progress
   official_ui:
     name: capability-bus-official-ui
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-accepted
     verified_commit: 7365453781aecdf7909d8d46282c0d09e8050c3a
-    phase_status: U1_resume_pending
+    phase_status: U1_in_progress
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
 gates:

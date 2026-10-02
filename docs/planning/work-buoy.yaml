@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: resume_pending_after_takeover_discard
+status: resumed_parallel_work_in_progress
 
 active_work:
   id: CORE-T3-UI-U1-PARALLEL
   phase: T3_and_U1
-  summary: Takeover-era changes have been excluded; the original interrupted Core T3 and UI U1 worktrees are ready to resume in their owning conversations.
+  summary: Takeover-era changes are excluded; the original interrupted Core T3 and UI U1 worktrees are active again in their owning conversations.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,8 +14,8 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Verified Platform at pre-takeover 53cc0d6 and verified both owning worktrees match the original interrupted T3/U1 snapshots, excluding later takeover edits.
-  next_action: Resume the original Core and UI project conversations with instructions to re-verify their dirty worktrees, continue only the original plan, and produce clean commits plus test evidence.
+  last_completed_action: Committed recovery point 79df57b and resumed both original project conversations with GPT-5.6 Sol high under the original T3/U1 scope.
+  next_action: Monitor both conversations; record their first post-resume verification or commit milestone and independently verify repository evidence.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
@@ -26,7 +26,7 @@ verified_state:
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
     expected_worktree: original_interrupted_T3_changes_11_modified_plus_control_py
-    phase: T3_resume_pending
+    phase: T3_in_progress
     thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
     observed_uncommitted_paths:
       - setup.cfg
@@ -44,7 +44,7 @@ verified_state:
   official_ui:
     expected_head: 7365453781aecdf7909d8d46282c0d09e8050c3a
     expected_worktree: original_interrupted_U1_untracked_skeleton
-    phase: U1_resume_pending
+    phase: U1_in_progress
     thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
