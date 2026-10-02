@@ -14,21 +14,24 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Sent continuation prompts from Platform recovery checkpoint 9b249853e83b39e5fb2d8ef834da097b08ffecc9; both original conversations entered active turns without resetting preserved changes.
+  last_completed_action: Core reported its 24 new focused T3 tests passing and is writing stage-boundary evidence; UI reverified the preserved partial work and is implementing the read-only shell and accessibility states.
   next_action: Monitor for owning-repository commits or attention requests, then independently verify commits, scope, contracts, tests, and worktree cleanliness.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
-    expected_head: 9b249853e83b39e5fb2d8ef834da097b08ffecc9
-    previous_verified_head: 9b249853e83b39e5fb2d8ef834da097b08ffecc9
+    expected_head: bdd172883968a31cce254422407b96d51ba5f269
+    previous_verified_head: bdd172883968a31cce254422407b96d51ba5f269
     expected_worktree: clean_after_resumed_active_checkpoint
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
-    expected_worktree: 13_tracked_modified_plus_6_untracked_T3_groups_preserved
+    expected_worktree: 16_tracked_modified_plus_9_untracked_T3_groups
     phase: T3_in_progress_resumed
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
     observed_uncommitted_paths:
+      - README.md
+      - docs/extraction/t1-adaptation-report.md
+      - docs/releases/F1-CONTRACT-FREEZE-CANDIDATE.md
       - examples/example-echo/plugin.py
       - setup.cfg
       - src/capability_bus_core/__init__.py
@@ -43,6 +46,9 @@ verified_state:
       - tests/test_router.py
       - tests/test_store.py
     observed_untracked_groups:
+      - docs/adr/0002-alpha2-runtime-recovery-boundary.md
+      - docs/security/alpha2-security-boundary.md
+      - docs/testing/t3-verification.md
       - src/capability_bus_core/control.py
       - system_plugins/durable-reliability/
       - tests/test_alpha2_reliability.py
@@ -51,7 +57,7 @@ verified_state:
       - tests/test_resources_alpha2.py
   official_ui:
     expected_head: 562828ebb7a760066844c172c23b3b2200abae5a
-    expected_worktree: one_tracked_modified_plus_one_untracked_U2_file_preserved
+    expected_worktree: two_tracked_modified_plus_one_tracked_deleted_plus_one_untracked_U2_file
     phase: U1_verified_U2_in_progress_resumed
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
@@ -78,13 +84,16 @@ reported_core_evidence_not_yet_platform_verified:
   core_resident_fault_tests: 6_passed
   core_additional_report: 85_passed_2_socket_tests_skipped_and_2_daemon_tests_passed_outside_sandbox
   current_t3_regression: 88_passed_2_unix_socket_tests_skipped_in_sandbox
+  current_t3_focused_tests: 24_of_24_passed
   core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
-  uncommitted_platform_changes: resumed_active_checkpoint_to_be_committed
-  uncommitted_core_changes: 13_tracked_modified_and_6_untracked_groups_preserved_after_stop
+  uncommitted_platform_changes: active_test_milestone_checkpoint_to_be_committed
+  uncommitted_core_changes: 16_tracked_modified_and_9_untracked_groups
   uncommitted_ui_changes:
     - src/client/fake-core.ts
+    - src/ui/App.tsx
+    - src/ui/shell.css (deleted)
     - src/ui/model.ts
   external_side_effects: takeover_commits_excluded_from_current_branches
 
@@ -94,8 +103,8 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:13"
-  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:14"
+  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:15"
+  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:16"
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
