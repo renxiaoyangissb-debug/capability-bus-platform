@@ -1,32 +1,32 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t4_quota_pause_requested_ui_u3_blocked
+status: core_t4_low_consumption_resume_ready_ui_u3_blocked
 
 active_work:
   id: CORE-T4-ALPHA3
-  phase: quota_pause_requested
-  summary: The user warned that scheduling consumes excessive quota. Core is now idle at an uncommitted safe point, Platform has adopted a low-consumption execution policy, and UI U3 remains blocked.
+  phase: low_consumption_pre_dispatch_verified
+  summary: The user explicitly resumed development. Platform verified all three repositories and will resume only Core T4 with medium reasoning and the low-consumption execution policy; UI U3 remains blocked.
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
   thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
-  blocking_reason: quota_consumption_user_decision_required
+  blocking_reason: none
 
 resume_point:
-  last_completed_action: Platform confirmed the Core turn stopped and is idle at d3556226ec6e8221781e4267ca2aa0b6ca523ebd with uncommitted runtime.py, store.py, and identity.py work. A three-thread telemetry audit identified high reasoning and excessive model/tool round trips as the primary causes and established a low-consumption policy.
-  next_action: Do not schedule, poll, test, or resume automatically. Wait for explicit user direction; before any resume, present the medium-reasoning single-lane plan, recheck Core HEAD and all three dirty paths, and preserve the in-progress changes.
-  stop_condition: Quota-protection pause. UI U3 and F2 remain blocked.
+  last_completed_action: User explicitly requested continuation. Platform verified Platform 0f3dce4e7786b85c358ab17dd0e9209194202aff and UI f17320cf39f18d507a4e40b0f7047b88a14582ae are clean; Core remains at d3556226ec6e8221781e4267ca2aa0b6ca523ebd with the three preserved T4 paths.
+  next_action: Resume the registered Core conversation with gpt-5.6-sol medium reasoning, one active lane, a 12-round-trip soft ceiling, focused tests during implementation, and one final full candidate suite. Wait once for completion before Platform acceptance.
+  stop_condition: Keep UI U3 blocked until Platform independently verifies the Core public management mutation contracts; do not enter or claim F2.
 
 verified_state:
   platform:
-    expected_head: c51ae3d85fe0f2c56eb42b5d749460dbf946bdd2
-    previous_verified_head: 1e0b1d6344b8d642b320f26fe5d78f06abf38b61
-    expected_worktree: clean_after_usage_efficiency_ledger_finalization
+    expected_head: 0f3dce4e7786b85c358ab17dd0e9209194202aff
+    previous_verified_head: c51ae3d85fe0f2c56eb42b5d749460dbf946bdd2
+    expected_worktree: low_consumption_resume_checkpoint_pending_commit
   core:
     expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
     expected_worktree: dirty_runtime_py_store_py_and_untracked_identity_py_preserve
-    phase: T4_quota_pause_requested
+    phase: T4_low_consumption_resume_ready
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
@@ -77,7 +77,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: none
+  uncommitted_platform_changes: low_consumption_resume_checkpoint_to_be_committed
   uncommitted_core_changes:
     - src/capability_bus_core/runtime.py
     - src/capability_bus_core/store.py

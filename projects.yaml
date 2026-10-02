@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t4_quota_pause_requested_ui_u3_blocked
+status: core_t4_low_consumption_resume_ready_ui_u3_blocked
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -22,7 +22,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: none_wait_for_user_resume
+  next_auto_phase: resume_core_t4_then_verify_contract_baseline
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -43,7 +43,7 @@ repositories:
     role: core-authority
     start_gate: source-rights-accepted
     verified_commit: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
-    phase_status: T4_quota_pause_requested_dirty
+    phase_status: T4_low_consumption_resume_ready_dirty
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     name: capability-bus-official-ui
@@ -93,7 +93,7 @@ gates:
     evidence: docs/reviews/human-checkpoints/U2-read-only-console-human-review.md
     verified_ui_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
   - id: T4-ALPHA3
-    status: quota_pause_requested
+    status: low_consumption_resume_ready
   - id: UI-U3-CONTROLLED-WRITES
     status: blocked_by_T4_public_management_contracts
   - id: F2-CORE-ALPHA-API-FREEZE
