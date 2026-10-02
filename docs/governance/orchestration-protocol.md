@@ -22,6 +22,21 @@ Coordinate Core and Official UI without merging their ownership domains or creat
 6. Advance routine phases automatically when objective evidence is complete and no mandatory human checkpoint applies.
 7. Stop and request human direction only at a mandatory human checkpoint or hard stop.
 
+## Low-consumption execution profile
+
+The default profile optimizes successful work per unit of quota, not maximum concurrency.
+
+1. Activate only one owning-project implementation lane at a time. Keep dependent lanes blocked until their public contract baseline is independently verified.
+2. Send a short handoff that references authoritative repository documents instead of embedding the complete program history.
+3. Use `low` reasoning for Platform coordination and read-only checks, and `medium` for Core/UI implementation. Escalate a single turn to `high` only for a named hard problem, then return to the default.
+4. Batch discovery into one read pass, implementation into a small number of coherent patches, and verification into focused checks followed by one full candidate suite.
+5. Use a soft ceiling of 12 model/tool round trips per owning-project turn. If unfinished, record exact HEAD, dirty paths, completed scope, and the next command before stopping.
+6. Wait once for completion or a required-user-action event. Do not use frequent status polling or repeatedly read complete thread histories and command outputs.
+7. Platform independently reruns the full suite once per candidate. A correction reruns the failed slice first and the full suite once after the correction is ready.
+8. Update ledgers at resumable state transitions, material commits/test milestones, corrections, and gates. Do not create separate commits for commentary-only progress.
+
+The current measured baseline and rationale are recorded in [the 2026-10-03 usage-efficiency audit](../reviews/usage-efficiency-audit-2026-10-03.md).
+
 ## Freeze gates
 
 ### Delegated development authority

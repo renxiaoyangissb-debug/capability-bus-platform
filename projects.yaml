@@ -24,7 +24,11 @@ approval:
   current_mandatory_human_checkpoint: none
   next_auto_phase: none_wait_for_user_resume
   core_execution_model: gpt-5.6-sol
-  core_execution_reasoning_effort: high
+  core_execution_reasoning_effort: medium
+  coordination_reasoning_effort: low
+  default_active_implementation_lanes: 1
+  max_model_tool_round_trips_per_owner_turn: 12
+  usage_efficiency_policy: docs/governance/usage-efficiency-policy.md
 
 repositories:
   source:

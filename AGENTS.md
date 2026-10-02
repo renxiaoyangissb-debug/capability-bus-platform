@@ -37,6 +37,16 @@ These instructions apply to the whole coordination repository.
 - Produce human-review reports under `docs/reviews/human-checkpoints/` using the development-progress naming rule defined there.
 - Keep actual code changes in the owning repository.
 
+## Usage and execution efficiency
+
+- Follow `docs/governance/usage-efficiency-policy.md` for every Platform, Core, and Official UI dispatch.
+- Default to one active implementation conversation. Parallel implementation requires an explicit user decision to trade additional quota for lower wall-clock latency.
+- Use low reasoning for coordination, status, ledger, and mechanical verification; use medium reasoning for normal implementation. High reasoning is exceptional and must be justified by a specific unresolved architecture, security, or debugging problem.
+- Keep one owning-project turn to a soft ceiling of 12 model/tool round trips. Batch related file reads, edits, and checks; at the ceiling, leave a compact dirty-state checkpoint instead of continuing an open-ended loop.
+- Run focused tests while implementing. Run a complete project suite once for the owning-project candidate and once for Platform acceptance; do not repeat unchanged full suites at narrative milestones.
+- Use event-driven completion waits. Do not repeatedly poll active conversations, request full histories with tool outputs, or replay large logs when a commit, concise final report, or targeted excerpt is sufficient.
+- Treat token telemetry as an efficiency signal: cached input is still repeated context processing. Minimize the number of model samples even when prompt caching is effective.
+
 ## Safety
 
 - Never commit secrets or credentials.
