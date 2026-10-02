@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-02
 timezone: Asia/Shanghai
-status: dispatch_pending
+status: parallel_work_in_progress
 
 active_work:
-  id: POST-F1-DISPATCH
+  id: CORE-T3-UI-U1-PARALLEL
   phase: T3_and_U1
-  summary: Dispatch Core T3 and Official UI U1 under the accepted F1 baseline.
+  summary: Core T3 and Official UI U1 are running in their owning project conversations under the accepted F1 baseline.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,8 +14,8 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Human accepted Core 78127bb9192aa6ddf8f15b544c553c149415c5a5 as F1.
-  next_action: Dispatch CORE-T3 to the existing Core thread and create/dispatch UI-U1 in the Official UI project.
+  last_completed_action: Dispatched CORE-T3 and created/dispatched UI-U1 with GPT-5.6 Sol high.
+  next_action: Monitor both conversations; record their next commit and test milestone, then independently verify repository evidence.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
@@ -26,12 +26,13 @@ verified_state:
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
     expected_worktree: clean
-    phase: T3_authorized
+    phase: T3_in_progress
     thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   official_ui:
     expected_head: 7365453781aecdf7909d8d46282c0d09e8050c3a
     expected_worktree: clean
-    phase: U1_authorized
+    phase: U1_in_progress
+    thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
     expected_worktree: preexisting_14_status_entries_preserved
@@ -49,7 +50,7 @@ in_flight_state:
   uncommitted_platform_changes: none_expected_after_acceptance_commit
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  external_side_effects: none
+  external_side_effects: core_T3_message_sent_and_ui_U1_thread_created
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.

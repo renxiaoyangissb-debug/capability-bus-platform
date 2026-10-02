@@ -14,21 +14,21 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | 本台账所在提交；前一浮标提交为 `4f80a82bbfbb5ccc02461763249ab479e10a77e8` | 提交后应为干净 | F1 已接受；准备派发 T3/U1 |
-| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 已核验干净 | T3 已授权，待派发 |
-| Official UI | `7365453781aecdf7909d8d46282c0d09e8050c3a` | 已核验干净 | U1 已授权，待派发 |
+| Platform | 本台账所在提交；F1 接受提交为 `0597c869ac74e6532d343ab56c078ccf9e9f9c9d` | 提交后应为干净 | T3/U1 已派发，跟踪中 |
+| Core | `78127bb9192aa6ddf8f15b544c553c149415c5a5` | 派发时已核验干净 | T3 执行中 |
+| Official UI | `7365453781aecdf7909d8d46282c0d09e8050c3a` | 派发时已核验干净 | U1 执行中 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 原有 14 项未提交状态保留 | 只读固定来源 |
 
-Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Core T1/T2 使用 GPT-5.6 Sol / high。其他对话的文字结论不是完成证据，必须以实际提交和测试复核。
+Core 协调对话：`01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e`。Official UI U1 对话：`01a0fa86-b191-70a2-80af-3853312f2286`。两个执行对话均使用 GPT-5.6 Sol / high。其他对话的文字结论不是完成证据，必须以实际提交和测试复核。
 
 ## 当前可执行事项
 
 | 工作项 | 状态 | 执行者 | 入口/证据 |
 |---|---|---|---|
-| `CORE-T3` | `dispatch_pending` | Platform → Core 对话 | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
-| `UI-U1` | `dispatch_pending` | Platform → 新建 UI 对话 | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
+| `CORE-T3` | `in_progress` | Core 对话 `01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e` | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
+| `UI-U1` | `in_progress` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | [已接受的 F1 报告](../reviews/human-checkpoints/F1-contract-freeze-human-review.md) |
 
-用户已回复 `接受 F1`。Platform 下一步必须分别在 Core 与 Official UI 所属项目对话中派发 T3/U1，并在派发后立即刷新本台账和工作浮标。
+用户已回复 `接受 F1`。Platform 已分别派发 T3/U1；下一步持续等待里程碑，取得提交和测试证据后独立复核，并在每个重要节点刷新台账与工作浮标。
 
 ## 已完成且已核验
 
@@ -47,8 +47,8 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 
 | ID | 所属项目 | 状态 | 工作范围 | 退出门槛 |
 |---|---|---|---|---|
-| `CORE-T3` | capability-bus-core | `dispatch_pending` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
-| `UI-U1` | capability-bus-official-ui | `dispatch_pending` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 插件壳与契约测试通过 |
+| `CORE-T3` | capability-bus-core | `in_progress` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | alpha.2 测试和恢复证据通过 |
+| `UI-U1` | capability-bus-official-ui | `in_progress` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 插件壳与契约测试通过 |
 | `UI-U2` | capability-bus-official-ui | `blocked_by_UI-U1` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | mock 驱动验收与无私有状态访问证明 |
 | `CORE-T4` | capability-bus-core | `blocked_by_CORE-T3` | alpha.3 身份、安全、配置、SecretRef、兼容、替换与回滚 | 完整初版 Core 与安全测试通过 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_UI-U2_and_Core_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
