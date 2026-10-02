@@ -14,8 +14,8 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `53de3f0` 低消耗恢复前检查点 | 派发后台账待提交 | Core T4 已恢复；只等待一次完成事件 |
-| Core | `d3556226ec6e8221781e4267ca2aa0b6ca523ebd` | 从三个保留路径继续，所属对话正在工作 | T4 / alpha.3 低消耗实现中；不得宣称 F2 |
+| Platform | `aa977656` 单次等待检查点 | T4 未提交候选台账待提交 | 已核验候选 dirty 范围；仅待 Core 重试提交 |
+| Core | `d3556226ec6e8221781e4267ca2aa0b6ca523ebd` | 11 个已跟踪修改、10 个新增 T4 文件；`diff --check` 通过 | T4 / alpha.3 实现与所属测试已完成，候选提交待创建；不得宣称 F2 |
 | Official UI | `f17320cf39f18d507a4e40b0f7047b88a14582ae`（U2 `74131c5` + 确定性修正） | 已重新核验干净 | U2 已验证；U3 等待 Core T4 公共管理写契约基线 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
@@ -31,7 +31,7 @@
 | `UI-U1` | `verified` | UI 对话 `01a0fa86-b191-70a2-80af-3853312f2286` | UI `562828ebb7a760066844c172c23b3b2200abae5a` |
 | `UI-U2` | `verified` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | UI `f17320cf39f18d507a4e40b0f7047b88a14582ae`；Platform 全新副本离线门禁通过 |
 | `PLATFORM-HANDOFF` | `verified` | 新 Platform 对话 `01a0fba2-3f09-7763-ada8-6e3e0b6b06d1` | Platform `85461db7b56645a881854c872473d15e99ba7b9e`，工作区核验干净 |
-| `CORE-T4` | `low_consumption_active` | Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 已以 medium 推理、单实现线和 12 次往返软上限恢复；Platform 不做中途轮询 |
+| `CORE-T4` | `candidate_uncommitted_commit_retry` | Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | 实现和 94 项测试已报告完成；Platform 已核验 dirty 范围，只允许重试一次提交 |
 | `UI-U3` | `blocked_by_CORE_T4_contracts` | UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | Core 公共管理写契约经 Platform 独立验证后才可激活 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
@@ -58,7 +58,7 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 | `CORE-T3` | capability-bus-core | `verified` | alpha.2 可靠运行：恢复、超时、失联、资源治理，以及按架构边界实现的持久任务/事件系统插件能力 | 已满足；见 [T3 报告](../reviews/human-checkpoints/T3-core-alpha2-human-review.md) |
 | `UI-U1` | capability-bus-official-ui | `verified` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 已通过，提交 `562828e` |
 | `UI-U2` | capability-bus-official-ui | `verified` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | 已满足；见 [U2 报告](../reviews/human-checkpoints/U2-read-only-console-human-review.md) |
-| `CORE-T4` | capability-bus-core | `low_consumption_active` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 完成候选后由 Platform 一次性独立验证 |
+| `CORE-T4` | capability-bus-core | `candidate_uncommitted_commit_retry` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 创建候选提交后由 Platform 一次性独立验证 |
 | `UI-U3` | capability-bus-official-ui | `blocked_by_CORE_T4_public_management_contracts` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `blocked_by_CORE-T4_and_UI-U3` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 人工接受 F2 |
 | `T5-INTEGRATION` | Core + UI | `blocked_by_F2` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
