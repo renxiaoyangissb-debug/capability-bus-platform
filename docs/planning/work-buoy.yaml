@@ -20,9 +20,9 @@ resume_point:
 
 verified_state:
   platform:
-    expected_head: 1e0b1d6344b8d642b320f26fe5d78f06abf38b61
-    previous_verified_head: bbf529ec98683e41a1b5394603d20eac93cf0590
-    expected_worktree: usage_efficiency_policy_and_audit_pending_commit
+    expected_head: c51ae3d85fe0f2c56eb42b5d749460dbf946bdd2
+    previous_verified_head: 1e0b1d6344b8d642b320f26fe5d78f06abf38b61
+    expected_worktree: clean_after_usage_efficiency_ledger_finalization
   core:
     expected_head: d3556226ec6e8221781e4267ca2aa0b6ca523ebd
     expected_worktree: dirty_runtime_py_store_py_and_untracked_identity_py_preserve
@@ -77,7 +77,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: usage_efficiency_policy_audit_and_ledger_correction_to_be_committed
+  uncommitted_platform_changes: none
   uncommitted_core_changes:
     - src/capability_bus_core/runtime.py
     - src/capability_bus_core/store.py
