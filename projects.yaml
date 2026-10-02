@@ -6,6 +6,7 @@ preparation_authorized: true
 workflow_authority_delegated_to_platform: true
 delegated_authority_record: docs/governance/platform-delegated-authority.md
 current_work_record: docs/planning/current-work.md
+work_buoy_record: docs/planning/work-buoy.yaml
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md

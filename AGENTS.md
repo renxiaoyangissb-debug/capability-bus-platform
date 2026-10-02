@@ -32,6 +32,7 @@ These instructions apply to the whole coordination repository.
 - Do not treat another conversation's narrative as proof of completion.
 - Platform's recorded delegated authority is sufficient to create and message Core/UI project conversations within the active roadmap and gate; do not infer authority for unrelated projects or out-of-scope work.
 - Keep `docs/planning/current-work.md` current whenever work is authorized, dispatched, completed, rejected, corrected, or stopped at a gate. It is the human-readable handoff ledger; `projects.yaml` remains the machine-readable state.
+- Keep `docs/planning/work-buoy.yaml` synchronized at every resumable checkpoint: before dispatch, after a material commit or verified test milestone, before a long wait, after a correction request, and when entering or leaving a gate. It must identify the exact resume action and any in-flight or dirty state.
 - Before another agent starts work, it must verify the repository HEAD/worktree values in the current-work ledger and claim only an unassigned, gate-permitted lane. A stale ledger or narrative is not completion evidence.
 - Produce human-review reports under `docs/reviews/human-checkpoints/` using the development-progress naming rule defined there.
 - Keep actual code changes in the owning repository.

@@ -19,9 +19,10 @@ The user approved the architecture, accepted T0, confirmed source reuse/modifica
 2. `docs/governance/orchestration-protocol.md`
 3. `docs/reviews/development-readiness-review.md`
 4. `docs/planning/current-work.md`
-5. `projects.yaml`
+5. `docs/planning/work-buoy.yaml`
+6. `projects.yaml`
 
-`docs/planning/current-work.md` is the live, human-readable handoff and backlog ledger for the current gate. `projects.yaml` is the corresponding machine-readable coordination state.
+`docs/planning/current-work.md` is the live, human-readable handoff and backlog ledger. `docs/planning/work-buoy.yaml` is the compact interruption/recovery checkpoint. `projects.yaml` is the machine-readable program and gate state.
 
 ## Architecture diagrams
 
