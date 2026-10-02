@@ -47,7 +47,7 @@ repositories:
     role: ui-authority
     start_gate: F1-accepted
     verified_commit: 562828ebb7a760066844c172c23b3b2200abae5a
-    phase_status: U1_verified_U2_candidate_rejected_reproducibility_correction_pending
+    phase_status: U1_verified_U2_reproducibility_correction_in_progress
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
