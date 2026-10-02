@@ -14,14 +14,14 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Core reported 92 source-tree tests passing plus both sandbox-skipped Unix-socket tests passing under host permission and began isolated offline-install verification; UI reported typecheck plus 19/19 tests passing and began static-build/short-lived loopback visual verification.
-  next_action: Wait for owning-repository commits, then independently verify commits, scope, frozen contracts, isolated tests/build/package integrity, and worktree cleanliness.
+  last_completed_action: Core pre-commit review found a duplicate-serve recovery race and is moving recovery after successful socket ownership plus adding resident-PID regression coverage; UI reports every offline gate passing and is performing final scope/private-state/generated-artifact audit.
+  next_action: Wait for the race fix and owning-repository commits, then independently verify commits, scope, frozen contracts, isolated tests/build/package integrity, and worktree cleanliness.
   stop_condition: Keep both lanes inside the frozen F1 contract and stop at any hard conflict or the F2 checkpoint.
 
 verified_state:
   platform:
-    expected_head: 7e81d99e56239f14d1d865d50591026b3beaf1b9
-    previous_verified_head: 7e81d99e56239f14d1d865d50591026b3beaf1b9
+    expected_head: a06cf205a65cb5e02727bb2e51902823986344bb
+    previous_verified_head: a06cf205a65cb5e02727bb2e51902823986344bb
     expected_worktree: clean_after_resumed_active_checkpoint
   core:
     expected_head: 78127bb9192aa6ddf8f15b544c553c149415c5a5
@@ -89,10 +89,15 @@ reported_core_evidence_not_yet_platform_verified:
   current_t3_host_socket_tests: 2_of_2_passed
   ui_u2_typecheck: passed
   ui_u2_tests: 19_of_19_passed
+  ui_u2_contracts: 27_identical_plus_6_reference_identities
+  ui_u2_build: passed
+  ui_u2_licenses: 19_dependencies_verified
+  ui_u2_source_boundary_checks: 12_passed
+  ui_u2_plugin_package: 30_of_30_files_verified
   core_new_store_tests: not_yet_in_full_regression
 
 in_flight_state:
-  uncommitted_platform_changes: final_verification_milestone_checkpoint_to_be_committed
+  uncommitted_platform_changes: pre_commit_review_checkpoint_to_be_committed
   uncommitted_core_changes: 16_tracked_modified_and_9_untracked_groups
   uncommitted_ui_changes:
     - src/client/fake-core.ts
@@ -107,8 +112,8 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:21"
-  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:24"
+  core_wait_cursor: "b1dd9958-625e-4050-a66b-095b7956c44f:28"
+  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:33"
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
