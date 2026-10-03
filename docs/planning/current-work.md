@@ -14,7 +14,7 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `d0563ab` | 发布候选接受记录待提交 | T5 / alpha.4 发布候选已获用户接受 |
+| Platform | `eabe453` | Core 本地发布准备派发记录待提交 | 仅本地发布准备，禁止公开上传 |
 | Core | `4858520224a98b6528cb6cf47e7aa2e517bb62dc` | 已核验干净 | alpha.4 包/运行时版本已获 Platform 接受，协议未变 |
 | Official UI | `d77a9a92f7abd435c3d5447db8179e4325f3e79d` | 已核验干净 | 与 Core alpha.4 的最终精确联调已获 Platform 验证 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
@@ -63,6 +63,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
 | `T5-INTEGRATION` | Core + UI | `accepted_as_release_candidate` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 已满足；精确候选见 T5 人审报告 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `accepted` | 发布候选人工复核 | 用户已回复 `接受发布候选` |
+| `CORE-LOCAL-RELEASE-PREP` | capability-bus-core | `authorized` | 在精确已接受提交上生成本地制品、校验和本地标签 | 不改跟踪文件，不 push/上传/发布；完成后才解锁 UI 本地准备 |
 
 ## 当前协作边界
 
@@ -83,6 +84,8 @@ Core 以 `4858520` 完成版本标记修正。Platform 全新归档验证 `0.1.0
 UI 最终提交 `d77a9a9` 只刷新精确 Core 固定值和证据文字。Platform 全新归档再次完成离线依赖、28/28、24 模块构建、20 许可证、17 边界、31/31 包完整性以及对 Core `4858520` 的真实联合联调，全部通过。T5 已完成并进入 [发布候选人工检查点](../reviews/human-checkpoints/T5-release-candidate-human-review.md)；当前没有活动实现通道，必须等待用户明确接受或退回。
 
 用户随后明确回复 `接受发布候选`。Core `4858520` 与 UI `d77a9a9` 已登记为正式 T5 / alpha.4 发布候选；当前没有活动实现通道，也没有公开上传、部署或生产凭据操作。后续发布、部署或新阶段必须由新的用户请求启动。
+
+用户现已授权“继续发布准备，但不要公开上传”。Platform 已启动单通道 `CORE-LOCAL-RELEASE-PREP`：只允许对精确 Core 候选 `4858520` 构建本地制品、生成校验/元数据并创建未推送的本地标签。禁止 `git push`、包仓库上传、Release 创建、部署、凭据使用和公网暴露；UI 通道保持待命。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

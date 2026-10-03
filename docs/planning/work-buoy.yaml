@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_release_candidate_accepted
+status: local_release_preparation_core_active
 
 active_work:
-  id: T5-ALPHA4-INTEGRATION
-  phase: release_candidate_accepted
-  summary: "The user accepted exact Core 4858520 / UI d77a9a9 as the T5 / alpha.4 release candidate. No implementation lane or external publication is active."
-  owner: capability-bus-platform
+  id: CORE-LOCAL-RELEASE-PREP
+  phase: local_artifact_and_tag_preparation
+  summary: "Prepare Core 4858520 as a local-only release artifact with checksums and an unpushed local tag. Public upload, push, deployment, and credential use are prohibited."
+  owner: capability-bus-core
   coordinator: capability-bus-platform
-  implementation_repository: none
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  implementation_repository: capability-bus-core
+  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "The user explicitly replied '接受发布候选', accepting exact Core 4858520 / UI d77a9a9 and the evidence/limitations in the T5 human-review report."
-  next_action: "No automatic action. Public upload, deployment, credentials, external exposure, destructive migration, or a new development phase requires a separate user request and applicable gate review."
-  stop_condition: T5 release-candidate objective is complete; remain idle until a new user request.
+  last_completed_action: "The user authorized continued release preparation while explicitly prohibiting public upload. Platform verified clean accepted commits and found no existing local release tags."
+  next_action: "Dispatch Core-only local release preparation at exact commit 4858520: build local artifacts, checksums and metadata, create an unpushed local v0.1.0-alpha.4 tag, and report evidence without changing tracked runtime files."
+  stop_condition: "Stop on commit/worktree mismatch, test or artifact verification failure, tag conflict, required credentials/network/publication, or scope change."
 
 verified_state:
   platform:
-    expected_head: d0563ab14a021740a9d02257e9731c9fad7b9e8f
-    previous_verified_head: 01887d621a1c758f93967b4fdc20861c7d25b91c
-    expected_worktree: release_candidate_acceptance_records_pending_commit
+    expected_head: eabe4531096df379a6cb7d0550e58d19e80ff972
+    previous_verified_head: d0563ab14a021740a9d02257e9731c9fad7b9e8f
+    expected_worktree: local_release_dispatch_records_pending_commit
   core:
     expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     expected_worktree: clean
@@ -143,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: release_candidate_acceptance_records_to_be_committed
+  uncommitted_platform_changes: core_local_release_dispatch_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 0
-  active_lane: none_release_candidate_accepted
+  active_implementation_lanes: 1
+  active_lane: CORE-LOCAL-RELEASE-PREP
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
