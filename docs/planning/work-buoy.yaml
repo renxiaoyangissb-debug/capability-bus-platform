@@ -1,21 +1,21 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_release_evidence_in_progress
+status: t5_ui_release_evidence_authorized
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_T5_release_evidence_in_progress
-  summary: Platform accepted UI U4, audited all ten T5 rows, and dispatched one narrow Core evidence lane from Platform f52b97a. UI remains idle.
-  owner: capability-bus-core
+  phase: UI_T5_release_evidence_authorized
+  summary: Platform independently accepted Core c4fe126 with 104/104 installed tests and zero skips, exact CLI/legacy/crash evidence, actual target-host resource measurements, and a Core lifecycle runbook. Only the final narrow UI release-evidence slice remains before consolidated T5 review.
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-core
-  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform commit f52b97a accepted UI U4, recorded the ten-row gap audit, and authorized CORE-T5-release-evidence. The scoped task was sent to the existing Core thread with medium reasoning and the 12-round-trip policy."
-  next_action: "Wait once for the Core result, then independently verify its exact commit, scope, installed CLI/legacy/crash/resource evidence, lifecycle runbook, full installed suite, and clean worktree."
+  last_completed_action: "Platform independently verified Core c4fe126 from a fresh archive: offline wheel install, 104/104 installed tests with zero skips, compilation, 27-file wheel boundary, exact CLI/legacy/incompatible/crash evidence, target M4/16 GB/256 GB measurements, and lifecycle runbook all passed."
+  next_action: "Official UI verifies clean HEAD 28f2428 and exact Core c4fe126, then adds only the joint proof that non-UI work survives UI disable/removal plus the UI install/upgrade/downgrade/uninstall runbook. Run focused checks, one full UI verify/package pass, and one real-Core pass; commit cleanly without claiming a release candidate."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
@@ -24,9 +24,9 @@ verified_state:
     previous_verified_head: 2e4dea4bbd7b6b359b8f2a87204e94648e8ea283
     expected_worktree: core_dispatch_checkpoint_pending_commit
   core:
-    expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
+    expected_head: c4fe12634571154a9d64ce97f8f9922dc14317b3
     expected_worktree: clean
-    phase: T5_management_bootstrap_verified_by_platform
+    phase: T5_release_evidence_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: 28f2428130db4d39f546d34f20b440fbc72fc6d1
@@ -102,6 +102,12 @@ latest_verified_evidence:
   ui_u4_plugin_package: 31_of_31_files_verified
   ui_u4_real_core_lifecycle: install_authorize_enable_start_reads_writes_conflicts_confirmation_audit_revoke_disable_remove_restart_and_incompatibility_passed
   ui_u4_evidence: docs/reviews/human-checkpoints/T5-ui-real-core-integration-human-review.md
+  core_t5_release_evidence_commit: c4fe12634571154a9d64ce97f8f9922dc14317b3
+  core_t5_release_evidence_tests: 104_of_104_installed_passed_without_skips
+  core_t5_release_evidence_wheel_sha256: a8bb2b15c4b73ea97027a19a64f8605a21399a59eb885370fe0a8e0f03b48dbd
+  core_t5_release_evidence_cli_legacy_crash: passed
+  core_t5_release_evidence_target_resource: 30_of_30_calls_30_rows_0_361887_seconds_23805952_peak_harness_rss
+  core_t5_release_evidence_report: docs/reviews/human-checkpoints/T5-core-release-evidence-human-review.md
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -119,11 +125,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: core_acceptance_and_ui_authorization_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: CORE-T5-release-evidence
+  active_lane: UI-T5-release-evidence
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -132,7 +138,7 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:21"
+  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:30"
   ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:18"
 
 ui_u4_dirty_paths: none_candidate_committed_clean

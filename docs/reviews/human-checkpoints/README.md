@@ -14,4 +14,5 @@ Existing reports:
 
 - [T0 source and reuse audit](T0-source-reuse-audit-human-review.md)
 - [T5 Core management bootstrap verification](T5-core-management-bootstrap-human-review.md)
+- [T5 Core release evidence verification](T5-core-release-evidence-human-review.md)
 - [T5 Official UI real-Core integration verification](T5-ui-real-core-integration-human-review.md)
