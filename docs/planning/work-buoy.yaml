@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_alpha4_version_stamp_authorized
+status: t5_core_alpha4_version_stamp_in_progress
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_alpha4_version_stamp_authorized
-  summary: Platform independently accepted UI c3a641f and all ten T5 functional rows now pass. Release-candidate preparation is blocked only because Core still builds/reports alpha.3 instead of the roadmap's integrated alpha.4 package version.
+  phase: Core_alpha4_version_stamp_in_progress
+  summary: Platform independently accepted UI c3a641f and all ten T5 functional rows pass. The exact package-version-only Core alpha.4 correction was dispatched from Platform 6d76c8c; UI is idle.
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
@@ -14,15 +14,15 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform independently verified UI c3a641f from a fresh archive: unchanged offline lock, 28/28 tests, 24-module build, 20 licenses, 17 boundary checks, 31/31 package files, exact contract diffs, and real-Core non-UI continuity across UI disable/removal all passed."
-  next_action: "Core changes only distribution/runtime release version and current-release documentation from 0.1.0-alpha.3 to 0.1.0-alpha.4, keeps capability protocol alpha.1 and management protocol alpha.3 byte-unchanged, runs focused version checks and one full installed suite, commits cleanly, and makes no release-candidate claim."
+  last_completed_action: "Platform commit 6d76c8c accepted UI c3a641f, closed all ten functional rows, and authorized CORE-T5-alpha4-version-stamp. The exact scoped task was sent to the existing Core thread."
+  next_action: "Wait once for Core, then independently verify only the alpha.4 distribution/runtime stamp, unchanged alpha.1/alpha.3 protocols and contracts, full installed suite, wheel identity, and clean worktree."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 669dd43
-    previous_verified_head: 09b6826bdafc0307e8ec583ae72590cfb7dd15b1
-    expected_worktree: ui_release_evidence_dispatch_checkpoint_pending_commit
+    expected_head: 6d76c8c
+    previous_verified_head: f050f158710fc2731f5ea09f95d402531763edb7
+    expected_worktree: core_alpha4_version_dispatch_checkpoint_pending_commit
   core:
     expected_head: c4fe12634571154a9d64ce97f8f9922dc14317b3
     expected_worktree: clean
@@ -130,7 +130,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_acceptance_and_core_alpha4_version_authorization_to_be_committed
+  uncommitted_platform_changes: core_alpha4_version_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1

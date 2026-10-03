@@ -14,8 +14,8 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `f050f15` | UI 验收与 Core 版本修正授权记录待提交 | 十项功能证据已齐；Core alpha.4 包版本修正待派发 |
-| Core | `c4fe12634571154a9d64ce97f8f9922dc14317b3` | 已核验干净 | `CORE-T5-alpha4-version-stamp` 已授权，待原线程领取 |
+| Platform | `6d76c8c` | Core 版本修正派发记录待提交 | 十项功能证据已齐；Core alpha.4 包版本修正已派发 |
+| Core | `c4fe12634571154a9d64ce97f8f9922dc14317b3` | 派发时已核验干净 | `CORE-T5-alpha4-version-stamp` 正在执行 |
 | Official UI | `c3a641ffc22a21905753d68c2c87621c4354faee` | 已核验干净 | T5 非 UI 连续性与生命周期证据已获 Platform 接受 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
@@ -61,7 +61,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `Core_alpha4_version_stamp_authorized` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | Core 包版本为 alpha.4 且精确候选复验通过 |
+| `T5-INTEGRATION` | Core + UI | `Core_alpha4_version_stamp_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | Core 包版本为 alpha.4 且精确候选复验通过 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界

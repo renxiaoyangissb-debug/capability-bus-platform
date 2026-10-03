@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: t5_core_alpha4_version_stamp_authorized
+status: t5_core_alpha4_version_stamp_in_progress
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -114,7 +114,7 @@ gates:
     accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
     human_response: "接受F2"
   - id: T5-ALPHA4-INTEGRATION
-    status: Core_alpha4_version_stamp_authorized
+    status: Core_alpha4_version_stamp_in_progress
     first_lane: UI-U4-real-core-integration
     last_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     active_thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
@@ -140,6 +140,7 @@ gates:
     verified_ui_release_evidence_commit: c3a641ffc22a21905753d68c2c87621c4354faee
     ui_release_evidence: docs/reviews/human-checkpoints/T5-ui-release-evidence-human-review.md
     release_blocker: Core_package_version_still_0_1_0_alpha_3_not_integrated_alpha_4
+    core_alpha4_version_dispatch_platform_commit: 6d76c8c
     blocker: none
     repository_state: all_three_worktrees_clean_at_verification
     next_human_checkpoint: release_candidate
