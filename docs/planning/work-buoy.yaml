@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: f2_accepted_t5_authorized
+status: t5_ui_u4_in_progress
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: authorized_pending_dispatch
-  summary: The user accepted F2 for Core 272f632 and UI 39b5904. T5 is authorized; start with one UI U4 real-Core integration lane while Core remains idle unless a verified integration blocker requires an owning-project fix.
-  owner: capability-bus-platform
+  phase: UI_U4_real_core_integration_dispatched
+  summary: F2 is accepted. Platform dispatched one medium-reasoning UI U4 lane from UI 39b5904 against Core 272f632; Core remains idle unless a verified integration blocker requires an owning-project fix.
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "The user replied 接受F2, accepting Core 272f6325506c4ce7c4de5c100fb3f03a28701318 and UI 39b5904499c0ecfa0dff1d57683812c150e377e4 as the F2 freeze baseline."
-  next_action: Commit the F2 acceptance record, then dispatch one medium-reasoning UI U4 lane to replace the fake transport with real Core integration and run focused checks plus one candidate full suite.
+  last_completed_action: "Platform committed F2 acceptance at d330850 and dispatched UI U4 to thread 01a0fba0-e14d-7610-ac58-10f172ee78e0 with medium reasoning, one active lane, and a 12-round-trip soft limit."
+  next_action: Use one event-driven wait for the UI U4 completion or required-action event; then verify its Git commit, frozen-contract integrity, focused evidence, one full suite, package integrity, and real-Core integration behavior.
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 06efe7bcf447428cda9fe6983fb29344d78129f2
-    previous_verified_head: c7b312d
-    expected_worktree: f2_acceptance_records_pending_commit
+    expected_head: d330850
+    previous_verified_head: 06efe7bcf447428cda9fe6983fb29344d78129f2
+    expected_worktree: t5_dispatch_records_pending_commit
   core:
     expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U4_authorized_pending_dispatch
+    phase: U4_real_core_integration_in_progress
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -98,10 +98,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: f2_acceptance_records_to_be_committed
+  uncommitted_platform_changes: t5_dispatch_records_to_be_committed
   uncommitted_core_changes: none
-  uncommitted_ui_changes: none
-  active_implementation_lanes: 0
+  uncommitted_ui_changes: implementation_in_progress_state_unknown
+  active_implementation_lanes: 1
+  active_lane: UI-U4-real-core-integration
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
