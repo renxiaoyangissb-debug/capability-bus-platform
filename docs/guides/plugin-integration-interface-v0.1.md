@@ -1,7 +1,10 @@
 # Capability Bus 插件接入接口说明
 
-适用版本：Core `0.1.0-alpha.2`  
-协议版本：`0.1.0-alpha.1`  
+适用版本：Core `0.1.0-alpha.3`，含已验证的 T5 管理引导兼容补充 `3225038`
+
+调用协议版本：`0.1.0-alpha.1`
+
+管理协议版本：`0.1.0-alpha.3`
 保存日期：2026-10-03（Asia/Shanghai）
 
 ## 1. 插件模型
@@ -117,6 +120,21 @@ PYTHONDONTWRITEBYTECODE=1
 ```
 
 不要依赖用户的 `PATH`、`HOME`、代理或其他 shell 环境变量。
+
+获得有效管理 Grant 的 resident `interface` 插件还会收到：
+
+```text
+CAPBUS_MANAGEMENT_SOCKET
+CAPBUS_MANAGEMENT_PROTOCOL_VERSION
+CAPBUS_MANAGEMENT_IDENTITY_ID
+CAPBUS_MANAGEMENT_CREDENTIAL_ID
+CAPBUS_MANAGEMENT_CREDENTIAL_GENERATION
+CAPBUS_MANAGEMENT_HMAC_KEY
+```
+
+这些变量属于当前受监督进程的独立、可轮换管理会话，不是 owner 身份或 owner key。插件只能调用 Manifest `consumes` 中声明且被有效 Grant 授权的管理操作；声明本身不产生权限。停止、禁用、卸载、Trust Zone 变更、回滚、Grant 最终撤销、owner 凭据轮换、Core 重启或插件重新供给都会使旧凭据失效或安全失败。
+
+管理请求使用 `CAPBUS_MANAGEMENT_HMAC_KEY` 对不含 `signature` 的规范 JSON（UTF-8、键排序、紧凑分隔符）执行 HMAC-SHA-256，然后通过 `CAPBUS_MANAGEMENT_SOCKET` 发送现有 `capbus-local-control-v1` 的 `management` envelope。插件不需要也不得 import Core、读取 Core SQLite、私有目录或 owner 凭据。
 
 ### 3.1 启动握手
 
@@ -335,7 +353,7 @@ cache_dir = os.environ["CAPBUS_PLUGIN_CACHE_DIR"]
 }
 ```
 
-禁止传递 token、password、api_key 等明文。当前 Alpha.2 尚未完成 Secret Store 注入，因此迁移代码应先保留秘密适配层，不要假设 Core 已能把真实凭据注入插件。
+禁止传递 token、password、api_key 等明文。Core 的管理面只处理 `SecretRef` 注册、查询和撤销，不会把 SecretRef 等同于明文秘密注入；插件仍应保留自己的安全适配层。
 
 ## 6. 注册、授权与调用
 

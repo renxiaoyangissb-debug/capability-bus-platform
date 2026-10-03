@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_candidate_pending_platform_verification
+status: t5_core_fix_verified_ui_u4_resume_ready
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_candidate_pending_platform_verification
-  summary: Core committed candidate 3225038 for scoped plugin management bootstrap and reports 16/16 focused plus 102/102 installed tests. Platform confirmed the commit and clean worktree but has not independently run acceptance yet; UI remains stopped.
+  phase: UI_U4_resume_ready
+  summary: Platform independently accepted Core 3225038 after a fresh-archive wheel install, 102/102 tests with zero skips, contract integrity checks, and a real supervised interface-plugin socket test including immediate Grant revocation. UI U4 may resume.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,24 +14,24 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Core committed 322503845cb322628fe2db7a2c570fc6289d22db and reported 16/16 focused tests, 102/102 installed tests, compile/diff checks, and zero semantic changes to F1 plus the 42 F2 operations. Platform confirmed the commit exists, the ten-file scope, and a clean Core worktree; these test results remain owner-reported."
-  next_action: "Independently inspect and test Core 3225038: focused bootstrap security, one full installed suite including permitted Unix sockets, compilation, F1/F2 machine-contract diff, package boundary, and owner-key non-exposure. Accept or issue one scoped correction before resuming UI U4."
+  last_completed_action: "Platform accepted Core 322503845cb322628fe2db7a2c570fc6289d22db: isolated wheel SHA-256 84a028fe05bcc0ac1ac490848471ee36c8bff66368fa8362c3338a70edb825bb, 2/2 candidate tests, 102/102 full installed tests with zero skips, compilation, contract JSON, F1 zero diff, F2 machine-file zero diff, 27-file wheel boundary, and 1/1 real supervised-plugin socket/revocation test passed."
+  next_action: Dispatch one medium-reasoning UI U4 resume lane against Core 3225038 to replace fixture credentials/transport with the documented resident interface-plugin environment, rerun real integration, and prepare the UI candidate.
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 7c5c5aa87d50309c18075a126cf458c21d50f8b9
-    previous_verified_head: f48104f38d3c60b2588a13c9ac90f07678f2262b
-    expected_worktree: core_candidate_status_records_pending_commit
+    expected_head: dae4a85a581488e7b8b4cd5bf77a3ce047db2b07
+    previous_verified_head: 7c5c5aa87d50309c18075a126cf458c21d50f8b9
+    expected_worktree: core_acceptance_records_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
-    phase: T5_management_bootstrap_candidate_pending_platform_verification
+    phase: T5_management_bootstrap_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U4_blocked_by_missing_Core_management_bootstrap
+    phase: U4_authorized_to_resume_against_Core_3225038
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -81,6 +81,16 @@ latest_verified_evidence:
   ui_u3_source_boundary_checks: 16_passed
   ui_u3_plugin_package: 31_of_31_files_verified
   ui_u3_disposition: verified_by_platform
+  core_t5_management_bootstrap_commit: 322503845cb322628fe2db7a2c570fc6289d22db
+  core_t5_management_bootstrap_focused_tests: 2_of_2_passed
+  core_t5_management_bootstrap_full_installed_tests: 102_of_102_passed_without_skips
+  core_t5_management_bootstrap_platform_e2e: 1_of_1_real_supervised_plugin_socket_and_revocation_passed
+  core_t5_management_bootstrap_compileall: passed
+  core_t5_management_bootstrap_f1_diff: zero
+  core_t5_management_bootstrap_f2_machine_diff: zero
+  core_t5_management_bootstrap_wheel_files: 27
+  core_t5_management_bootstrap_wheel_sha256: 84a028fe05bcc0ac1ac490848471ee36c8bff66368fa8362c3338a70edb825bb
+  core_t5_management_bootstrap_evidence: docs/reviews/human-checkpoints/T5-core-management-bootstrap-human-review.md
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -98,7 +108,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_candidate_status_records_to_be_committed
+  uncommitted_platform_changes: core_acceptance_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 0

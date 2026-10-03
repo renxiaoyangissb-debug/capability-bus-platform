@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `7c5c5aa87d50309c18075a126cf458c21d50f8b9` | Core 候选状态记录待提交 | Core 候选已返回，等待 Platform 独立验收 |
-| Core | `322503845cb322628fe2db7a2c570fc6289d22db` | 已核验干净 | 管理身份引导候选；Core 自报测试通过，尚未获 Platform 接受 |
-| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 已核验干净，无半成品修改 | U4 被 Core 管理身份引导缺口阻塞 |
+| Platform | `dae4a85a581488e7b8b4cd5bf77a3ce047db2b07` | Core 验收记录待提交 | Core T5 修复已独立验收；准备恢复 UI U4 |
+| Core | `322503845cb322628fe2db7a2c570fc6289d22db` | 已核验干净 | 管理身份引导修复已获 Platform 接受 |
+| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 已核验干净，无半成品修改 | U4 已获授权，可针对 Core `3225038` 恢复联调 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -61,12 +61,12 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `Core_candidate_pending_platform_verification` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
+| `T5-INTEGRATION` | Core + UI | `Core_fix_verified_UI_U4_resume_authorized` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
 
-用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。Core 已提交兼容性修复候选 `3225038`：新增受 Grant 约束的 interface-plugin 管理身份引导，Core 自报专项 16/16、安装态 102/102，并声明 42 个冻结操作与 F1/F2 机器契约语义未变。Platform 只确认了提交、十文件变更范围和干净工作区，尚未独立运行验收，因此 UI 继续停止，当前没有活动实现通道。下一强制人工检查点仍是发布候选接受。
+用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。Platform 已独立接受 Core 修复 `3225038`：全新归档、隔离 wheel 安装、102/102 完整测试且无跳过、F1/F2 机器契约零差异、编译与 27 文件包边界通过；额外的真实受监督插件测试证明管理 Socket 调用成功且 Grant 撤销后旧凭据立即失效。证据见 [T5 Core 管理引导报告](../reviews/human-checkpoints/T5-core-management-bootstrap-human-review.md)。UI U4 可以恢复，下一强制人工检查点仍是发布候选接受。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 
