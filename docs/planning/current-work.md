@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `d330850` F2 接受与 T5 授权 | T5 派发记录待提交 | 已单通道派发 UI U4，等待事件完成 |
-| Core | `272f6325506c4ce7c4de5c100fb3f03a28701318` | 已核验干净 | F2 冻结基线；T5 中保持待命，除非联调暴露 Core 所属缺陷 |
-| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 启动基线已核验干净；执行中状态待回报 | U4 真实 Core 联调执行中；线程 `01a0fba0-e14d-7610-ac58-10f172ee78e0` |
+| Platform | `052b3197929cd6e6bf958fc018330952a6b3a1ad` | T5 阻塞记录待提交 | UI U4 已返回可复现阻塞；待派发 Core 兼容性修复 |
+| Core | `272f6325506c4ce7c4de5c100fb3f03a28701318` | 已核验干净 | 缺少面向插件进程的公开认证管理引导通道；Core T5 修复待派发 |
+| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 已核验干净，无半成品修改 | U4 被 Core 管理身份引导缺口阻塞 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -61,12 +61,12 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `UI_U4_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
+| `T5-INTEGRATION` | Core + UI | `Core_compatibility_fix_required` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
 
-用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。T5 按低消耗策略只启动一个实现通道：先由 Official UI 执行 U4 真实 Core 联调；Core 保持待命，只有在可复现证据表明缺陷属于 Core 时才切换执行通道。下一强制人工检查点是发布候选接受。
+用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。UI U4 的真实联调已证明插件安装、Grant、启用、启动和 `ui.session.status` 正常，但管理请求因插件进程拿不到公开 socket 定位与受限身份/签名通道而返回 `CREDENTIAL_INVALID`。Core 当前只用私有 owner key 签名，UI 若直接读取会违反既定边界。两仓保持干净，当前没有活动实现通道；下一步是单通道派发 Core 的兼容性补充，且不得改变冻结的 42 操作语义或暴露 owner key。下一强制人工检查点仍是发布候选接受。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

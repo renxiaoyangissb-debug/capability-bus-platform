@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: t5_ui_u4_in_progress
+status: t5_core_compatibility_fix_required
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -23,7 +23,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: verify_UI_U4_candidate_then_continue_T5
+  next_auto_phase: dispatch_scoped_Core_management_bootstrap_fix
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -45,7 +45,7 @@ repositories:
     start_gate: source-rights-accepted
     verified_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
     candidate_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
-    phase_status: F2_accepted_T5_integration_baseline
+    phase_status: T5_compatibility_fix_ready_to_dispatch
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     name: capability-bus-official-ui
@@ -54,7 +54,7 @@ repositories:
     start_gate: F1-accepted
     previous_verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
     verified_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
-    phase_status: U4_real_core_integration_in_progress
+    phase_status: U4_blocked_by_missing_Core_management_bootstrap
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -113,12 +113,14 @@ gates:
     accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
     human_response: "接受F2"
   - id: T5-ALPHA4-INTEGRATION
-    status: UI_U4_in_progress
+    status: Core_compatibility_fix_required
     first_lane: UI-U4-real-core-integration
-    active_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+    last_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     activation_platform_commit: d330850
     core_baseline: 272f6325506c4ce7c4de5c100fb3f03a28701318
     ui_baseline: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    blocker: missing_public_authenticated_management_bootstrap_for_plugin_process
+    repository_state: both_owner_worktrees_clean_no_partial_changes
     next_human_checkpoint: release_candidate
 
 constraints:
