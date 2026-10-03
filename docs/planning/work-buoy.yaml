@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: local_release_preparation_core_active
+status: local_release_preparation_core_correction
 
 active_work:
   id: CORE-LOCAL-RELEASE-PREP
-  phase: local_artifact_and_tag_preparation
-  summary: "Prepare Core 4858520 as a local-only release artifact with checksums and an unpushed local tag. Public upload, push, deployment, and credential use are prohibited."
+  phase: forced_crash_release_test_diagnosis
+  summary: "Core local artifact build reached the full installed suite, where forced crash recovery failed once: 104/105 passed with 2 sandbox socket skips. No tag or approved checksums/metadata exist; public upload remains prohibited."
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
@@ -14,9 +14,9 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "The user authorized continued release preparation while explicitly prohibiting public upload. Platform verified clean accepted commits and found no existing local release tags."
-  next_action: "Dispatch Core-only local release preparation at exact commit 4858520: build local artifacts, checksums and metadata, create an unpushed local v0.1.0-alpha.4 tag, and report evidence without changing tracked runtime files."
-  stop_condition: "Stop on commit/worktree mismatch, test or artifact verification failure, tag conflict, required credentials/network/publication, or scope change."
+  last_completed_action: "Core built provisional wheel/source archives from exact commit 4858520, but the full installed suite failed test_release_evidence.ReleaseEvidenceTest.test_forced_crash_recovers. It correctly stopped before checksums, metadata, or tag creation."
+  next_action: "Have Core reproduce only the forced-crash failure with retained diagnostics, determine flake versus candidate defect, and make the narrowest in-scope correction only if reproducibly required; no tag or publication."
+  stop_condition: "Do not resume release packaging until the focused test passes repeatedly and the full installed candidate suite passes once. Stop on architecture/contract change, public/network/credential requirement, or unresolved nondeterminism."
 
 verified_state:
   platform:
@@ -143,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_local_release_dispatch_records_to_be_committed
+  uncommitted_platform_changes: core_local_release_failure_and_correction_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: CORE-LOCAL-RELEASE-PREP
+  active_lane: CORE-LOCAL-RELEASE-PREP-CORRECTION
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
