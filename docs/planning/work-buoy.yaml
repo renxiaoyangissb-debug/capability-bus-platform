@@ -1,37 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: f2_human_acceptance_required
+status: f2_accepted_t5_authorized
 
 active_work:
-  id: F2-CORE-ALPHA-API-FREEZE
-  phase: mandatory_human_checkpoint
-  summary: Platform independently verified Core T4 at 272f632 and UI U3 at 39b5904. The complete Alpha management contract and controlled-write evidence are ready for mandatory F2 human acceptance.
+  id: T5-ALPHA4-INTEGRATION
+  phase: authorized_pending_dispatch
+  summary: The user accepted F2 for Core 272f632 and UI 39b5904. T5 is authorized; start with one UI U4 real-Core integration lane while Core remains idle unless a verified integration blocker requires an owning-project fix.
   owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: none
+  implementation_repository: capability-bus-official-ui
   thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
-  blocking_reason: mandatory_F2_human_acceptance
+  blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform independently verified UI 39b5904499c0ecfa0dff1d57683812c150e377e4 from a fresh archive: exact 12-file Core management snapshot, deterministic offline install with unchanged lock hash, 26/26 tests, 27-module build, 20 licenses, 16 boundary checks, and 31/31 packaged files passed; UI is clean."
-  next_action: Present docs/reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md and wait for an explicit human response accepting or rejecting F2.
-  stop_condition: Mandatory F2 human checkpoint. Do not dispatch T5, real Core/UI integration, or further implementation before explicit acceptance.
+  last_completed_action: "The user replied 接受F2, accepting Core 272f6325506c4ce7c4de5c100fb3f03a28701318 and UI 39b5904499c0ecfa0dff1d57683812c150e377e4 as the F2 freeze baseline."
+  next_action: Commit the F2 acceptance record, then dispatch one medium-reasoning UI U4 lane to replace the fake transport with real Core integration and run focused checks plus one candidate full suite.
+  stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: c7b312d
-    previous_verified_head: 846908a
-    expected_worktree: u3_and_f2_reports_pending_commit
+    expected_head: 06efe7bcf447428cda9fe6983fb29344d78129f2
+    previous_verified_head: c7b312d
+    expected_worktree: f2_acceptance_records_pending_commit
   core:
     expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
-    phase: T4_verified
+    phase: F2_accepted_T5_integration_baseline
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U3_verified_F2_pending
+    phase: U4_authorized_pending_dispatch
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -45,6 +45,10 @@ latest_verified_evidence:
   exact_source_hashes: 18_of_18_matched
   f1_report: docs/reviews/human-checkpoints/F1-contract-freeze-human-review.md
   f1_human_response: "接受 F1"
+  f2_report: docs/reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md
+  f2_human_response: "接受F2"
+  f2_accepted_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
+  f2_accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
   ui_u1_commit: 562828ebb7a760066844c172c23b3b2200abae5a
   ui_u1_offline_dependencies: 19_installed
   ui_u1_package_lock_sha256: 3020486928dd8f424bf2d7d884f431b3c6915fced3fc7d55f68a4f8ead608a89
@@ -94,9 +98,10 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: u3_and_f2_reports_and_gate_ledger_to_be_committed
+  uncommitted_platform_changes: f2_acceptance_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
+  active_implementation_lanes: 0
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:

@@ -443,12 +443,12 @@ reliability.dead_letter.list
 ## 9. 当前阶段必须注意的限制
 
 - 仅支持 Python 进程入口；其他语言项目需要一个 Python 协议适配器。
-- Manifest 中的网络、文件系统和 Secret 权限已有声明，但 Alpha.2 尚无完整 OS 沙箱强制。
+- Manifest 中的网络、文件系统和 Secret 权限已有声明；Alpha 仍不把协议级权限声明等同于完整 OS 沙箱强制。
 - Core 会检查 Schema 文件存在且位于包内，但插件仍应自行验证领域输入和输出，不能假设 Core 已执行每个插件 Schema。
-- 配置历史、回滚和真实 Secret 注入尚未完成。
+- Core 已提供版本化配置、回滚与 SecretRef 管理；插件仍不得在协议载荷、日志或配置中传递明文秘密。
 - 插件不得直接调用、import 或读取其他插件。
-- UI 管理写接口、真实 Core UI 联调和 F2 尚未开始。
-- F1 Schema 文件标题中的 `candidate` 是历史文本；接受基线是 Core `78127bb9192aa6ddf8f15b544c553c149415c5a5`，Alpha.2 未修改这些契约。
+- UI 管理写接口已绑定到 F2 冻结的 42 操作管理目录；真实 Core/UI 联调属于 T5，尚未形成发布候选。
+- F1 Schema 文件标题中的 `candidate` 是历史文本；F1 基线是 Core `78127bb9192aa6ddf8f15b544c553c149415c5a5`，F2 接受的完整 Alpha API 基线是 Core `272f6325506c4ce7c4de5c100fb3f03a28701318` 与 Official UI `39b5904499c0ecfa0dff1d57683812c150e377e4`。
 
 ## 10. 接入验收清单
 

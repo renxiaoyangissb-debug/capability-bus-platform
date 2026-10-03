@@ -14,12 +14,12 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `c7b312d` UI U3 单次等待检查点 | U3/F2 报告与门禁台账待提交 | Core T4、UI U3 均已独立验证；停在 F2 人工门禁 |
-| Core | `272f6325506c4ce7c4de5c100fb3f03a28701318` | 已核验干净 | T4 / alpha.3 已验证；不得宣称 F2 |
-| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 已核验干净 | U3 受控写界面已验证；等待 F2 人工接受 |
+| Platform | `06efe7bcf447428cda9fe6983fb29344d78129f2` | F2 接受记录待提交 | F2 已人工接受；准备单通道启动 T5 |
+| Core | `272f6325506c4ce7c4de5c100fb3f03a28701318` | 已核验干净 | F2 冻结基线；T5 中保持待命，除非联调暴露 Core 所属缺陷 |
+| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 已核验干净 | F2 冻结基线；U4 真实 Core 联调已授权、待派发 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
-新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者均使用 GPT-5.6 Sol / high，已完成只读状态核验并保持待命，只有新 Platform 对话可以激活。旧对话仅保留审计记录。
+新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
 
 新 Platform 对话：`01a0fba2-3f09-7763-ada8-6e3e0b6b06d1`，使用 GPT-5.6 Sol / high。它必须读取本最终交接提交并重新核验三仓状态，然后激活上述两条待命执行线。本旧 Platform 对话在交接后停止。
 
@@ -49,9 +49,9 @@
 
 T2 最终独立复核：源码 71/71、隔离安装 71/71、专项 27/27；18/18 来源基线文件哈希不变。初始 F1 候选中的跨 Provider Grant 漏洞已复现、修正并再次独立验证。
 
-## F1 接受后的待办队列
+## F2 接受后的待办队列
 
-F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 UI；每个 Agent 只能写入其所属仓库。
+F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道顺序调度 Core 或 UI；每个 Agent 只能写入其所属仓库。
 
 | ID | 所属项目 | 状态 | 工作范围 | 退出门槛 |
 |---|---|---|---|---|
@@ -60,13 +60,13 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 | `UI-U2` | capability-bus-official-ui | `verified` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | 已满足；见 [U2 报告](../reviews/human-checkpoints/U2-read-only-console-human-review.md) |
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
-| `F2-HUMAN-ACCEPTANCE` | Platform | `human_acceptance_required` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 等待人工接受 F2；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `blocked_by_F2` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
+| `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
+| `T5-INTEGRATION` | Core + UI | `authorized_pending_dispatch` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
 
-Core T4 与 UI U3 均已独立验证。当前处于强制 F2 人工检查点，不再派发 T5、真实 Core/UI 联调或其他实现工作，直到用户明确接受 F2。
+用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。T5 按低消耗策略只启动一个实现通道：先由 Official UI 执行 U4 真实 Core 联调；Core 保持待命，只有在可复现证据表明缺陷属于 Core 时才切换执行通道。下一强制人工检查点是发布候选接受。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

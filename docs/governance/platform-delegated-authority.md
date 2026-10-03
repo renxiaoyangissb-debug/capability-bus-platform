@@ -77,4 +77,4 @@ Reports are append-only evidence records after acceptance. Later corrections mus
 
 ## Current checkpoint
 
-T0 and source rights are accepted, T1/T2 are verified, and the human accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. The evidence and response are recorded in [the F1 human review](../reviews/human-checkpoints/F1-contract-freeze-human-review.md). Platform may dispatch and supervise Core T3 and Official UI U1/U2 within the frozen contract. F2 is the next planned mandatory human checkpoint unless an earlier hard stop applies.
+T0, source rights, F1, and F2 are accepted. The human accepted Core `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI `39b5904499c0ecfa0dff1d57683812c150e377e4` as the F2 Core Alpha API Freeze baseline; the evidence and response are recorded in [the F2 human review](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md). Platform may dispatch and supervise T5 / alpha.4 integration within that frozen contract. Release-candidate acceptance is the next planned mandatory human checkpoint unless an earlier hard stop applies.

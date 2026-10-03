@@ -41,7 +41,7 @@ The current measured baseline and rationale are recorded in [the 2026-10-03 usag
 
 ### Delegated development authority
 
-The user has approved the architecture and delegated in-scope workflow authorization to Platform. Platform can authorize routine T1–T5 work and project-conversation dispatch after prerequisite evidence is verified. The source ownership/reuse/distribution checkpoint was accepted before T1 extraction. The next planned mandatory human acceptance is F1.
+The user has approved the architecture and delegated in-scope workflow authorization to Platform. Platform can authorize routine T1–T5 work and project-conversation dispatch after prerequisite evidence is verified. The source ownership/reuse/distribution checkpoint, F1, and F2 have been accepted. The next planned mandatory human acceptance is the release candidate.
 
 ### F1 Contract Freeze
 

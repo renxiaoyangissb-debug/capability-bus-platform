@@ -44,3 +44,15 @@ After F2 acceptance, T5 / alpha.4 may perform real Core/UI integration, installa
 
 - Accept: `接受 F2`
 - Reject: identify the blocking contract, security, compatibility, or interaction concern.
+
+## Human acceptance record
+
+On 2026-10-03 (Asia/Shanghai), the user replied:
+
+```text
+接受F2
+```
+
+This accepts Core `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI `39b5904499c0ecfa0dff1d57683812c150e377e4` as the F2 Core Alpha API Freeze baseline. Platform may now activate T5 / alpha.4 integration under the delegated workflow authority and the low-consumption execution profile.
+
+This acceptance does not authorize an unversioned breaking change, product-scope expansion, public exposure, production credentials, or release-candidate publication. The release candidate remains a separate mandatory human checkpoint.

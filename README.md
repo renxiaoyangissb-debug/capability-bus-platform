@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**F2 HUMAN ACCEPTANCE REQUIRED — CORE T4 AND UI U3 VERIFIED**
+**F2 ACCEPTED — T5 / ALPHA.4 INTEGRATION AUTHORIZED**
 
-The user accepted Core `78127bb9192aa6ddf8f15b544c553c149415c5a5` as the F1 Contract Freeze baseline. Platform independently verified corrected Core T4 at `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI U3 at `39b5904499c0ecfa0dff1d57683812c150e377e4`. The complete Alpha management contract and controlled-write UI evidence are ready for the mandatory F2 human checkpoint. No T5 integration work may begin before explicit F2 acceptance.
+The user accepted Core `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI `39b5904499c0ecfa0dff1d57683812c150e377e4` as the F2 Core Alpha API Freeze baseline on 2026-10-03. T5 integration is authorized under the single-lane low-consumption profile. The next mandatory human checkpoint is release-candidate acceptance.
 
 The saved plugin integration guide is [docs/guides/plugin-integration-interface-v0.1.md](docs/guides/plugin-integration-interface-v0.1.md).
 

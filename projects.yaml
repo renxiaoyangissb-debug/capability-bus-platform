@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: f2_human_acceptance_required
+status: f2_accepted_t5_authorized
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -10,8 +10,8 @@ work_buoy_record: docs/planning/work-buoy.yaml
 approval:
   baseline_commit: ddcfa0974637bbdd9a91d93b87f0a7f983eda8af
   record: docs/governance/t0-preparation-authorization.md
-  authorized_core_phase: T4
-  authorized_ui_phase: U3
+  authorized_core_phase: T5
+  authorized_ui_phase: U4
   core_thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   previous_core_thread_id: 01a0f7c7-8a3b-78d2-adaa-8f1f83c3f34e
   platform_thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
@@ -22,8 +22,8 @@ approval:
   ui_task_dispatch_authorized: true
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: F2
-  next_auto_phase: none_wait_for_F2_human_acceptance
+  current_mandatory_human_checkpoint: none
+  next_auto_phase: T5_UI_U4_real_core_integration
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -45,7 +45,7 @@ repositories:
     start_gate: source-rights-accepted
     verified_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
     candidate_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
-    phase_status: T4_verified
+    phase_status: F2_accepted_T5_integration_baseline
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     name: capability-bus-official-ui
@@ -54,7 +54,7 @@ repositories:
     start_gate: F1-accepted
     previous_verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
     verified_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
-    phase_status: U3_verified_F2_pending
+    phase_status: U4_authorized_pending_dispatch
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -105,10 +105,19 @@ gates:
     evidence: docs/reviews/human-checkpoints/U3-controlled-writes-human-review.md
     verified_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
   - id: F2-CORE-ALPHA-API-FREEZE
-    status: human_acceptance_required
+    status: accepted
     evidence: docs/reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md
     candidate_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
     candidate_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    accepted_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
+    accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    human_response: "接受F2"
+  - id: T5-ALPHA4-INTEGRATION
+    status: authorized_pending_dispatch
+    first_lane: UI-U4-real-core-integration
+    core_baseline: 272f6325506c4ce7c4de5c100fb3f03a28701318
+    ui_baseline: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    next_human_checkpoint: release_candidate
 
 constraints:
   architecture_change_allowed: false

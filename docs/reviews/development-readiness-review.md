@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **F1 ACCEPTED — CORE T3 AND UI U1 AUTHORIZED**
+Status: **F2 ACCEPTED — T5 / ALPHA.4 INTEGRATION AUTHORIZED**
 
 ## Prepared
 
@@ -25,7 +25,7 @@ Status: **F1 ACCEPTED — CORE T3 AND UI U1 AUTHORIZED**
 - [x] Delegate routine workflow authorization and Core/UI task dispatch to Platform.
 - [x] Confirm source ownership and permission to reuse, modify, and distribute committed source code before T1 extraction.
 - [x] Accept F1 before UI business implementation.
-- [ ] Accept F2 before concentrated alpha.4 integration.
+- [x] Accept F2 before concentrated alpha.4 integration.
 
 ## Approval record
 
@@ -37,4 +37,4 @@ Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platf
 
 ## Current authorized action
 
-T0 and source rights are accepted, and T1/T2 are verified. Platform dispatched, supervised, rejected the first T2 candidate after reproducing a cross-Provider Grant flaw, and independently verified the corrected candidate at `78127bb9192aa6ddf8f15b544c553c149415c5a5`. The human then replied “接受 F1”, accepting that exact candidate and the decisions recorded in [the F1 human review](human-checkpoints/F1-contract-freeze-human-review.md). Core T3 and Official UI U1 are authorized for automatic dispatch.
+Core T4 at `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI U3 at `39b5904499c0ecfa0dff1d57683812c150e377e4` were independently verified. The human then replied `接受F2`, accepting that exact pair and the decisions recorded in [the F2 human review](human-checkpoints/F2-core-alpha-api-freeze-human-review.md). T5 / alpha.4 integration is authorized; Platform will activate one owning-project implementation lane at a time and stop again for release-candidate human acceptance.
