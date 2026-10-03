@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_u4_interrupted_usage_limit_dirty
+status: t5_ui_u4_resumed_from_dirty_checkpoint
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_U4_recoverable_interruption
-  summary: The UI U4 turn hit its usage limit after 28/28 focused and bridge-security tests passed and real Core integration reached config expected-version diagnosis. UI remains at HEAD 39b5904 with 14 tracked modifications and 3 untracked files; no candidate commit exists.
-  owner: capability-bus-platform
+  phase: UI_U4_resumed_in_progress
+  summary: The user explicitly resumed UI U4. Platform reverified the exact dirty checkpoint and activated one medium-reasoning UI lane to continue only the config expected-version failure slice, then converge to one candidate full verification.
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: none
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
-  blocking_reason: UI_turn_failed_at_usage_limit_explicit_resume_required
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+  blocking_reason: none
 
 resume_point:
-  last_completed_action: "UI U4 passed 28/28 focused and bridge-security tests. Real Core integration passed package install, management and capability Grants, enable/start, public read/write, audit-bearing write, idempotency hit, and idempotency fingerprint conflict. The turn stopped at the system.config.set expected-version assertion when the task hit its usage limit; UI left a recoverable dirty tree and no commit."
-  next_action: "After an explicit resume, use GPT-5.6 Sol medium in the single UI lane. Preserve the dirty tree, inspect the structured system.config.set response, correct only the fixture or owning implementation, rerun the failed real-integration slice, then run one candidate full UI suite/build/package check."
+  last_completed_action: "The user replied 继续. Platform reverified clean Platform 2e015ec and Core 3225038 plus the exact UI 39b5904 dirty state: 14 tracked modifications, 3 untracked files, and git diff --check passing."
+  next_action: "The resumed UI thread must preserve the dirty tree, inspect the structured system.config.set response, correct only the fixture or owning implementation, rerun the failed real-integration slice, then run one candidate full UI suite/build/package check and commit."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: f28ae1918ab32860bd0c47f09c2f337ddffed0bf
-    previous_verified_head: a429c2b
-    expected_worktree: ui_u4_interruption_records_pending_commit
+    expected_head: 2e015ec8f0b89fababf2ed5cd52a7738acc39603
+    previous_verified_head: f28ae1918ab32860bd0c47f09c2f337ddffed0bf
+    expected_worktree: ui_u4_resume_records_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U4_interrupted_by_usage_limit_dirty_recoverable
+    phase: U4_resumed_from_dirty_checkpoint
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -108,11 +108,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_u4_interruption_records_to_be_committed
+  uncommitted_platform_changes: ui_u4_resume_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: 14_tracked_modified_plus_3_untracked_recoverable
-  active_implementation_lanes: 0
-  active_lane: none
+  active_implementation_lanes: 1
+  active_lane: UI-U4-expected-version-diagnosis-and-candidate-convergence
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
