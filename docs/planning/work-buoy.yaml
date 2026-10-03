@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: github_publication_active
+status: github_publication_complete
 
 active_work:
   id: GITHUB-PUBLICATION
-  phase: public_repository_push_and_release
-  summary: "The user explicitly authorized public upload. Three empty public GitHub repositories were created under renxiaoyangissb-debug; exact verified heads, local tags, and release assets remain to be pushed."
+  phase: public_releases_verified_complete
+  summary: "All three main branches are public. Core/UI annotated tags and prereleases are public, and GitHub-reported asset SHA-256 digests match the verified local artifacts."
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,9 +14,9 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Created three empty public repositories: capability-bus-core, capability-bus-official-ui, and capability-bus-platform under GitHub owner renxiaoyangissb-debug."
-  next_action: "Configure remotes and push exact verified main branches and annotated tags; then create Core/UI GitHub Releases and upload the verified local artifacts."
-  stop_condition: "Stop on authentication failure, remote divergence, checksum mismatch, or any request to publish different bytes/commits."
+  last_completed_action: "Pushed Core c64bc3f/tag v0.1.0-alpha.4, UI d77a9a9/tag v0.1.0-alpha.1, and Platform main; created and verified both public GitHub prereleases and their asset digests."
+  next_action: "Push this Platform completion record, then remain idle. PyPI/npm publication, deployment, or stable-release promotion are not authorized."
+  stop_condition: "GitHub public alpha publication is complete after the Platform completion record reaches origin/main."
 
 verified_state:
   platform:
@@ -146,8 +146,8 @@ in_flight_state:
   uncommitted_platform_changes: none_after_record_commit
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 1
-  active_lane: GITHUB-PUBLICATION
+  active_implementation_lanes: 0
+  active_lane: none_github_publication_complete
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:

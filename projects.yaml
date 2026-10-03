@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: github_publication_active
+status: github_publication_complete
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -23,7 +23,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: push_verified_repositories_and_release_assets
+  next_auto_phase: none_public_alpha_releases_complete
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -131,8 +131,8 @@ gates:
     verified_ui_candidate: 28f2428130db4d39f546d34f20b440fbc72fc6d1
     ui_evidence: docs/reviews/human-checkpoints/T5-ui-real-core-integration-human-review.md
     joint_gap_audit: docs/reviews/T5-joint-acceptance-audit.md
-    active_lane: GITHUB-PUBLICATION
-    active_lane_scope: push_exact_verified_heads_tags_and_release_assets_to_user_authorized_public_repositories
+    active_lane: none
+    active_lane_scope: github_publication_complete
     ui_release_evidence_dispatch_platform_commit: 669dd43
     core_dispatch_platform_commit: f52b97a
     verified_core_evidence_commit: c4fe12634571154a9d64ce97f8f9922dc14317b3
@@ -167,7 +167,7 @@ gates:
     evidence: docs/reviews/T5-local-release-preparation.md
     public_upload: false
   - id: GITHUB-PUBLICATION
-    status: active
+    status: verified_complete
     owner: renxiaoyangissb-debug
     repositories:
       - renxiaoyangissb-debug/capability-bus-core
@@ -175,6 +175,11 @@ gates:
       - renxiaoyangissb-debug/capability-bus-platform
     visibility: public
     human_response: "你帮我做完"
+    core_release: https://github.com/renxiaoyangissb-debug/capability-bus-core/releases/tag/v0.1.0-alpha.4
+    ui_release: https://github.com/renxiaoyangissb-debug/capability-bus-official-ui/releases/tag/v0.1.0-alpha.1
+    core_remote_commit: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
+    ui_remote_commit: d77a9a92f7abd435c3d5447db8179e4325f3e79d
+    releases_are_prerelease: true
 
 constraints:
   architecture_change_allowed: false
