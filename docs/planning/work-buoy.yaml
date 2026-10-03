@@ -1,37 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t4_contract_confirmation_correction_active
+status: core_t4_verified_ui_u3_activation_ready
 
 active_work:
-  id: CORE-T4-ALPHA3
-  phase: correction_dispatched_active
-  summary: Platform dispatched one narrow correction for per-operation contracts, explicit CLI confirmation, stable audited errors, and direct alpha.3 tests. Core remains the only active implementation lane.
-  owner: capability-bus-core
+  id: UI-U3-CONTROLLED-WRITES
+  phase: pre_dispatch_verified
+  summary: Platform independently verified corrected Core T4 at 272f632 with 100 installed tests and no skips. The public management write contract is ready for the single UI U3 implementation lane.
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-core
-  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Platform committed correction dispatch checkpoint 183e372 and completed the single bounded wait. Core reports one canonical runtime operation policy, explicit CLI confirmation, and audited redacted failures are implemented; it is exporting concrete per-operation argument requirements as the machine contract.
-  next_action: Do not poll again during this coordination turn. On the next explicit continuation or completion notification, read Core once; if a clean correction commit is returned, run one final batched acceptance focused on the rejected gates and full installed suite.
-  stop_condition: Keep UI U3 blocked until Platform independently verifies the Core public management mutation contracts; do not enter or claim F2.
+  last_completed_action: "Platform verified Core 272f6325506c4ce7c4de5c100fb3f03a28701318 from a fresh archive and installed wheel: 100/100 tests with no skips, compilation, JSON parsing, F1 zero diff, explicit confirmation, audited redacted failures, and direct alpha.3 coverage passed; Core is clean."
+  next_action: Activate UI U3 against exact Core commit 272f632 and contracts/management-v0.1 under the low-consumption policy. Wait once for completion, then run one independent UI acceptance pass.
+  stop_condition: Do not connect to private Core state or enter F2. After UI U3 verification, prepare the mandatory F2 report and stop for human acceptance.
 
 verified_state:
   platform:
-    expected_head: 183e372
-    previous_verified_head: be02e0b
-    expected_worktree: clean_after_correction_single_wait_checkpoint
+    expected_head: 5a70417
+    previous_verified_head: 183e372
+    expected_worktree: t4_verification_report_and_ui_u3_pre_dispatch_checkpoint_pending_commit
   core:
-    expected_head: 8a77b747ff8b5bd8f824157a926b1c8f69bf2785
+    expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
-    phase: T4_contract_confirmation_correction_active
+    phase: T4_verified
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
     expected_worktree: clean
-    phase: U2_verified_U3_blocked_by_core_t4_write_contracts
+    phase: U2_verified_U3_activation_pending
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -60,6 +60,13 @@ latest_verified_evidence:
   core_t3_source_baseline_diff: zero
   core_t3_independent_wheel_sha256: aab80116edbd1be4105bc5de43ac799c4b8764fa6875aae170aa06004fb881a7
   core_t3_wheel_boundary: only_core_sdk_distribution_metadata_and_cli_entrypoint
+  core_t4_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
+  core_t4_installed_tests: 100_of_100_passed_without_skips
+  core_t4_compileall: passed
+  core_t4_f1_contract_diff: zero
+  core_t4_management_json: all_parsed
+  core_t4_independent_wheel_sha256: 0f4a3c507268b47c703b3b4440fa4edf3e0e40c8839d3db14417e5b7eef89843
+  core_t4_disposition: verified_by_platform
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -77,7 +84,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: none_after_correction_single_wait_checkpoint
+  uncommitted_platform_changes: t4_verification_report_and_ui_u3_pre_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
