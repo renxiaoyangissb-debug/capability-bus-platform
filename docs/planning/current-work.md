@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `aacbe36` | Core alpha.4 验收与 UI 精确刷新授权记录待提交 | Core alpha.4 已独立验证；准备 UI 最终精确提交刷新 |
+| Platform | `ebe4f7c` | UI 精确刷新派发记录待提交 | Core alpha.4 已独立验证；UI 最终精确提交刷新已派发 |
 | Core | `4858520224a98b6528cb6cf47e7aa2e517bb62dc` | 已核验干净 | alpha.4 包/运行时版本已获 Platform 接受，协议未变 |
-| Official UI | `c3a641ffc22a21905753d68c2c87621c4354faee` | 已核验干净 | `UI-T5-exact-alpha4-refresh` 已授权，待原线程领取 |
+| Official UI | `c3a641ffc22a21905753d68c2c87621c4354faee` | 派发时已核验干净 | `UI-T5-exact-alpha4-refresh` 正在执行 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -61,7 +61,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `UI_exact_candidate_refresh_authorized` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | UI 精确绑定 Core alpha.4 且最终联合复验通过 |
+| `T5-INTEGRATION` | Core + UI | `UI_exact_candidate_refresh_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | UI 精确绑定 Core alpha.4 且最终联合复验通过 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界

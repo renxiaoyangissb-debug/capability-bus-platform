@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_exact_candidate_refresh_authorized
+status: t5_ui_exact_candidate_refresh_in_progress
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_exact_candidate_refresh_authorized
-  summary: "Platform independently accepted Core 4858520 as the alpha.4 package: 105/105 installed tests with zero skips, 27-file wheel, unchanged frozen protocols/contracts, and full target-host acceptance. Only the UI exact Core pin/evidence refresh remains."
+  phase: UI_exact_candidate_refresh_in_progress
+  summary: "Platform independently accepted Core 4858520 as alpha.4 and dispatched the final UI exact-pin/evidence refresh from Platform ebe4f7c. Core is idle and clean."
   owner: capability-bus-official-ui
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-official-ui
@@ -14,15 +14,15 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform independently verified Core 4858520 from a fresh archive: alpha.4 wheel SHA-256 fb604d0, 105/105 installed tests with zero skips, 27-file boundary, alpha.1/alpha.3 protocols and both contract trees unchanged, and the full acceptance harness passed."
-  next_action: "UI changes only the exact Core commit pin/evidence text from c4fe126 to 4858520, reruns one full verify/package pass and one real-Core integration pass, commits cleanly, and makes no release-candidate claim."
+  last_completed_action: "Platform commit ebe4f7c accepted Core 4858520 as the exact alpha.4 Core candidate and authorized UI-T5-exact-alpha4-refresh. The pin/evidence-only task was sent to the existing UI thread."
+  next_action: "Wait once for UI, then independently verify the exact commit, diff scope, unchanged lock/contracts/runtime, full UI/package gates and real-Core integration against 4858520. If clean, prepare the release-candidate human report and stop."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 6d76c8c
-    previous_verified_head: f050f158710fc2731f5ea09f95d402531763edb7
-    expected_worktree: core_alpha4_version_dispatch_checkpoint_pending_commit
+    expected_head: ebe4f7c
+    previous_verified_head: aacbe360ff774d0c28c8320a00125f8396cd33d6
+    expected_worktree: ui_alpha4_refresh_dispatch_checkpoint_pending_commit
   core:
     expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     expected_worktree: clean
@@ -134,7 +134,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_alpha4_acceptance_and_ui_refresh_authorization_to_be_committed
+  uncommitted_platform_changes: ui_alpha4_refresh_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
