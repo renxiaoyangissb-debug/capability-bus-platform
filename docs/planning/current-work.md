@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `5a70417` T4 修正等待检查点 | T4 验收报告与 UI U3 派发前台账待提交 | Core T4 已独立验证；准备仅激活 UI U3 |
+| Platform | `048a2b0` Core T4 验收检查点 | UI U3 派发后台账待提交 | UI U3 已作为唯一实现线激活 |
 | Core | `272f6325506c4ce7c4de5c100fb3f03a28701318` | 已核验干净 | T4 / alpha.3 已验证；不得宣称 F2 |
-| Official UI | `f17320cf39f18d507a4e40b0f7047b88a14582ae`（U2 `74131c5` + 确定性修正） | 已重新核验干净 | U2 已验证；U3 激活待派发 |
+| Official UI | `f17320cf39f18d507a4e40b0f7047b88a14582ae`（U2 `74131c5` + 确定性修正） | 派发前已核验干净，所属对话正在工作 | U3 受控写界面实现中；不得真实联调或宣称 F2 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者均使用 GPT-5.6 Sol / high，已完成只读状态核验并保持待命，只有新 Platform 对话可以激活。旧对话仅保留审计记录。
@@ -32,7 +32,7 @@
 | `UI-U2` | `verified` | 新 UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | UI `f17320cf39f18d507a4e40b0f7047b88a14582ae`；Platform 全新副本离线门禁通过 |
 | `PLATFORM-HANDOFF` | `verified` | 新 Platform 对话 `01a0fba2-3f09-7763-ada8-6e3e0b6b06d1` | Platform `85461db7b56645a881854c872473d15e99ba7b9e`，工作区核验干净 |
 | `CORE-T4` | `verified` | Core 对话 `01a0fba0-c91d-7981-9633-dbb8bd925df7` | `272f632`；安装态 100/100、无跳过、编译、F1 零差异、逐操作契约与安全门禁通过 |
-| `UI-U3` | `activation_pending` | UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 仅依赖 Core `272f632` 的公共管理写契约，按低消耗策略实现受控写操作 |
+| `UI-U3` | `active` | UI 对话 `01a0fba0-e14d-7610-ac58-10f172ee78e0` | 仅依赖 Core `272f632` 的公共管理写契约，按低消耗策略实现受控写操作 |
 
 用户已回复 `接受 F1`。用户随后要求停止旧项目对话并为 Platform、Core、UI 全部创建新对话重新调度。旧 Core/UI 对话已明确停止；新对话在登记进台账前不得写入。
 
@@ -59,14 +59,14 @@ F1 已接受。Platform 可在独立所属项目对话中并行调度 Core 与 U
 | `UI-U1` | capability-bus-official-ui | `verified` | 导入冻结契约和 fake Core；建立 UI 系统插件壳、Manifest、协议客户端与不兼容/离线/无权限处理 | 已通过，提交 `562828e` |
 | `UI-U2` | capability-bus-official-ui | `verified` | Dashboard、Plugins、Capabilities、Runtime、Audit 只读界面 | 已满足；见 [U2 报告](../reviews/human-checkpoints/U2-read-only-console-human-review.md) |
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
-| `UI-U3` | capability-bus-official-ui | `activation_pending` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
+| `UI-U3` | capability-bus-official-ui | `active` | 受控写操作、确认、结果和审计关联 | 写操作契约与权限测试通过 |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `blocked_by_UI-U3` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 人工接受 F2 |
 | `T5-INTEGRATION` | Core + UI | `blocked_by_F2` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
 
-Core T4 已独立验证。当前只允许激活 UI U3；UI 必须绑定 Core `272f632` 的公共管理契约，不得读取 Core 私有状态或建立私有接口。
+Core T4 已独立验证。当前只激活 UI U3；UI 必须绑定 Core `272f632` 的公共管理契约，不得读取 Core 私有状态或建立私有接口。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

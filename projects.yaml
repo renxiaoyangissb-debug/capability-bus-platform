@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t4_verified_ui_u3_activation_ready
+status: core_t4_verified_ui_u3_active
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -23,7 +23,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: activate_ui_u3_then_verify_once
+  next_auto_phase: wait_once_then_verify_ui_u3_candidate
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -53,7 +53,7 @@ repositories:
     role: ui-authority
     start_gate: F1-accepted
     verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
-    phase_status: U2_verified_U3_activation_pending
+    phase_status: U3_active
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -100,7 +100,7 @@ gates:
     verified_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
     evidence: docs/reviews/human-checkpoints/T4-core-alpha3-human-review.md
   - id: UI-U3-CONTROLLED-WRITES
-    status: activation_pending
+    status: active
   - id: F2-CORE-ALPHA-API-FREEZE
     status: not_started
 

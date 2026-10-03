@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t4_verified_ui_u3_activation_ready
+status: core_t4_verified_ui_u3_active
 
 active_work:
   id: UI-U3-CONTROLLED-WRITES
-  phase: pre_dispatch_verified
-  summary: Platform independently verified corrected Core T4 at 272f632 with 100 installed tests and no skips. The public management write contract is ready for the single UI U3 implementation lane.
+  phase: low_consumption_dispatched_active
+  summary: Platform dispatched UI U3 as the only implementation lane against exact Core 272f632 management contracts, using medium reasoning and the 12-round-trip low-consumption limit.
   owner: capability-bus-official-ui
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-official-ui
@@ -14,15 +14,15 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform verified Core 272f6325506c4ce7c4de5c100fb3f03a28701318 from a fresh archive and installed wheel: 100/100 tests with no skips, compilation, JSON parsing, F1 zero diff, explicit confirmation, audited redacted failures, and direct alpha.3 coverage passed; Core is clean."
-  next_action: Activate UI U3 against exact Core commit 272f632 and contracts/management-v0.1 under the low-consumption policy. Wait once for completion, then run one independent UI acceptance pass.
+  last_completed_action: Platform committed T4 verification and UI pre-dispatch checkpoint 048a2b0, reverified clean UI f17320cf39f18d507a4e40b0f7047b88a14582ae, and dispatched one compact medium-reasoning U3 turn.
+  next_action: Wait once for UI completion or required user action without reading intermediate history. If a clean candidate is returned, run one batched independent UI acceptance pass.
   stop_condition: Do not connect to private Core state or enter F2. After UI U3 verification, prepare the mandatory F2 report and stop for human acceptance.
 
 verified_state:
   platform:
-    expected_head: 5a70417
-    previous_verified_head: 183e372
-    expected_worktree: t4_verification_report_and_ui_u3_pre_dispatch_checkpoint_pending_commit
+    expected_head: 048a2b08b33f50fc19fd8a1864281758e9110965
+    previous_verified_head: 5a70417
+    expected_worktree: ui_u3_dispatch_checkpoint_pending_commit
   core:
     expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
     expected_worktree: clean
-    phase: U2_verified_U3_activation_pending
+    phase: U3_active
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -84,7 +84,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: t4_verification_report_and_ui_u3_pre_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: ui_u3_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
