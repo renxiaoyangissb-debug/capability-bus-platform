@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: local_release_preparation_ui_active
+status: local_release_preparation_complete
 
 active_work:
-  id: UI-LOCAL-RELEASE-PREP
-  phase: local_artifact_and_tag_preparation
-  summary: "Core local artifacts/checksums/metadata and unpushed v0.1.0-alpha.4 tag were verified. Prepare exact UI d77a9a9 locally; public upload remains prohibited."
-  owner: capability-bus-official-ui
+  id: LOCAL-RELEASE-PREPARATION
+  phase: complete_local_only
+  summary: "Core and UI local artifacts, metadata, checksums and annotated local tags are verified; the combined ignored local bundle passes its root checksum manifest. No public upload or push occurred."
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+  implementation_repository: none
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform verified Core local SHA256SUMS, metadata, clean worktree, tag object b0f3e719, peeled commit c64bc3f, wheel SHA-256 21df5c30, and source archive SHA-256 c1032dd0. Nothing was uploaded."
-  next_action: "Dispatch UI d77a9a9 local-only plugin/source packaging, checksums/metadata, and an unpushed annotated v0.1.0-alpha.1 tag after existing package gates pass."
-  stop_condition: "Stop on UI commit/worktree mismatch, test/package verification failure, tag conflict, public/network/credential requirement, or scope change."
+  last_completed_action: "Platform verified UI tag/artifacts and assembled .release-local/capability-bus-alpha4-local-2026-10-03; every root checksum passed and the bundled Core wheel reported distribution 0.1.0a4/runtime 0.1.0-alpha.4."
+  next_action: "No automatic action. Keep artifacts and tags local. Any push, upload, remote Release, deployment, signing, credential use, or external exposure requires a separate explicit user request."
+  stop_condition: "Local-only release preparation is complete; remain idle without publication."
 
 verified_state:
   platform:
     expected_head: eabe4531096df379a6cb7d0550e58d19e80ff972
     previous_verified_head: d0563ab14a021740a9d02257e9731c9fad7b9e8f
-    expected_worktree: local_release_dispatch_records_pending_commit
+    expected_worktree: clean_after_record_commit
   core:
     expected_head: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: d77a9a92f7abd435c3d5447db8179e4325f3e79d
     expected_worktree: clean
-    phase: local_release_preparation_active
+    phase: local_release_artifacts_and_tag_verified
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -143,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_local_artifact_acceptance_and_ui_dispatch_records_to_be_committed
+  uncommitted_platform_changes: none_after_record_commit
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 1
-  active_lane: UI-LOCAL-RELEASE-PREP
+  active_implementation_lanes: 0
+  active_lane: none_local_release_preparation_complete
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:

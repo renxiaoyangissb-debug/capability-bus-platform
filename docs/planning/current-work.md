@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `2ac8c64` | Core 制品验收/UI 本地准备派发记录待提交 | 仅本地发布准备，禁止公开上传 |
+| Platform | 本记录所在提交 | 已核验干净 | 仅本地发布准备已完成，禁止公开上传 |
 | Core | `c64bc3fe36b7abb1cf33789bf8beee73e9bb4722` | 已核验干净 | 本地制品/校验/元数据已验证；本地 `v0.1.0-alpha.4` 未推送 |
-| Official UI | `d77a9a92f7abd435c3d5447db8179e4325f3e79d` | 已核验干净 | 当前唯一通道：本地 UI 插件制品与未推送标签准备 |
+| Official UI | `d77a9a92f7abd435c3d5447db8179e4325f3e79d` | 已核验干净 | 本地制品/校验/元数据已验证；本地 `v0.1.0-alpha.1` 未推送 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -64,7 +64,8 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `T5-INTEGRATION` | Core + UI | `accepted_as_release_candidate` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 已满足；精确候选见 T5 人审报告 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `accepted` | 发布候选人工复核 | 用户已回复 `接受发布候选` |
 | `CORE-LOCAL-RELEASE-PREP` | capability-bus-core | `verified` | 在精确已接受提交上生成本地制品、校验和本地标签 | `c64bc3f` 制品/校验/元数据及本地 `v0.1.0-alpha.4` 已验证，均未上传/推送 |
-| `UI-LOCAL-RELEASE-PREP` | capability-bus-official-ui | `authorized` | 对精确 UI `d77a9a9` 构建本地插件包、源码归档、校验/元数据与本地标签 | 不改跟踪文件，不 push/上传/发布；通过后由 Platform 组装本地联合包 |
+| `UI-LOCAL-RELEASE-PREP` | capability-bus-official-ui | `verified` | 对精确 UI `d77a9a9` 构建本地插件包、源码归档、校验/元数据与本地标签 | 28/28、31/31 及本地 `v0.1.0-alpha.1` 已验证，均未上传/推送 |
+| `LOCAL-RELEASE-BUNDLE` | capability-bus-platform | `verified` | 组装已忽略的本地 Core/UI 联合包和根校验清单 | `.release-local/capability-bus-alpha4-local-2026-10-03/`；根清单 SHA-256 `add4e925…`；`public_upload=false` |
 
 ## 当前协作边界
 
@@ -93,6 +94,8 @@ Core 首次本地准备构建已产生临时 wheel/源码归档，但完整安�
 诊断证明运行时已换新实例，但测试在监控线程将状态从 `degraded` 提交为 `healthy` 前提前调用；Core 只修正了发布证据测试的等待条件，提交 `c64bc3f`。Platform 已独立审查该单测试文件差异，候选验证脚本通过，从新 wheel 隔离安装的完整套件 105/105 通过（2 个沙箱 socket 跳过）。该精确提交现为 Core 本地制品新基线。
 
 Core 终态本地制品已产生并由 Platform 复核：wheel `21df5c30…`、源码归档 `c1032dd0…`、`SHA256SUMS` 全部通过，元数据明确 `public_upload=false`；annotated tag 对象 `b0f3e719…` 解引到 `c64bc3f…`。任何内容均未上传或推送。单通道现切换到 `UI-LOCAL-RELEASE-PREP`。
+
+UI 本地准备随后通过 28/28 测试、构建/许可证/源码边界与 31/31 包完整性检查；本地 tag 对象 `4956be04…` 解引到 `d77a9a9…`。Platform 已把两个项目的制品、元数据和校验清单组装到忽略目录 `.release-local/capability-bus-alpha4-local-2026-10-03/`，根 `BUNDLE-SHA256SUMS` 全部通过，其自身 SHA-256 为 `add4e925b05b427f385b63f84414c53435ea2ec8bae42a4f94d50665afd191f1`。本地准备到此完成；不存在活动通道，也没有任何公开上传、标签推送、远程 Release 或部署。详见 [本地发布准备记录](../reviews/T5-local-release-preparation.md)。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 
