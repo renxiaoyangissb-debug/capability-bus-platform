@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `2e015ec8f0b89fababf2ed5cd52a7738acc39603` | UI-U4 恢复记录待提交 | 用户已恢复 UI-U4，仅继续失败切片与候选收敛 |
+| Platform | `c123ed76f1fec7649f023bf96a6bd3aeea87430b` | UI-U4 候选状态记录待提交 | UI 候选已返回，等待 Platform 独立验收 |
 | Core | `322503845cb322628fe2db7a2c570fc6289d22db` | 已核验干净 | 管理身份引导修复已获 Platform 接受；保持待命 |
-| Official UI | `39b5904499c0ecfa0dff1d57683812c150e377e4` | 14 个已跟踪修改 + 3 个未跟踪文件，恢复基线已核验 | U4 已从 expected-version 诊断点恢复；线程 `01a0fba0-e14d-7610-ac58-10f172ee78e0` |
+| Official UI | `28f2428130db4d39f546d34f20b440fbc72fc6d1` | 已核验干净 | U4 候选；UI 自报完整验证通过，尚未获 Platform 接受 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -61,7 +61,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `UI_U4_resumed_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
+| `T5-INTEGRATION` | Core + UI | `UI_U4_candidate_pending_platform_verification` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 候选发布证据齐备 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
@@ -69,6 +69,8 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 用户已接受 Core `272f632` 与 UI `39b5904` 组成的 F2 冻结基线。Platform 已独立接受 Core 修复 `3225038`：全新归档、隔离 wheel 安装、102/102 完整测试且无跳过、F1/F2 机器契约零差异、编译与 27 文件包边界通过；额外的真实受监督插件测试证明管理 Socket 调用成功且 Grant 撤销后旧凭据立即失效。证据见 [T5 Core 管理引导报告](../reviews/human-checkpoints/T5-core-management-bootstrap-human-review.md)。UI U4 可以恢复，下一强制人工检查点仍是发布候选接受。
 
 UI U4 恢复回合随后通过 28/28 专项与桥接安全测试，并在真实 Core 中完成安装、授权、启动、公开读写、审计关联以及幂等命中/冲突验证。回合在诊断 `system.config.set` 的 expected-version 响应时触发额度上限并失败退出；没有提交，14 个已跟踪修改和 3 个新文件均原样保留。当前无活动实现通道，必须先按低消耗恢复配置显式恢复，再继续失败切片，不能重做前序工作。
+
+用户恢复后，UI 将配置 Schema 收紧到后端实际固定的安全值，继续并完成真实联调，提交候选 `28f2428`。该提交包含真实管理桥接、回环 HTTP、一次性配对、短期 HttpOnly Cookie、Origin/CSRF 与安全响应头，并保留 fake transport 用于确定性测试。UI 自报 28/28、31/31 和完整真实 Core 生命周期联调通过；Platform 目前只核对了提交、21 文件范围和干净工作区，尚未独立运行验收。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

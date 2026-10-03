@@ -1,37 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_u4_resumed_from_dirty_checkpoint
+status: t5_ui_u4_candidate_pending_platform_verification
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_U4_resumed_in_progress
-  summary: The user explicitly resumed UI U4. Platform reverified the exact dirty checkpoint and activated one medium-reasoning UI lane to continue only the config expected-version failure slice, then converge to one candidate full verification.
-  owner: capability-bus-official-ui
+  phase: UI_U4_candidate_pending_platform_verification
+  summary: UI committed clean candidate 28f2428 against verified Core 3225038 and reports 28/28 tests, 31/31 package files, and complete real-Core lifecycle integration. Platform confirmed the commit and clean owner worktrees but has not independently run acceptance.
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+  implementation_repository: none
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "The user replied 继续. Platform reverified clean Platform 2e015ec and Core 3225038 plus the exact UI 39b5904 dirty state: 14 tracked modifications, 3 untracked files, and git diff --check passing."
-  next_action: "The resumed UI thread must preserve the dirty tree, inspect the structured system.config.set response, correct only the fixture or owning implementation, rerun the failed real-integration slice, then run one candidate full UI suite/build/package check and commit."
+  last_completed_action: "UI committed 28f2428130db4d39f546d34f20b440fbc72fc6d1 and reported 28/28 tests, contract/build/license/boundary verification, 31/31 packaged files, and real Core install/authorize/enable, read/write, idempotency, version conflict, confirmation, audit, Grant revoke, disable/remove, UI/Core recovery, and incompatibility checks. Platform confirmed the commit exists, the 21-file scope, and clean Core/UI worktrees; these results remain owner-reported."
+  next_action: "Independently verify UI 28f2428 from a fresh archive against Core 3225038: deterministic offline install, exact contract provenance, one full UI verify/build/package pass, loopback/session/CSRF security, and the real Core lifecycle integration script. Accept or issue one scoped correction."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 2e015ec8f0b89fababf2ed5cd52a7738acc39603
-    previous_verified_head: f28ae1918ab32860bd0c47f09c2f337ddffed0bf
-    expected_worktree: ui_u4_resume_records_pending_commit
+    expected_head: c123ed76f1fec7649f023bf96a6bd3aeea87430b
+    previous_verified_head: 2e015ec8f0b89fababf2ed5cd52a7738acc39603
+    expected_worktree: ui_u4_candidate_status_records_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
     phase: T5_management_bootstrap_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
-    expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    expected_head: 28f2428130db4d39f546d34f20b440fbc72fc6d1
     expected_worktree: clean
-    phase: U4_resumed_from_dirty_checkpoint
+    phase: U4_candidate_pending_platform_verification
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -108,11 +108,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_u4_resume_records_to_be_committed
+  uncommitted_platform_changes: ui_u4_candidate_status_records_to_be_committed
   uncommitted_core_changes: none
-  uncommitted_ui_changes: 14_tracked_modified_plus_3_untracked_recoverable
-  active_implementation_lanes: 1
-  active_lane: UI-U4-expected-version-diagnosis-and-candidate-convergence
+  uncommitted_ui_changes: none
+  active_implementation_lanes: 0
+  active_lane: none
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -122,28 +122,9 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:21"
-  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:14"
+  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:18"
 
-ui_u4_dirty_paths:
-  tracked:
-    - contracts/management-provenance.json
-    - contracts/management-v0.1/README.md
-    - docs/contracts/management-provenance.md
-    - plugin/ui.official.web/README.md
-    - plugin/ui.official.web/schemas/config.json
-    - plugin/ui.official.web/schemas/session-status-output.json
-    - plugin/ui.official.web/server/plugin.py
-    - scripts/check-contracts.mjs
-    - scripts/check-integrity-policy.mjs
-    - src/management/client.ts
-    - src/ui/App.tsx
-    - src/ui/ManagementConsole.tsx
-    - src/ui/model.ts
-    - test/plugin-boundary.test.mjs
-  untracked:
-    - scripts/verify-real-core.py
-    - src/management/browser-transport.ts
-    - test/backend-bridge.test.mjs
+ui_u4_dirty_paths: none_candidate_committed_clean
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
