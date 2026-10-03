@@ -1,22 +1,22 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: local_release_preparation_core_packaging
+status: local_release_preparation_ui_active
 
 active_work:
-  id: CORE-LOCAL-RELEASE-PREP
-  phase: local_artifact_and_tag_finalization
-  summary: "Core test-only stabilization c64bc3f was independently verified by Platform: candidate script passed and a rebuilt isolated wheel passed 105/105 with 2 sandbox socket skips. Final local packaging is authorized; public upload remains prohibited."
-  owner: capability-bus-core
+  id: UI-LOCAL-RELEASE-PREP
+  phase: local_artifact_and_tag_preparation
+  summary: "Core local artifacts/checksums/metadata and unpushed v0.1.0-alpha.4 tag were verified. Prepare exact UI d77a9a9 locally; public upload remains prohibited."
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-core
-  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform inspected test-only commit c64bc3f, ran the alpha candidate verifier successfully, rebuilt/isolated-installed its wheel, and passed 105/105 tests with 2 sandbox socket skips."
-  next_action: "Rebuild final local Core artifacts from exact c64bc3f, generate checksums/metadata, and create unpushed annotated tag v0.1.0-alpha.4 peeled to c64bc3f."
-  stop_condition: "Stop on artifact mismatch, tag conflict, dirty worktree, public/network/credential requirement, or any verification regression."
+  last_completed_action: "Platform verified Core local SHA256SUMS, metadata, clean worktree, tag object b0f3e719, peeled commit c64bc3f, wheel SHA-256 21df5c30, and source archive SHA-256 c1032dd0. Nothing was uploaded."
+  next_action: "Dispatch UI d77a9a9 local-only plugin/source packaging, checksums/metadata, and an unpushed annotated v0.1.0-alpha.1 tag after existing package gates pass."
+  stop_condition: "Stop on UI commit/worktree mismatch, test/package verification failure, tag conflict, public/network/credential requirement, or scope change."
 
 verified_state:
   platform:
@@ -26,12 +26,12 @@ verified_state:
   core:
     expected_head: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
     expected_worktree: clean
-    phase: local_release_test_stabilization_verified_by_platform
+    phase: local_release_artifacts_and_tag_verified
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: d77a9a92f7abd435c3d5447db8179e4325f3e79d
     expected_worktree: clean
-    phase: T5_exact_alpha4_pair_verified_by_platform
+    phase: local_release_preparation_active
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -143,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_local_release_reauthorization_records_to_be_committed
+  uncommitted_platform_changes: core_local_artifact_acceptance_and_ui_dispatch_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: CORE-LOCAL-RELEASE-PREP
+  active_lane: UI-LOCAL-RELEASE-PREP
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
