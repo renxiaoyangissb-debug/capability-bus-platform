@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: t5_ui_u4_real_integration_in_progress
+status: t5_ui_u4_interrupted_usage_limit_dirty
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -23,7 +23,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: verify_UI_U4_candidate_against_Core_3225038
+  next_auto_phase: none_wait_for_explicit_UI_U4_resume
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -54,7 +54,7 @@ repositories:
     start_gate: F1-accepted
     previous_verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
     verified_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
-    phase_status: U4_real_integration_in_progress_against_Core_3225038
+    phase_status: U4_interrupted_by_usage_limit_dirty_recoverable
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -113,7 +113,7 @@ gates:
     accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
     human_response: "接受F2"
   - id: T5-ALPHA4-INTEGRATION
-    status: UI_U4_real_integration_in_progress
+    status: UI_U4_interrupted_usage_limit_dirty
     first_lane: UI-U4-real-core-integration
     last_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     active_thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
@@ -122,8 +122,10 @@ gates:
     core_candidate: 322503845cb322628fe2db7a2c570fc6289d22db
     verified_core_fix: 322503845cb322628fe2db7a2c570fc6289d22db
     core_fix_evidence: docs/reviews/human-checkpoints/T5-core-management-bootstrap-human-review.md
-    active_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+    last_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     ui_resume_platform_commit: a429c2b
+    completed_before_interrupt: 28_of_28_focused_and_bridge_security_tests_plus_real_install_authorize_start_read_write_idempotency
+    resume_blocker: diagnose_expected_version_fixture_or_implementation_then_continue_real_integration
     ui_baseline: 39b5904499c0ecfa0dff1d57683812c150e377e4
     blocker: missing_public_authenticated_management_bootstrap_for_plugin_process
     repository_state: both_owner_worktrees_clean_no_partial_changes
