@@ -1,21 +1,21 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_release_evidence_in_progress
+status: t5_core_alpha4_version_stamp_authorized
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_T5_release_evidence_in_progress
-  summary: Platform independently accepted Core c4fe126 and dispatched the final narrow UI evidence lane from Platform 669dd43. Core remains idle and clean.
-  owner: capability-bus-official-ui
+  phase: Core_alpha4_version_stamp_authorized
+  summary: Platform independently accepted UI c3a641f and all ten T5 functional rows now pass. Release-candidate preparation is blocked only because Core still builds/reports alpha.3 instead of the roadmap's integrated alpha.4 package version.
+  owner: capability-bus-core
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
+  implementation_repository: capability-bus-core
+  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform commit 669dd43 accepted Core c4fe126 and authorized UI-T5-release-evidence. The scoped task was sent to the existing UI thread with medium reasoning and the 12-round-trip policy."
-  next_action: "Wait once for the UI result, then independently verify its exact commit, scope, full UI/package gates, real-Core non-UI continuity after UI disable/removal, lifecycle runbook, and clean worktree."
+  last_completed_action: "Platform independently verified UI c3a641f from a fresh archive: unchanged offline lock, 28/28 tests, 24-module build, 20 licenses, 17 boundary checks, 31/31 package files, exact contract diffs, and real-Core non-UI continuity across UI disable/removal all passed."
+  next_action: "Core changes only distribution/runtime release version and current-release documentation from 0.1.0-alpha.3 to 0.1.0-alpha.4, keeps capability protocol alpha.1 and management protocol alpha.3 byte-unchanged, runs focused version checks and one full installed suite, commits cleanly, and makes no release-candidate claim."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
@@ -29,9 +29,9 @@ verified_state:
     phase: T5_release_evidence_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
-    expected_head: 28f2428130db4d39f546d34f20b440fbc72fc6d1
+    expected_head: c3a641ffc22a21905753d68c2c87621c4354faee
     expected_worktree: clean
-    phase: U4_verified_by_platform
+    phase: T5_release_evidence_verified_by_platform
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -108,6 +108,11 @@ latest_verified_evidence:
   core_t5_release_evidence_cli_legacy_crash: passed
   core_t5_release_evidence_target_resource: 30_of_30_calls_30_rows_0_361887_seconds_23805952_peak_harness_rss
   core_t5_release_evidence_report: docs/reviews/human-checkpoints/T5-core-release-evidence-human-review.md
+  ui_t5_release_evidence_commit: c3a641ffc22a21905753d68c2c87621c4354faee
+  ui_t5_release_evidence_tests: 28_of_28_passed_without_skips
+  ui_t5_release_evidence_package: 31_of_31_files_verified
+  ui_t5_release_evidence_non_ui_continuity: same_resident_before_and_after_disable_healthy_and_callable_after_remove
+  ui_t5_release_evidence_report: docs/reviews/human-checkpoints/T5-ui-release-evidence-human-review.md
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -125,11 +130,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_release_evidence_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: ui_acceptance_and_core_alpha4_version_authorization_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: UI-T5-release-evidence
+  active_lane: CORE-T5-alpha4-version-stamp
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -139,7 +144,7 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:30"
-  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:18"
+  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:23"
 
 ui_u4_dirty_paths: none_candidate_committed_clean
 

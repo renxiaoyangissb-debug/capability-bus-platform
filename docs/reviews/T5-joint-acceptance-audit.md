@@ -15,7 +15,7 @@ This audit maps the ten T5 rows in the master development plan to independently 
 | 2 | Complete CLI-only Core loop | verified | Fresh installed-package acceptance at Core `c4fe126` covers bare Core and the unknown-plugin lifecycle | None |
 | 3 | CLI install and authorize Official UI | verified | Fresh UI U4 real-Core verifier installs, grants, enables, and starts the packaged UI | None |
 | 4 | UI plugin and task management | verified | Real public reads/writes, confirmation, version/idempotency conflict and audit correlation passed | None |
-| 5 | Core work continues after UI disable | partial | UI listener disappears and Core CLI remains usable after disable | Demonstrate an already-running or durable non-UI plugin operation remains correct across UI disable/removal |
+| 5 | Core work continues after UI disable | verified | UI `c3a641f` proves the same unrelated resident plugin succeeds before and after UI disable, then remains healthy and callable after UI removal | None |
 | 6 | UI uninstall leaves no authoritative UI state | verified | Disable/remove and Core CLI independence passed; UI has no private authority database | Record final state inspection in consolidated run |
 | 7 | Core restart, UI restart, plugin crash and recovery | verified | UI/Core restart passed at UI `28f2428`; forced resident crash/recovery passed independently at Core `c4fe126` | None |
 | 8 | Old protocol compatibility and incompatible rejection | verified | Explicit compatible alpha.1 fixture and incompatible rejection passed at Core `c4fe126`; UI incompatible bootstrap also rejects | None |
@@ -26,12 +26,15 @@ The current host is an Apple M4 Mac mini with 16 GB memory and a nominal 256 GB 
 
 ## Release-operation documentation gap
 
-F2 also requires version compatibility and install/upgrade/downgrade/uninstall procedures. Machine-readable compatibility rules and security limitations exist. Core `c4fe126` now has an accepted lifecycle runbook; the matching Official UI lifecycle runbook remains missing. This is an evidence/documentation gap, not authorization for a new product feature or contract change.
+F2 also requires version compatibility and install/upgrade/downgrade/uninstall procedures. Machine-readable compatibility rules and security limitations exist. Core `c4fe126` and UI `c3a641f` now have accepted matching lifecycle runbooks.
+
+All ten functional rows are verified. One packaging blocker remains: Core still reports and builds `0.1.0-alpha.3`, while the approved integration roadmap names the integrated Core release node `0.1.0-alpha.4`. The capability protocol remains `0.1.0-alpha.1`, the management protocol remains `0.1.0-alpha.3`, and the independently versioned Official UI remains `0.1.0-alpha.1`; those values must not be changed by the package-version correction.
 
 ## Minimal completion sequence
 
-1. Core lane: completed and independently accepted at `c4fe126`.
-2. Official UI lane: add the smallest joint continuation proving non-UI work survives UI disable/removal and document UI install/upgrade/downgrade/uninstall behavior.
-3. Platform runs one final consolidated acceptance pass, prepares `T5-release-candidate-human-review.md`, and stops for the mandatory human decision.
+1. Core and UI functional evidence lanes: completed and independently accepted at `c4fe126` / `c3a641f`.
+2. Core package-version lane: change only the Core distribution/runtime version and current-release documentation to `0.1.0-alpha.4`, keeping both frozen protocol values unchanged.
+3. UI evidence refresh: pin the resulting exact Core commit and rerun the unchanged joint verifier.
+4. Platform runs one final consolidated acceptance pass, prepares `T5-release-candidate-human-review.md`, and stops for the mandatory human decision.
 
 No release-candidate status is claimed by this audit.
