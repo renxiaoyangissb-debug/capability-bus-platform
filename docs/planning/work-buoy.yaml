@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: local_release_preparation_core_correction
+status: local_release_preparation_core_packaging
 
 active_work:
   id: CORE-LOCAL-RELEASE-PREP
-  phase: forced_crash_release_test_diagnosis
-  summary: "Core local artifact build reached the full installed suite, where forced crash recovery failed once: 104/105 passed with 2 sandbox socket skips. No tag or approved checksums/metadata exist; public upload remains prohibited."
+  phase: local_artifact_and_tag_finalization
+  summary: "Core test-only stabilization c64bc3f was independently verified by Platform: candidate script passed and a rebuilt isolated wheel passed 105/105 with 2 sandbox socket skips. Final local packaging is authorized; public upload remains prohibited."
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
@@ -14,9 +14,9 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Core built provisional wheel/source archives from exact commit 4858520, but the full installed suite failed test_release_evidence.ReleaseEvidenceTest.test_forced_crash_recovers. It correctly stopped before checksums, metadata, or tag creation."
-  next_action: "Have Core reproduce only the forced-crash failure with retained diagnostics, determine flake versus candidate defect, and make the narrowest in-scope correction only if reproducibly required; no tag or publication."
-  stop_condition: "Do not resume release packaging until the focused test passes repeatedly and the full installed candidate suite passes once. Stop on architecture/contract change, public/network/credential requirement, or unresolved nondeterminism."
+  last_completed_action: "Platform inspected test-only commit c64bc3f, ran the alpha candidate verifier successfully, rebuilt/isolated-installed its wheel, and passed 105/105 tests with 2 sandbox socket skips."
+  next_action: "Rebuild final local Core artifacts from exact c64bc3f, generate checksums/metadata, and create unpushed annotated tag v0.1.0-alpha.4 peeled to c64bc3f."
+  stop_condition: "Stop on artifact mismatch, tag conflict, dirty worktree, public/network/credential requirement, or any verification regression."
 
 verified_state:
   platform:
@@ -24,9 +24,9 @@ verified_state:
     previous_verified_head: d0563ab14a021740a9d02257e9731c9fad7b9e8f
     expected_worktree: local_release_dispatch_records_pending_commit
   core:
-    expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
+    expected_head: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
     expected_worktree: clean
-    phase: T5_alpha4_version_verified_by_platform
+    phase: local_release_test_stabilization_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: d77a9a92f7abd435c3d5447db8179e4325f3e79d
@@ -143,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_local_release_failure_and_correction_records_to_be_committed
+  uncommitted_platform_changes: core_local_release_reauthorization_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: CORE-LOCAL-RELEASE-PREP-CORRECTION
+  active_lane: CORE-LOCAL-RELEASE-PREP
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:

@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: local_release_preparation_core_correction
+status: local_release_preparation_core_packaging
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -23,7 +23,7 @@ approval:
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
   current_mandatory_human_checkpoint: none
-  next_auto_phase: core_forced_crash_release_test_diagnosis
+  next_auto_phase: core_local_artifact_and_tag_finalization
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -43,9 +43,9 @@ repositories:
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-core
     role: core-authority
     start_gate: source-rights-accepted
-    verified_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
-    candidate_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
-    phase_status: local_release_preparation_test_correction
+    verified_commit: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
+    candidate_commit: c64bc3fe36b7abb1cf33789bf8beee73e9bb4722
+    phase_status: local_release_preparation_packaging
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     name: capability-bus-official-ui
@@ -132,7 +132,7 @@ gates:
     ui_evidence: docs/reviews/human-checkpoints/T5-ui-real-core-integration-human-review.md
     joint_gap_audit: docs/reviews/T5-joint-acceptance-audit.md
     active_lane: CORE-LOCAL-RELEASE-PREP
-    active_lane_scope: diagnose_and_correct_forced_crash_release_test_before_any_tag_or_upload
+    active_lane_scope: package_platform_verified_c64bc3f_create_local_tag_and_checksums_without_upload
     ui_release_evidence_dispatch_platform_commit: 669dd43
     core_dispatch_platform_commit: f52b97a
     verified_core_evidence_commit: c4fe12634571154a9d64ce97f8f9922dc14317b3
