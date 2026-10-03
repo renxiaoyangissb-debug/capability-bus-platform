@@ -9,9 +9,9 @@ This repository contains the overall roadmap, contract-freeze gates, compatibili
 
 ## Current status
 
-**T5 VERIFIED — RELEASE CANDIDATE HUMAN ACCEPTANCE PENDING**
+**T5 / ALPHA.4 RELEASE CANDIDATE ACCEPTED**
 
-Platform independently verified Core `4858520224a98b6528cb6cf47e7aa2e517bb62dc` and Official UI `d77a9a92f7abd435c3d5447db8179e4325f3e79d` as the exact T5 / alpha.4 candidate pair. All implementation lanes are stopped at the mandatory [release-candidate human checkpoint](docs/reviews/human-checkpoints/T5-release-candidate-human-review.md).
+Platform independently verified Core `4858520224a98b6528cb6cf47e7aa2e517bb62dc` and Official UI `d77a9a92f7abd435c3d5447db8179e4325f3e79d` as the exact T5 / alpha.4 pair. On 2026-10-03, the user replied `接受发布候选`; the decision and limitations are recorded in the [release-candidate human review](docs/reviews/human-checkpoints/T5-release-candidate-human-review.md). No public upload or deployment is implied.
 
 The saved plugin integration guide is [docs/guides/plugin-integration-interface-v0.1.md](docs/guides/plugin-integration-interface-v0.1.md).
 

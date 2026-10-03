@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: t5_release_candidate_pending_human_acceptance
+status: t5_release_candidate_accepted
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -22,8 +22,8 @@ approval:
   ui_task_dispatch_authorized: true
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: release_candidate
-  next_auto_phase: await_human_release_candidate_decision
+  current_mandatory_human_checkpoint: none
+  next_auto_phase: none_release_candidate_accepted
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -114,7 +114,7 @@ gates:
     accepted_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
     human_response: "接受F2"
   - id: T5-ALPHA4-INTEGRATION
-    status: verified_by_platform_pending_human_release_candidate_acceptance
+    status: accepted_as_release_candidate
     first_lane: UI-U4-real-core-integration
     last_thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     active_thread_id: none
@@ -141,17 +141,20 @@ gates:
     ui_release_evidence: docs/reviews/human-checkpoints/T5-ui-release-evidence-human-review.md
     verified_core_alpha4_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     verified_ui_alpha4_pair_commit: d77a9a92f7abd435c3d5447db8179e4325f3e79d
-    release_blocker: mandatory_human_release_candidate_acceptance
+    release_blocker: none
     release_candidate_evidence: docs/reviews/human-checkpoints/T5-release-candidate-human-review.md
     ui_alpha4_refresh_dispatch_platform_commit: ebe4f7c
     core_alpha4_version_dispatch_platform_commit: 6d76c8c
     blocker: none
     repository_state: all_three_worktrees_clean_at_verification
-    next_human_checkpoint: release_candidate
+    next_human_checkpoint: none
   - id: RELEASE-CANDIDATE-HUMAN-ACCEPTANCE
-    status: pending_human_acceptance
+    status: accepted
     candidate_core_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     candidate_ui_commit: d77a9a92f7abd435c3d5447db8179e4325f3e79d
+    accepted_core_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
+    accepted_ui_commit: d77a9a92f7abd435c3d5447db8179e4325f3e79d
+    human_response: "接受发布候选"
     evidence: docs/reviews/human-checkpoints/T5-release-candidate-human-review.md
 
 constraints:

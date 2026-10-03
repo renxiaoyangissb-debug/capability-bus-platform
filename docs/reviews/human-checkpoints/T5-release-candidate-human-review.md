@@ -87,4 +87,12 @@ Acceptance records this exact pair as the T5 / alpha.4 release candidate. It doe
 
 ## Human acceptance record
 
-Pending.
+On 2026-10-03 (Asia/Shanghai), the user replied:
+
+```text
+接受发布候选
+```
+
+This accepts Core `4858520224a98b6528cb6cf47e7aa2e517bb62dc` and Official UI `d77a9a92f7abd435c3d5447db8179e4325f3e79d` as the exact T5 / alpha.4 release-candidate pair, with the frozen protocol versions, verified evidence and known Alpha limitations recorded above.
+
+This acceptance does not authorize public package upload, external deployment, production credentials, public network exposure, destructive state migration, or a breaking protocol change. Those actions require separate explicit scope and authorization.

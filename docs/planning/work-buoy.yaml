@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_release_candidate_pending_human_acceptance
+status: t5_release_candidate_accepted
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: release_candidate_human_checkpoint
-  summary: "Platform independently verified the exact Core 4858520 / UI d77a9a9 pair. All T5 rows, package gates, frozen-contract checks and the final real-Core integration pass succeeded. Automatic progression is stopped for mandatory human release-candidate acceptance."
+  phase: release_candidate_accepted
+  summary: "The user accepted exact Core 4858520 / UI d77a9a9 as the T5 / alpha.4 release candidate. No implementation lane or external publication is active."
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
   thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
-  blocking_reason: mandatory_human_release_candidate_acceptance
+  blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform independently verified final UI d77a9a9 from a fresh archive against Core 4858520: unchanged lock/contracts/runtime, 28/28 tests, build/licenses/boundaries, 31/31 package files and complete real-Core integration all passed."
-  next_action: "Await an explicit human response to docs/reviews/human-checkpoints/T5-release-candidate-human-review.md. Accept only the exact Core 4858520 / UI d77a9a9 pair; do not dispatch further implementation or publish externally before that decision."
-  stop_condition: Mandatory human checkpoint is active. No automatic progression.
+  last_completed_action: "The user explicitly replied '接受发布候选', accepting exact Core 4858520 / UI d77a9a9 and the evidence/limitations in the T5 human-review report."
+  next_action: "No automatic action. Public upload, deployment, credentials, external exposure, destructive migration, or a new development phase requires a separate user request and applicable gate review."
+  stop_condition: T5 release-candidate objective is complete; remain idle until a new user request.
 
 verified_state:
   platform:
-    expected_head: 01887d621a1c758f93967b4fdc20861c7d25b91c
-    previous_verified_head: ebe4f7c
-    expected_worktree: release_candidate_report_and_gate_records_pending_commit
+    expected_head: d0563ab14a021740a9d02257e9731c9fad7b9e8f
+    previous_verified_head: 01887d621a1c758f93967b4fdc20861c7d25b91c
+    expected_worktree: release_candidate_acceptance_records_pending_commit
   core:
     expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     expected_worktree: clean
@@ -124,6 +124,8 @@ latest_verified_evidence:
   final_ui_lock_sha256: c8ef2875aa4c2ae0e7c0a62dd4c9c0081f6527b6ea6194c108f6f5a73bef38e5
   final_real_core_integration: passed
   release_candidate_report: docs/reviews/human-checkpoints/T5-release-candidate-human-review.md
+  release_candidate_human_response: "接受发布候选"
+  release_candidate_disposition: accepted
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -141,11 +143,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: release_candidate_report_and_gate_records_to_be_committed
+  uncommitted_platform_changes: release_candidate_acceptance_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 0
-  active_lane: none_human_checkpoint
+  active_lane: none_release_candidate_accepted
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
