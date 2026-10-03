@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_u4_candidate_pending_platform_verification
+status: t5_core_release_evidence_authorized
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_U4_candidate_pending_platform_verification
-  summary: UI committed clean candidate 28f2428 against verified Core 3225038 and reports 28/28 tests, 31/31 package files, and complete real-Core lifecycle integration. Platform confirmed the commit and clean owner worktrees but has not independently run acceptance.
-  owner: capability-bus-platform
+  phase: Core_T5_release_evidence_authorized
+  summary: Platform accepted UI U4 and audited all ten T5 rows. Six are verified, three need explicit exact-candidate proof, and target-host resource acceptance plus release lifecycle documentation remain missing. One narrow Core evidence lane is authorized.
+  owner: capability-bus-core
   coordinator: capability-bus-platform
-  implementation_repository: none
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  implementation_repository: capability-bus-core
+  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "UI committed 28f2428130db4d39f546d34f20b440fbc72fc6d1 and reported 28/28 tests, contract/build/license/boundary verification, 31/31 packaged files, and real Core install/authorize/enable, read/write, idempotency, version conflict, confirmation, audit, Grant revoke, disable/remove, UI/Core recovery, and incompatibility checks. Platform confirmed the commit exists, the 21-file scope, and clean Core/UI worktrees; these results remain owner-reported."
-  next_action: "Independently verify UI 28f2428 from a fresh archive against Core 3225038: deterministic offline install, exact contract provenance, one full UI verify/build/package pass, loopback/session/CSRF security, and the real Core lifecycle integration script. Accept or issue one scoped correction."
+  last_completed_action: "Platform independently verified UI 28f2428 from a fresh archive against Core 3225038: deterministic offline install with unchanged lock hash, exact frozen-contract directory diffs, 28/28 tests with zero skips, build/license/boundary/package gates, loopback bridge security review, and the complete real-Core integration verifier all passed."
+  next_action: "Core verifies clean HEAD 3225038, then produces only the missing exact-candidate evidence: installed CLI loop, compatible legacy fixture, forced plugin crash/recovery, M4/16 GB/256 GB measurements, and Core install/upgrade/downgrade/uninstall runbook. No feature expansion or contract change."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: c123ed76f1fec7649f023bf96a6bd3aeea87430b
-    previous_verified_head: 2e015ec8f0b89fababf2ed5cd52a7738acc39603
-    expected_worktree: ui_u4_candidate_status_records_pending_commit
+    expected_head: 2e4dea4bbd7b6b359b8f2a87204e94648e8ea283
+    previous_verified_head: c123ed76f1fec7649f023bf96a6bd3aeea87430b
+    expected_worktree: ui_u4_acceptance_records_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: 28f2428130db4d39f546d34f20b440fbc72fc6d1
     expected_worktree: clean
-    phase: U4_candidate_pending_platform_verification
+    phase: U4_verified_by_platform
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -91,6 +91,17 @@ latest_verified_evidence:
   core_t5_management_bootstrap_wheel_files: 27
   core_t5_management_bootstrap_wheel_sha256: 84a028fe05bcc0ac1ac490848471ee36c8bff66368fa8362c3338a70edb825bb
   core_t5_management_bootstrap_evidence: docs/reviews/human-checkpoints/T5-core-management-bootstrap-human-review.md
+  ui_u4_commit: 28f2428130db4d39f546d34f20b440fbc72fc6d1
+  ui_u4_lock_sha256_before_and_after: c8ef2875aa4c2ae0e7c0a62dd4c9c0081f6527b6ea6194c108f6f5a73bef38e5
+  ui_u4_offline_dependencies: 20_installed
+  ui_u4_contract_diffs: zero_for_f1_and_management_contract_directories
+  ui_u4_tests: 28_of_28_passed_without_skips
+  ui_u4_build: 24_modules_passed
+  ui_u4_licenses: 20_packages_verified
+  ui_u4_source_boundary_checks: 17_passed
+  ui_u4_plugin_package: 31_of_31_files_verified
+  ui_u4_real_core_lifecycle: install_authorize_enable_start_reads_writes_conflicts_confirmation_audit_revoke_disable_remove_restart_and_incompatibility_passed
+  ui_u4_evidence: docs/reviews/human-checkpoints/T5-ui-real-core-integration-human-review.md
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -108,11 +119,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_u4_candidate_status_records_to_be_committed
+  uncommitted_platform_changes: ui_u4_acceptance_report_and_status_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 0
-  active_lane: none
+  active_implementation_lanes: 1
+  active_lane: CORE-T5-release-evidence
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
