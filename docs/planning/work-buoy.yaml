@@ -14,15 +14,15 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: Platform committed T4 verification and UI pre-dispatch checkpoint 048a2b0, reverified clean UI f17320cf39f18d507a4e40b0f7047b88a14582ae, and dispatched one compact medium-reasoning U3 turn.
-  next_action: Wait once for UI completion or required user action without reading intermediate history. If a clean candidate is returned, run one batched independent UI acceptance pass.
+  last_completed_action: Platform committed UI dispatch checkpoint 846908a and completed the single bounded wait. UI imported 12 management contract files from exact Core 272f632 with per-file SHA-256 provenance and is implementing the catalog-driven client, fake, controls, and page integration without error.
+  next_action: Do not poll again during this coordination turn. On the next explicit continuation or completion notification, read UI once; if a clean candidate is returned, run one batched independent UI acceptance pass.
   stop_condition: Do not connect to private Core state or enter F2. After UI U3 verification, prepare the mandatory F2 report and stop for human acceptance.
 
 verified_state:
   platform:
-    expected_head: 048a2b08b33f50fc19fd8a1864281758e9110965
-    previous_verified_head: 5a70417
-    expected_worktree: ui_u3_dispatch_checkpoint_pending_commit
+    expected_head: 846908a
+    previous_verified_head: 048a2b08b33f50fc19fd8a1864281758e9110965
+    expected_worktree: clean_after_ui_u3_single_wait_checkpoint
   core:
     expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
@@ -84,7 +84,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_u3_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: none_after_ui_u3_single_wait_checkpoint
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
@@ -96,7 +96,7 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:15"
-  ui_wait_cursor: "f7e40c8b-c2de-4cb4-806a-e43cd0d34014:69"
+  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:4"
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
