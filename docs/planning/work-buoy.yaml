@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_release_evidence_authorized
+status: t5_core_release_evidence_in_progress
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_T5_release_evidence_authorized
-  summary: Platform accepted UI U4 and audited all ten T5 rows. Six are verified, three need explicit exact-candidate proof, and target-host resource acceptance plus release lifecycle documentation remain missing. One narrow Core evidence lane is authorized.
+  phase: Core_T5_release_evidence_in_progress
+  summary: Platform accepted UI U4, audited all ten T5 rows, and dispatched one narrow Core evidence lane from Platform f52b97a. UI remains idle.
   owner: capability-bus-core
   coordinator: capability-bus-platform
   implementation_repository: capability-bus-core
@@ -14,15 +14,15 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform independently verified UI 28f2428 from a fresh archive against Core 3225038: deterministic offline install with unchanged lock hash, exact frozen-contract directory diffs, 28/28 tests with zero skips, build/license/boundary/package gates, loopback bridge security review, and the complete real-Core integration verifier all passed."
-  next_action: "Core verifies clean HEAD 3225038, then produces only the missing exact-candidate evidence: installed CLI loop, compatible legacy fixture, forced plugin crash/recovery, M4/16 GB/256 GB measurements, and Core install/upgrade/downgrade/uninstall runbook. No feature expansion or contract change."
+  last_completed_action: "Platform commit f52b97a accepted UI U4, recorded the ten-row gap audit, and authorized CORE-T5-release-evidence. The scoped task was sent to the existing Core thread with medium reasoning and the 12-round-trip policy."
+  next_action: "Wait once for the Core result, then independently verify its exact commit, scope, installed CLI/legacy/crash/resource evidence, lifecycle runbook, full installed suite, and clean worktree."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: 2e4dea4bbd7b6b359b8f2a87204e94648e8ea283
-    previous_verified_head: c123ed76f1fec7649f023bf96a6bd3aeea87430b
-    expected_worktree: ui_u4_acceptance_records_pending_commit
+    expected_head: f52b97a
+    previous_verified_head: 2e4dea4bbd7b6b359b8f2a87204e94648e8ea283
+    expected_worktree: core_dispatch_checkpoint_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
@@ -119,7 +119,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_u4_acceptance_report_and_status_records_to_be_committed
+  uncommitted_platform_changes: core_dispatch_checkpoint_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1

@@ -14,8 +14,8 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `2e4dea4bbd7b6b359b8f2a87204e94648e8ea283` | UI-U4 验收与 T5 缺口记录待提交 | U4 已独立验证；已授权一条 Core 证据补齐线 |
-| Core | `322503845cb322628fe2db7a2c570fc6289d22db` | 已核验干净 | `CORE-T5-release-evidence` 已授权，待原线程领取 |
+| Platform | `f52b97a` | Core 派发状态记录待提交 | U4 已独立验证；Core 单通道已派发 |
+| Core | `322503845cb322628fe2db7a2c570fc6289d22db` | 派发时已核验干净 | `CORE-T5-release-evidence` 正在执行 |
 | Official UI | `28f2428130db4d39f546d34f20b440fbc72fc6d1` | 已核验干净 | U4 已获 Platform 独立验证；保持待命 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
@@ -61,7 +61,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `Core_T5_release_evidence_authorized` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 十项联合验收均有可复现证据 |
+| `T5-INTEGRATION` | Core + UI | `Core_T5_release_evidence_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 十项联合验收均有可复现证据 |
 | `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
 
 ## 当前协作边界
@@ -72,7 +72,7 @@ UI U4 恢复回合先通过 28/28 专项与桥接安全测试，再修正真实�
 
 Platform 已从全新归档独立验证该提交：离线安装 20 个锁定依赖且锁文件哈希不变，F1 与管理契约目录均与 Core `3225038` 零差异，28/28 测试无跳过，构建、20 个许可证、17 项源码边界及 31/31 插件包完整性全部通过；真实 Core 验证覆盖安装、授权、启停、读写、确认、版本与幂等冲突、审计、Grant 撤销、移除、双端重启和不兼容拒绝。证据见 [T5 UI 真实 Core 联调报告](../reviews/human-checkpoints/T5-ui-real-core-integration-human-review.md)。U4 验收完成时没有遗留实现通道；后续只盘点并补齐 T5 十项联合验收中尚缺的发布证据。
 
-T5 十项证据盘点见 [联合验收审计](../reviews/T5-joint-acceptance-audit.md)：6 项已完整覆盖，CLI-only、禁用 UI 后非 UI 工作延续、崩溃/旧协议三类需要更直接的精确候选证据，目标机资源测量尚缺，Core/UI 发布生命周期文档尚未合并。当前只授权 `CORE-T5-release-evidence` 单通道，范围限定为 CLI、旧协议、崩溃恢复、真实 M4/16 GB/256 GB 测量和 Core 生命周期说明；不得增加功能或改变冻结契约。
+T5 十项证据盘点见 [联合验收审计](../reviews/T5-joint-acceptance-audit.md)：6 项已完整覆盖，CLI-only、禁用 UI 后非 UI 工作延续、崩溃/旧协议三类需要更直接的精确候选证据，目标机资源测量尚缺，Core/UI 发布生命周期文档尚未合并。`CORE-T5-release-evidence` 已从 Platform `f52b97a` 派发到既有 Core 对话，范围限定为 CLI、旧协议、崩溃恢复、真实 M4/16 GB/256 GB 测量和 Core 生命周期说明；不得增加功能或改变冻结契约。UI 保持待命，不得并行启动。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 
