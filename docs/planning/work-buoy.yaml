@@ -1,12 +1,12 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: local_release_preparation_complete
+status: github_publication_active
 
 active_work:
-  id: LOCAL-RELEASE-PREPARATION
-  phase: complete_local_only
-  summary: "Core and UI local artifacts, metadata, checksums and annotated local tags are verified; the combined ignored local bundle passes its root checksum manifest. No public upload or push occurred."
+  id: GITHUB-PUBLICATION
+  phase: public_repository_push_and_release
+  summary: "The user explicitly authorized public upload. Three empty public GitHub repositories were created under renxiaoyangissb-debug; exact verified heads, local tags, and release assets remain to be pushed."
   owner: capability-bus-platform
   coordinator: capability-bus-platform
   implementation_repository: none
@@ -14,9 +14,9 @@ active_work:
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform verified UI tag/artifacts and assembled .release-local/capability-bus-alpha4-local-2026-10-03; every root checksum passed and the bundled Core wheel reported distribution 0.1.0a4/runtime 0.1.0-alpha.4."
-  next_action: "No automatic action. Keep artifacts and tags local. Any push, upload, remote Release, deployment, signing, credential use, or external exposure requires a separate explicit user request."
-  stop_condition: "Local-only release preparation is complete; remain idle without publication."
+  last_completed_action: "Created three empty public repositories: capability-bus-core, capability-bus-official-ui, and capability-bus-platform under GitHub owner renxiaoyangissb-debug."
+  next_action: "Configure remotes and push exact verified main branches and annotated tags; then create Core/UI GitHub Releases and upload the verified local artifacts."
+  stop_condition: "Stop on authentication failure, remote divergence, checksum mismatch, or any request to publish different bytes/commits."
 
 verified_state:
   platform:
@@ -146,8 +146,8 @@ in_flight_state:
   uncommitted_platform_changes: none_after_record_commit
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 0
-  active_lane: none_local_release_preparation_complete
+  active_implementation_lanes: 1
+  active_lane: GITHUB-PUBLICATION
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:

@@ -14,7 +14,7 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | 本记录所在提交 | 已核验干净 | 仅本地发布准备已完成，禁止公开上传 |
+| Platform | `46f0728` | GitHub 公开发布记录待提交 | 三个公开空仓已创建，待推送与 Release 上传 |
 | Core | `c64bc3fe36b7abb1cf33789bf8beee73e9bb4722` | 已核验干净 | 本地制品/校验/元数据已验证；本地 `v0.1.0-alpha.4` 未推送 |
 | Official UI | `d77a9a92f7abd435c3d5447db8179e4325f3e79d` | 已核验干净 | 本地制品/校验/元数据已验证；本地 `v0.1.0-alpha.1` 未推送 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
@@ -66,6 +66,7 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-LOCAL-RELEASE-PREP` | capability-bus-core | `verified` | 在精确已接受提交上生成本地制品、校验和本地标签 | `c64bc3f` 制品/校验/元数据及本地 `v0.1.0-alpha.4` 已验证，均未上传/推送 |
 | `UI-LOCAL-RELEASE-PREP` | capability-bus-official-ui | `verified` | 对精确 UI `d77a9a9` 构建本地插件包、源码归档、校验/元数据与本地标签 | 28/28、31/31 及本地 `v0.1.0-alpha.1` 已验证，均未上传/推送 |
 | `LOCAL-RELEASE-BUNDLE` | capability-bus-platform | `verified` | 组装已忽略的本地 Core/UI 联合包和根校验清单 | `.release-local/capability-bus-alpha4-local-2026-10-03/`；根清单 SHA-256 `add4e925…`；`public_upload=false` |
+| `GITHUB-PUBLICATION` | capability-bus-platform | `active` | 将精确验证提交、本地标签和制品公开发布到 GitHub | 用户已授权；三个 `renxiaoyangissb-debug/*` 公开空仓已创建，当前阻塞为本机推送身份验证 |
 
 ## 当前协作边界
 
@@ -96,6 +97,8 @@ Core 首次本地准备构建已产生临时 wheel/源码归档，但完整安�
 Core 终态本地制品已产生并由 Platform 复核：wheel `21df5c30…`、源码归档 `c1032dd0…`、`SHA256SUMS` 全部通过，元数据明确 `public_upload=false`；annotated tag 对象 `b0f3e719…` 解引到 `c64bc3f…`。任何内容均未上传或推送。单通道现切换到 `UI-LOCAL-RELEASE-PREP`。
 
 UI 本地准备随后通过 28/28 测试、构建/许可证/源码边界与 31/31 包完整性检查；本地 tag 对象 `4956be04…` 解引到 `d77a9a9…`。Platform 已把两个项目的制品、元数据和校验清单组装到忽略目录 `.release-local/capability-bus-alpha4-local-2026-10-03/`，根 `BUNDLE-SHA256SUMS` 全部通过，其自身 SHA-256 为 `add4e925b05b427f385b63f84414c53435ea2ec8bae42a4f94d50665afd191f1`。本地准备到此完成；不存在活动通道，也没有任何公开上传、标签推送、远程 Release 或部署。详见 [本地发布准备记录](../reviews/T5-local-release-preparation.md)。
+
+用户随后明确要求公开上传并回复“你帮我做完”。Platform 已代表用户在 GitHub 账号 `renxiaoyangissb-debug` 下创建三个公开空仓：`capability-bus-core`、`capability-bus-official-ui`、`capability-bus-platform`。未初始化 README、`.gitignore` 或 License，以便保留本地完整 Git 历史。当前正在配置安全推送凭据；已确认本机现有 SSH 密钥未获 GitHub 授权，未暴露或存储任何凭据。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 
