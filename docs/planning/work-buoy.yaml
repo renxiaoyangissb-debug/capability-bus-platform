@@ -1,28 +1,28 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_fix_verified_ui_u4_resume_ready
+status: t5_ui_u4_real_integration_in_progress
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_U4_resume_ready
-  summary: Platform independently accepted Core 3225038 after a fresh-archive wheel install, 102/102 tests with zero skips, contract integrity checks, and a real supervised interface-plugin socket test including immediate Grant revocation. UI U4 may resume.
-  owner: capability-bus-platform
+  phase: UI_U4_real_integration_dispatched
+  summary: Platform independently accepted Core 3225038 and resumed one medium-reasoning UI U4 lane from UI 39b5904 to implement the real authenticated management transport and integration evidence. Core remains idle.
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: none
-  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform accepted Core 322503845cb322628fe2db7a2c570fc6289d22db: isolated wheel SHA-256 84a028fe05bcc0ac1ac490848471ee36c8bff66368fa8362c3338a70edb825bb, 2/2 candidate tests, 102/102 full installed tests with zero skips, compilation, contract JSON, F1 zero diff, F2 machine-file zero diff, 27-file wheel boundary, and 1/1 real supervised-plugin socket/revocation test passed."
-  next_action: Dispatch one medium-reasoning UI U4 resume lane against Core 3225038 to replace fixture credentials/transport with the documented resident interface-plugin environment, rerun real integration, and prepare the UI candidate.
+  last_completed_action: "Platform committed Core acceptance at a429c2b and dispatched UI U4 thread 01a0fba0-e14d-7610-ac58-10f172ee78e0 against verified Core 3225038 with medium reasoning, one active lane, and the 12-round-trip soft limit."
+  next_action: Wait once for UI completion or required action, then independently verify its commit, frozen-contract provenance, real Core lifecycle/recovery/compatibility behavior, one full UI suite/build, and package integrity.
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: dae4a85a581488e7b8b4cd5bf77a3ce047db2b07
-    previous_verified_head: 7c5c5aa87d50309c18075a126cf458c21d50f8b9
-    expected_worktree: core_acceptance_records_pending_commit
+    expected_head: a429c2b
+    previous_verified_head: dae4a85a581488e7b8b4cd5bf77a3ce047db2b07
+    expected_worktree: ui_u4_resume_dispatch_records_pending_commit
   core:
     expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
@@ -31,7 +31,7 @@ verified_state:
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U4_authorized_to_resume_against_Core_3225038
+    phase: U4_real_integration_in_progress_against_Core_3225038
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -108,11 +108,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_acceptance_records_to_be_committed
+  uncommitted_platform_changes: ui_u4_resume_dispatch_records_to_be_committed
   uncommitted_core_changes: none
-  uncommitted_ui_changes: none
-  active_implementation_lanes: 0
-  active_lane: none
+  uncommitted_ui_changes: implementation_in_progress_state_unknown
+  active_implementation_lanes: 1
+  active_lane: UI-U4-real-Core-integration
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
