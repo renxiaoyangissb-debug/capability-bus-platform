@@ -1,32 +1,32 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_management_bootstrap_in_progress
+status: t5_core_candidate_pending_platform_verification
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_management_bootstrap_fix_dispatched
-  summary: The user resumed T5. Platform activated one medium-reasoning Core lane to add a public least-privilege authenticated management bootstrap without changing the frozen 42-operation semantics or exposing the owner key; UI remains stopped.
-  owner: capability-bus-core
+  phase: Core_candidate_pending_platform_verification
+  summary: Core committed candidate 3225038 for scoped plugin management bootstrap and reports 16/16 focused plus 102/102 installed tests. Platform confirmed the commit and clean worktree but has not independently run acceptance yet; UI remains stopped.
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-core
-  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  implementation_repository: none
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "The user replied 继续t5 after reviewing the resume profile. Platform reverified clean Platform f48104f, Core 272f632, and UI 39b5904 baselines and prepared the single Core repair lane."
-  next_action: Wait once for Core completion or required action, then independently verify the candidate commit, focused security tests, one full installed suite, F1/F2 contract integrity, and absence of owner-key exposure before resuming UI U4.
+  last_completed_action: "Core committed 322503845cb322628fe2db7a2c570fc6289d22db and reported 16/16 focused tests, 102/102 installed tests, compile/diff checks, and zero semantic changes to F1 plus the 42 F2 operations. Platform confirmed the commit exists, the ten-file scope, and a clean Core worktree; these test results remain owner-reported."
+  next_action: "Independently inspect and test Core 3225038: focused bootstrap security, one full installed suite including permitted Unix sockets, compilation, F1/F2 machine-contract diff, package boundary, and owner-key non-exposure. Accept or issue one scoped correction before resuming UI U4."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
   platform:
-    expected_head: f48104f38d3c60b2588a13c9ac90f07678f2262b
-    previous_verified_head: 052b3197929cd6e6bf958fc018330952a6b3a1ad
-    expected_worktree: core_fix_dispatch_records_pending_commit
+    expected_head: 7c5c5aa87d50309c18075a126cf458c21d50f8b9
+    previous_verified_head: f48104f38d3c60b2588a13c9ac90f07678f2262b
+    expected_worktree: core_candidate_status_records_pending_commit
   core:
-    expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
+    expected_head: 322503845cb322628fe2db7a2c570fc6289d22db
     expected_worktree: clean
-    phase: T5_management_bootstrap_fix_in_progress
+    phase: T5_management_bootstrap_candidate_pending_platform_verification
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
@@ -98,11 +98,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_fix_dispatch_records_to_be_committed
-  uncommitted_core_changes: implementation_in_progress_state_unknown
+  uncommitted_platform_changes: core_candidate_status_records_to_be_committed
+  uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 1
-  active_lane: Core-T5-management-bootstrap-compatibility-fix
+  active_implementation_lanes: 0
+  active_lane: none
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -111,7 +111,7 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:15"
+  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:21"
   ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:10"
 
 handoff_rules:
