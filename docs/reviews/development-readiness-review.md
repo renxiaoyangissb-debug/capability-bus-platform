@@ -1,6 +1,6 @@
 # Development readiness review
 
-Status: **F2 ACCEPTED — T5 / ALPHA.4 INTEGRATION AUTHORIZED**
+Status: **T5 VERIFIED — RELEASE CANDIDATE HUMAN ACCEPTANCE PENDING**
 
 ## Prepared
 
@@ -26,6 +26,7 @@ Status: **F2 ACCEPTED — T5 / ALPHA.4 INTEGRATION AUTHORIZED**
 - [x] Confirm source ownership and permission to reuse, modify, and distribute committed source code before T1 extraction.
 - [x] Accept F1 before UI business implementation.
 - [x] Accept F2 before concentrated alpha.4 integration.
+- [ ] Accept the exact T5 / alpha.4 release candidate before any release publication.
 
 ## Approval record
 
@@ -37,4 +38,4 @@ Core delivered T0 under commit `aa6269842fa034c8849c579b0262dff4db7ee8cc`. Platf
 
 ## Current authorized action
 
-Core T4 at `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI U3 at `39b5904499c0ecfa0dff1d57683812c150e377e4` were independently verified. The human then replied `接受F2`, accepting that exact pair and the decisions recorded in [the F2 human review](human-checkpoints/F2-core-alpha-api-freeze-human-review.md). T5 / alpha.4 integration is authorized; Platform will activate one owning-project implementation lane at a time and stop again for release-candidate human acceptance.
+Core T4 at `272f6325506c4ce7c4de5c100fb3f03a28701318` and Official UI U3 at `39b5904499c0ecfa0dff1d57683812c150e377e4` were independently verified and accepted as F2. T5 then completed under the low-consumption single-lane policy. Platform independently verified Core `4858520224a98b6528cb6cf47e7aa2e517bb62dc` and Official UI `d77a9a92f7abd435c3d5447db8179e4325f3e79d`; all work is now stopped for the mandatory [release-candidate human review](human-checkpoints/T5-release-candidate-human-review.md).

@@ -14,9 +14,9 @@
 
 | 项目 | 权威提交 | 工作区 | 当前阶段 |
 |---|---|---|---|
-| Platform | `ebe4f7c` | UI 精确刷新派发记录待提交 | Core alpha.4 已独立验证；UI 最终精确提交刷新已派发 |
+| Platform | `01887d6` | 发布候选报告与门禁记录待提交 | T5 已独立验证；停止在发布候选人工检查点 |
 | Core | `4858520224a98b6528cb6cf47e7aa2e517bb62dc` | 已核验干净 | alpha.4 包/运行时版本已获 Platform 接受，协议未变 |
-| Official UI | `c3a641ffc22a21905753d68c2c87621c4354faee` | 派发时已核验干净 | `UI-T5-exact-alpha4-refresh` 正在执行 |
+| Official UI | `d77a9a92f7abd435c3d5447db8179e4325f3e79d` | 已核验干净 | 与 Core alpha.4 的最终精确联调已获 Platform 验证 |
 | 来源 personal-ai-control-plane | `7f82511837adf06eef87dd9059b57d59bcaeadd6` | 3 个已跟踪修改 + 18 个未跟踪项，全部保持只读且不作复用来源 | 只读固定来源 |
 
 新 Core 对话：`01a0fba0-c91d-7981-9633-dbb8bd925df7`。新 Official UI 对话：`01a0fba0-e14d-7610-ac58-10f172ee78e0`。二者已完成只读状态核验；后续实现回合统一使用 medium 推理，且同一时间只激活一个实现通道。旧对话仅保留审计记录。
@@ -61,8 +61,8 @@ F1 与 F2 均已接受。Platform 只在独立所属项目对话中按单通道�
 | `CORE-T4` | capability-bus-core | `verified` | alpha.3 身份、安全、配置、SecretRef、兼容、替换、回滚及完整公共管理能力 | 已满足；见 [T4 报告](../reviews/human-checkpoints/T4-core-alpha3-human-review.md) |
 | `UI-U3` | capability-bus-official-ui | `verified` | 受控写操作、确认、结果和审计关联 | 已满足；见 [U3 报告](../reviews/human-checkpoints/U3-controlled-writes-human-review.md) |
 | `F2-HUMAN-ACCEPTANCE` | Platform | `accepted` | 完整 Alpha API 与集成兼容矩阵人工冻结 | 用户回复 `接受F2`；见 [F2 报告](../reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md) |
-| `T5-INTEGRATION` | Core + UI | `UI_exact_candidate_refresh_in_progress` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | UI 精确绑定 Core alpha.4 且最终联合复验通过 |
-| `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `blocked_by_T5` | 发布候选人工复核 | 人工接受发布候选 |
+| `T5-INTEGRATION` | Core + UI | `verified_by_platform` | alpha.4 安装、联调、启停、卸载、恢复、兼容与资源验收 | 已满足；精确候选见 T5 人审报告 |
+| `RELEASE-CANDIDATE-HUMAN-ACCEPTANCE` | Platform | `pending_human_acceptance` | 发布候选人工复核 | 用户明确接受或指出阻塞问题 |
 
 ## 当前协作边界
 
@@ -79,6 +79,8 @@ Core 随后提交 `c4fe126`，Platform 从全新归档独立验证其 27 文件 
 UI 提交 `c3a641f` 后，Platform 在全新归档中再次通过 28/28、24 模块构建、20 许可证、17 边界检查、31/31 包完整性和真实 Core 联调；同一非 UI 驻留进程跨 UI 禁用保持不变，并在 UI 移除后继续健康可调用。证据见 [T5 UI 发布证据报告](../reviews/human-checkpoints/T5-ui-release-evidence-human-review.md)。十项功能验收均已闭合，但 Core 仍打包/自报 `0.1.0-alpha.3`，未满足路线规定的集成节点 `0.1.0-alpha.4`；因此只授权一个不改变协议的版本标记修正通道。
 
 Core 以 `4858520` 完成版本标记修正。Platform 全新归档验证 `0.1.0a4` wheel、105/105 安装态测试零跳过、27 文件边界和完整目标机验收；能力协议仍为 alpha.1、管理协议仍为 alpha.3，两棵冻结契约零变化。现在只允许 UI 把真实联调的精确 Core 提交从 `c4fe126` 刷新为 `4858520` 并重跑既有门禁，之后进入发布候选人工检查点。
+
+UI 最终提交 `d77a9a9` 只刷新精确 Core 固定值和证据文字。Platform 全新归档再次完成离线依赖、28/28、24 模块构建、20 许可证、17 边界、31/31 包完整性以及对 Core `4858520` 的真实联合联调，全部通过。T5 已完成并进入 [发布候选人工检查点](../reviews/human-checkpoints/T5-release-candidate-human-review.md)；当前没有活动实现通道，必须等待用户明确接受或退回。
 
 三个注册对话的额度与效率根因见 [2026-10-03 使用效率审计](../reviews/usage-efficiency-audit-2026-10-03.md)。后续调度强制遵循 [低消耗执行策略](../governance/usage-efficiency-policy.md)：单实现线、协调低推理、实现中推理、每回合 12 次模型/工具往返软上限，以及收敛后的单次完整测试与验收。
 

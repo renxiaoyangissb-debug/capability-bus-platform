@@ -1,37 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_ui_exact_candidate_refresh_in_progress
+status: t5_release_candidate_pending_human_acceptance
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: UI_exact_candidate_refresh_in_progress
-  summary: "Platform independently accepted Core 4858520 as alpha.4 and dispatched the final UI exact-pin/evidence refresh from Platform ebe4f7c. Core is idle and clean."
-  owner: capability-bus-official-ui
+  phase: release_candidate_human_checkpoint
+  summary: "Platform independently verified the exact Core 4858520 / UI d77a9a9 pair. All T5 rows, package gates, frozen-contract checks and the final real-Core integration pass succeeded. Automatic progression is stopped for mandatory human release-candidate acceptance."
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
-  blocking_reason: none
+  implementation_repository: none
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  blocking_reason: mandatory_human_release_candidate_acceptance
 
 resume_point:
-  last_completed_action: "Platform commit ebe4f7c accepted Core 4858520 as the exact alpha.4 Core candidate and authorized UI-T5-exact-alpha4-refresh. The pin/evidence-only task was sent to the existing UI thread."
-  next_action: "Wait once for UI, then independently verify the exact commit, diff scope, unchanged lock/contracts/runtime, full UI/package gates and real-Core integration against 4858520. If clean, prepare the release-candidate human report and stop."
-  stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
+  last_completed_action: "Platform independently verified final UI d77a9a9 from a fresh archive against Core 4858520: unchanged lock/contracts/runtime, 28/28 tests, build/licenses/boundaries, 31/31 package files and complete real-Core integration all passed."
+  next_action: "Await an explicit human response to docs/reviews/human-checkpoints/T5-release-candidate-human-review.md. Accept only the exact Core 4858520 / UI d77a9a9 pair; do not dispatch further implementation or publish externally before that decision."
+  stop_condition: Mandatory human checkpoint is active. No automatic progression.
 
 verified_state:
   platform:
-    expected_head: ebe4f7c
-    previous_verified_head: aacbe360ff774d0c28c8320a00125f8396cd33d6
-    expected_worktree: ui_alpha4_refresh_dispatch_checkpoint_pending_commit
+    expected_head: 01887d621a1c758f93967b4fdc20861c7d25b91c
+    previous_verified_head: ebe4f7c
+    expected_worktree: release_candidate_report_and_gate_records_pending_commit
   core:
     expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     expected_worktree: clean
     phase: T5_alpha4_version_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
-    expected_head: c3a641ffc22a21905753d68c2c87621c4354faee
+    expected_head: d77a9a92f7abd435c3d5447db8179e4325f3e79d
     expected_worktree: clean
-    phase: T5_release_evidence_verified_by_platform
+    phase: T5_exact_alpha4_pair_verified_by_platform
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -117,6 +117,13 @@ latest_verified_evidence:
   ui_t5_release_evidence_package: 31_of_31_files_verified
   ui_t5_release_evidence_non_ui_continuity: same_resident_before_and_after_disable_healthy_and_callable_after_remove
   ui_t5_release_evidence_report: docs/reviews/human-checkpoints/T5-ui-release-evidence-human-review.md
+  final_core_candidate: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
+  final_ui_candidate: d77a9a92f7abd435c3d5447db8179e4325f3e79d
+  final_ui_tests: 28_of_28_passed_without_skips
+  final_ui_package: 31_of_31_files_verified
+  final_ui_lock_sha256: c8ef2875aa4c2ae0e7c0a62dd4c9c0081f6527b6ea6194c108f6f5a73bef38e5
+  final_real_core_integration: passed
+  release_candidate_report: docs/reviews/human-checkpoints/T5-release-candidate-human-review.md
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -134,11 +141,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: ui_alpha4_refresh_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: release_candidate_report_and_gate_records_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
-  active_implementation_lanes: 1
-  active_lane: UI-T5-exact-alpha4-refresh
+  active_implementation_lanes: 0
+  active_lane: none_human_checkpoint
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -148,7 +155,7 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:35"
-  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:23"
+  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:26"
 
 ui_u4_dirty_paths: none_candidate_committed_clean
 
