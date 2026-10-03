@@ -1,21 +1,21 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: t5_core_alpha4_version_stamp_in_progress
+status: t5_ui_exact_candidate_refresh_authorized
 
 active_work:
   id: T5-ALPHA4-INTEGRATION
-  phase: Core_alpha4_version_stamp_in_progress
-  summary: Platform independently accepted UI c3a641f and all ten T5 functional rows pass. The exact package-version-only Core alpha.4 correction was dispatched from Platform 6d76c8c; UI is idle.
-  owner: capability-bus-core
+  phase: UI_exact_candidate_refresh_authorized
+  summary: "Platform independently accepted Core 4858520 as the alpha.4 package: 105/105 installed tests with zero skips, 27-file wheel, unchanged frozen protocols/contracts, and full target-host acceptance. Only the UI exact Core pin/evidence refresh remains."
+  owner: capability-bus-official-ui
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-core
-  thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
+  implementation_repository: capability-bus-official-ui
+  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   blocking_reason: none
 
 resume_point:
-  last_completed_action: "Platform commit 6d76c8c accepted UI c3a641f, closed all ten functional rows, and authorized CORE-T5-alpha4-version-stamp. The exact scoped task was sent to the existing Core thread."
-  next_action: "Wait once for Core, then independently verify only the alpha.4 distribution/runtime stamp, unchanged alpha.1/alpha.3 protocols and contracts, full installed suite, wheel identity, and clean worktree."
+  last_completed_action: "Platform independently verified Core 4858520 from a fresh archive: alpha.4 wheel SHA-256 fb604d0, 105/105 installed tests with zero skips, 27-file boundary, alpha.1/alpha.3 protocols and both contract trees unchanged, and the full acceptance harness passed."
+  next_action: "UI changes only the exact Core commit pin/evidence text from c4fe126 to 4858520, reruns one full verify/package pass and one real-Core integration pass, commits cleanly, and makes no release-candidate claim."
   stop_condition: Stop for a hard stop, a frozen-contract conflict, or the mandatory release-candidate human checkpoint. Do not publish a release candidate automatically.
 
 verified_state:
@@ -24,9 +24,9 @@ verified_state:
     previous_verified_head: f050f158710fc2731f5ea09f95d402531763edb7
     expected_worktree: core_alpha4_version_dispatch_checkpoint_pending_commit
   core:
-    expected_head: c4fe12634571154a9d64ce97f8f9922dc14317b3
+    expected_head: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
     expected_worktree: clean
-    phase: T5_release_evidence_verified_by_platform
+    phase: T5_alpha4_version_verified_by_platform
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
     expected_head: c3a641ffc22a21905753d68c2c87621c4354faee
@@ -108,6 +108,10 @@ latest_verified_evidence:
   core_t5_release_evidence_cli_legacy_crash: passed
   core_t5_release_evidence_target_resource: 30_of_30_calls_30_rows_0_361887_seconds_23805952_peak_harness_rss
   core_t5_release_evidence_report: docs/reviews/human-checkpoints/T5-core-release-evidence-human-review.md
+  core_t5_alpha4_commit: 4858520224a98b6528cb6cf47e7aa2e517bb62dc
+  core_t5_alpha4_installed_tests: 105_of_105_passed_without_skips
+  core_t5_alpha4_wheel_sha256: fb604d036a69f284562fdf2b52dc20a51402f32a3fe56407b16f37039aa91211
+  core_t5_alpha4_versions: distribution_0_1_0a4_runtime_0_1_0_alpha_4_capability_protocol_alpha_1_management_protocol_alpha_3
   ui_t5_release_evidence_commit: c3a641ffc22a21905753d68c2c87621c4354faee
   ui_t5_release_evidence_tests: 28_of_28_passed_without_skips
   ui_t5_release_evidence_package: 31_of_31_files_verified
@@ -130,11 +134,11 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: core_alpha4_version_dispatch_checkpoint_to_be_committed
+  uncommitted_platform_changes: core_alpha4_acceptance_and_ui_refresh_authorization_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   active_implementation_lanes: 1
-  active_lane: CORE-T5-alpha4-version-stamp
+  active_lane: UI-T5-exact-alpha4-refresh
   external_side_effects: takeover_commits_excluded_from_current_branches
 
 new_conversations:
@@ -143,7 +147,7 @@ new_conversations:
   official_ui: 01a0fba0-e14d-7610-ac58-10f172ee78e0
 
 monitoring:
-  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:30"
+  core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:35"
   ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:23"
 
 ui_u4_dirty_paths: none_candidate_committed_clean

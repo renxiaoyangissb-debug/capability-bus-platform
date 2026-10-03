@@ -50,3 +50,15 @@ The accepted Core runbook documents offline fresh install, full-root owner-only 
 ## Resulting authorization boundary
 
 Platform accepts Core `c4fe12634571154a9d64ce97f8f9922dc14317b3` for T5 evidence. T5 still requires the Official UI release-evidence slice proving non-UI work survives UI disable/removal and documenting UI install/upgrade/downgrade/uninstall behavior. Release-candidate publication remains blocked on the mandatory human checkpoint.
+
+## Integrated alpha.4 version correction
+
+After the UI evidence closed all ten functional rows, Platform found that the Core package still identified itself as the alpha.3 implementation rather than the roadmap's integrated alpha.4 node. Core corrected only the release version at `4858520224a98b6528cb6cf47e7aa2e517bb62dc`:
+
+- distribution: `0.1.0a4`;
+- runtime/CLI: `0.1.0-alpha.4`;
+- capability protocol: unchanged `0.1.0-alpha.1`;
+- management protocol: unchanged `0.1.0-alpha.3`;
+- both frozen contract trees: byte-unchanged.
+
+Platform independently built `capability_bus_core-0.1.0a4-py3-none-any.whl` from a fresh archive. Its SHA-256 was `fb604d036a69f284562fdf2b52dc20a51402f32a3fe56407b16f37039aa91211`, the boundary remained 27 expected files, 105/105 installed tests passed with zero skips, and the complete acceptance harness passed again on the target host. This supersedes `c4fe126` as the Core half of the eventual exact release-candidate pair; no protocol or runtime-semantic change was introduced.

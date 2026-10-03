@@ -4,7 +4,7 @@ Date: 2026-10-03 (Asia/Shanghai)
 
 Authoritative pair under review:
 
-- Core `c4fe12634571154a9d64ce97f8f9922dc14317b3`
+- Core `4858520224a98b6528cb6cf47e7aa2e517bb62dc`
 - Official UI `28f2428130db4d39f546d34f20b440fbc72fc6d1`
 
 This audit maps the ten T5 rows in the master development plan to independently verified evidence. `verified` means an exact-commit, reproducible path exists; `partial` means relevant behavior passed but the row lacks one explicit joint or release-form proof; `missing` means no adequate committed evidence exists yet.
@@ -28,13 +28,13 @@ The current host is an Apple M4 Mac mini with 16 GB memory and a nominal 256 GB 
 
 F2 also requires version compatibility and install/upgrade/downgrade/uninstall procedures. Machine-readable compatibility rules and security limitations exist. Core `c4fe126` and UI `c3a641f` now have accepted matching lifecycle runbooks.
 
-All ten functional rows are verified. One packaging blocker remains: Core still reports and builds `0.1.0-alpha.3`, while the approved integration roadmap names the integrated Core release node `0.1.0-alpha.4`. The capability protocol remains `0.1.0-alpha.1`, the management protocol remains `0.1.0-alpha.3`, and the independently versioned Official UI remains `0.1.0-alpha.1`; those values must not be changed by the package-version correction.
+All ten functional rows are verified. Core `4858520` now reports/builds `0.1.0-alpha.4`; the capability protocol remains `0.1.0-alpha.1`, the management protocol remains `0.1.0-alpha.3`, and the independently versioned Official UI remains `0.1.0-alpha.1`. The only remaining step is refreshing the UI verifier's exact Core commit pin and rerunning the unchanged joint acceptance against that version-only Core commit.
 
 ## Minimal completion sequence
 
 1. Core and UI functional evidence lanes: completed and independently accepted at `c4fe126` / `c3a641f`.
-2. Core package-version lane: change only the Core distribution/runtime version and current-release documentation to `0.1.0-alpha.4`, keeping both frozen protocol values unchanged.
-3. UI evidence refresh: pin the resulting exact Core commit and rerun the unchanged joint verifier.
+2. Core package-version lane: completed and independently accepted at `4858520`.
+3. UI evidence refresh: pin Core `4858520` and rerun the unchanged joint verifier.
 4. Platform runs one final consolidated acceptance pass, prepares `T5-release-candidate-human-review.md`, and stops for the mandatory human decision.
 
 No release-candidate status is claimed by this audit.
