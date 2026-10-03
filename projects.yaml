@@ -1,6 +1,6 @@
 schema_version: 1
 program: capability-bus
-status: core_t4_verified_ui_u3_active
+status: f2_human_acceptance_required
 formal_development_authorized: true
 preparation_authorized: true
 workflow_authority_delegated_to_platform: true
@@ -22,8 +22,8 @@ approval:
   ui_task_dispatch_authorized: true
   routine_core_ui_dispatch_authorized: true
   per_task_human_approval_required: false
-  current_mandatory_human_checkpoint: none
-  next_auto_phase: wait_once_then_verify_ui_u3_candidate
+  current_mandatory_human_checkpoint: F2
+  next_auto_phase: none_wait_for_F2_human_acceptance
   core_execution_model: gpt-5.6-sol
   core_execution_reasoning_effort: medium
   coordination_reasoning_effort: low
@@ -52,8 +52,9 @@ repositories:
     path: /Users/butterburger/Documents/WorkPlace/Codes/capability-bus-official-ui
     role: ui-authority
     start_gate: F1-accepted
-    verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
-    phase_status: U3_active
+    previous_verified_commit: f17320cf39f18d507a4e40b0f7047b88a14582ae
+    verified_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
+    phase_status: U3_verified_F2_pending
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
     previous_thread_id: 01a0fa86-b191-70a2-80af-3853312f2286
 
@@ -100,9 +101,14 @@ gates:
     verified_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
     evidence: docs/reviews/human-checkpoints/T4-core-alpha3-human-review.md
   - id: UI-U3-CONTROLLED-WRITES
-    status: active
+    status: verified_by_platform
+    evidence: docs/reviews/human-checkpoints/U3-controlled-writes-human-review.md
+    verified_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
   - id: F2-CORE-ALPHA-API-FREEZE
-    status: not_started
+    status: human_acceptance_required
+    evidence: docs/reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md
+    candidate_core_commit: 272f6325506c4ce7c4de5c100fb3f03a28701318
+    candidate_ui_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
 
 constraints:
   architecture_change_allowed: false

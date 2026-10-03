@@ -1,37 +1,37 @@
 schema_version: 1
 updated_at: 2026-10-03
 timezone: Asia/Shanghai
-status: core_t4_verified_ui_u3_active
+status: f2_human_acceptance_required
 
 active_work:
-  id: UI-U3-CONTROLLED-WRITES
-  phase: low_consumption_dispatched_active
-  summary: Platform dispatched UI U3 as the only implementation lane against exact Core 272f632 management contracts, using medium reasoning and the 12-round-trip low-consumption limit.
-  owner: capability-bus-official-ui
+  id: F2-CORE-ALPHA-API-FREEZE
+  phase: mandatory_human_checkpoint
+  summary: Platform independently verified Core T4 at 272f632 and UI U3 at 39b5904. The complete Alpha management contract and controlled-write evidence are ready for mandatory F2 human acceptance.
+  owner: capability-bus-platform
   coordinator: capability-bus-platform
-  implementation_repository: capability-bus-official-ui
-  thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
-  blocking_reason: none
+  implementation_repository: none
+  thread_id: 01a0fba2-3f09-7763-ada8-6e3e0b6b06d1
+  blocking_reason: mandatory_F2_human_acceptance
 
 resume_point:
-  last_completed_action: Platform committed UI dispatch checkpoint 846908a and completed the single bounded wait. UI imported 12 management contract files from exact Core 272f632 with per-file SHA-256 provenance and is implementing the catalog-driven client, fake, controls, and page integration without error.
-  next_action: Do not poll again during this coordination turn. On the next explicit continuation or completion notification, read UI once; if a clean candidate is returned, run one batched independent UI acceptance pass.
-  stop_condition: Do not connect to private Core state or enter F2. After UI U3 verification, prepare the mandatory F2 report and stop for human acceptance.
+  last_completed_action: "Platform independently verified UI 39b5904499c0ecfa0dff1d57683812c150e377e4 from a fresh archive: exact 12-file Core management snapshot, deterministic offline install with unchanged lock hash, 26/26 tests, 27-module build, 20 licenses, 16 boundary checks, and 31/31 packaged files passed; UI is clean."
+  next_action: Present docs/reviews/human-checkpoints/F2-core-alpha-api-freeze-human-review.md and wait for an explicit human response accepting or rejecting F2.
+  stop_condition: Mandatory F2 human checkpoint. Do not dispatch T5, real Core/UI integration, or further implementation before explicit acceptance.
 
 verified_state:
   platform:
-    expected_head: 846908a
-    previous_verified_head: 048a2b08b33f50fc19fd8a1864281758e9110965
-    expected_worktree: clean_after_ui_u3_single_wait_checkpoint
+    expected_head: c7b312d
+    previous_verified_head: 846908a
+    expected_worktree: u3_and_f2_reports_pending_commit
   core:
     expected_head: 272f6325506c4ce7c4de5c100fb3f03a28701318
     expected_worktree: clean
     phase: T4_verified
     thread_id: 01a0fba0-c91d-7981-9633-dbb8bd925df7
   official_ui:
-    expected_head: f17320cf39f18d507a4e40b0f7047b88a14582ae
+    expected_head: 39b5904499c0ecfa0dff1d57683812c150e377e4
     expected_worktree: clean
-    phase: U3_active
+    phase: U3_verified_F2_pending
     thread_id: 01a0fba0-e14d-7610-ac58-10f172ee78e0
   source:
     expected_head: 7f82511837adf06eef87dd9059b57d59bcaeadd6
@@ -67,6 +67,16 @@ latest_verified_evidence:
   core_t4_management_json: all_parsed
   core_t4_independent_wheel_sha256: 0f4a3c507268b47c703b3b4440fa4edf3e0e40c8839d3db14417e5b7eef89843
   core_t4_disposition: verified_by_platform
+  ui_u3_commit: 39b5904499c0ecfa0dff1d57683812c150e377e4
+  ui_u3_lock_sha256_before_and_after: c8ef2875aa4c2ae0e7c0a62dd4c9c0081f6527b6ea6194c108f6f5a73bef38e5
+  ui_u3_offline_dependencies: 20_installed
+  ui_u3_management_contracts: 12_exact_files_from_core_272f632
+  ui_u3_tests: 26_of_26_passed
+  ui_u3_build: 27_modules_passed
+  ui_u3_licenses: 20_packages_verified
+  ui_u3_source_boundary_checks: 16_passed
+  ui_u3_plugin_package: 31_of_31_files_verified
+  ui_u3_disposition: verified_by_platform
 
 independent_ui_u2_verification:
   initial_candidate_commit: 74131c529b4e6e4d0fffa695a65feb8b7208cf9d
@@ -84,7 +94,7 @@ independent_ui_u2_verification:
   plugin_package: 31_of_31_files_verified
   disposition: verified_by_platform
 in_flight_state:
-  uncommitted_platform_changes: none_after_ui_u3_single_wait_checkpoint
+  uncommitted_platform_changes: u3_and_f2_reports_and_gate_ledger_to_be_committed
   uncommitted_core_changes: none
   uncommitted_ui_changes: none
   external_side_effects: takeover_commits_excluded_from_current_branches
@@ -96,7 +106,7 @@ new_conversations:
 
 monitoring:
   core_wait_cursor: "4d9dee48-60bb-45b3-9657-38f51a92124e:15"
-  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:4"
+  ui_wait_cursor: "2c1b175a-adff-4a93-a2ca-528d2ecf5dd2:5"
 
 handoff_rules:
   - Verify every expected HEAD and worktree before resuming.
